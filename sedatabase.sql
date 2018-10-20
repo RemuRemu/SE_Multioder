@@ -83,9 +83,12 @@ CREATE TABLE `order` (
   `status` enum('prepare','sending','done') NOT NULL DEFAULT 'prepare',
   `address` varchar(45) NOT NULL,
   `total` varchar(45) NOT NULL,
-  `userprofile_uid` int(11) DEFAULT NULL,
+  `userprofile_uid` int(11) NOT NULL,
+  `shop_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`order_id`),
   KEY `userprofile_order_uid_idx` (`userprofile_uid`),
+  KEY `shop_order_idx` (`shop_id`),
+  CONSTRAINT `shop_order` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shopid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `userprofile_order_uid` FOREIGN KEY (`userprofile_uid`) REFERENCES `userprofile` (`uid`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -112,11 +115,14 @@ CREATE TABLE `order_item` (
   `order_id` int(11) NOT NULL,
   `price` varchar(45) NOT NULL,
   `amount` int(11) NOT NULL,
+  `shop_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`itemnumber`,`menu_id`,`order_id`),
   KEY `menu_order_item_idx` (`menu_id`),
   KEY `order_order_item_idx` (`order_id`),
+  KEY `shop_order_item_idx` (`shop_id`),
   CONSTRAINT `menu_order_item` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menuid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `order_order_item` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `order_order_item` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `shop_order_item` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shopid`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -166,7 +172,7 @@ DROP TABLE IF EXISTS `shop`;
 CREATE TABLE `shop` (
   `shopid` int(11) NOT NULL,
   `shopname` varchar(45) NOT NULL,
-  `shop_status` tinyint(4) DEFAULT NULL,
+  `shop_status` tinyint(4) NOT NULL,
   PRIMARY KEY (`shopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -215,4 +221,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-20 13:37:42
+-- Dump completed on 2018-10-20 14:02:13
