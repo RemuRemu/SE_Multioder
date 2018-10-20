@@ -54,7 +54,7 @@ CREATE TABLE `menu` (
   `shop_id` int(11) NOT NULL,
   `description` longtext NOT NULL,
   `price` float NOT NULL,
-  `image` longtext,
+  `image` longtext NOT NULL,
   PRIMARY KEY (`menuid`,`shop_id`),
   KEY `shop_menu_idx` (`shop_id`),
   CONSTRAINT `shop_menu` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shopid`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -84,7 +84,7 @@ CREATE TABLE `order` (
   `address` varchar(45) NOT NULL,
   `total` varchar(45) NOT NULL,
   `userprofile_uid` int(11) NOT NULL,
-  `shop_id` int(11) DEFAULT NULL,
+  `shop_id` int(11) NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `userprofile_order_uid_idx` (`userprofile_uid`),
   KEY `shop_order_idx` (`shop_id`),
@@ -115,7 +115,7 @@ CREATE TABLE `order_item` (
   `order_id` int(11) NOT NULL,
   `price` varchar(45) NOT NULL,
   `amount` int(11) NOT NULL,
-  `shop_id` int(11) DEFAULT NULL,
+  `shop_id` int(11) NOT NULL,
   PRIMARY KEY (`itemnumber`,`menu_id`,`order_id`),
   KEY `menu_order_item_idx` (`menu_id`),
   KEY `order_order_item_idx` (`order_id`),
@@ -221,4 +221,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-20 14:02:13
+-- Dump completed on 2018-10-20 15:36:24
