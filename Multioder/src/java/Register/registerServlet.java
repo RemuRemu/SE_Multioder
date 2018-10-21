@@ -54,12 +54,15 @@ public class registerServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String user = request.getParameter("user");
             String password = request.getParameter("pass");
+            String firstname = request.getParameter("first");
+            String lastname = request.getParameter("last");
             String email = request.getParameter("mail");
             String phone = request.getParameter("phone");
             String address = request.getParameter("add");
             
             //check all field have value
-            if (user.isEmpty() || password.isEmpty() || email.isEmpty() || address.isEmpty() || phone.isEmpty()) {
+            if (user.isEmpty() || password.isEmpty() || email.isEmpty() || address.isEmpty() 
+                    || phone.isEmpty()|| firstname.isEmpty()|| lastname.isEmpty()) {
                 int fail = 2;
                 request.setAttribute("flag", fail);
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/register.jsp");
@@ -92,13 +95,15 @@ public class registerServlet extends HttpServlet {
             
             //insert in userprofile
             String insert_user = "INSERT INTO userprofile"
-                    + "(username, password, email, phone) VALUES"
-                    + "(?, ?, ?, ?)";
+                    + "(username, password, firstname, lastname, email, phone) VALUES"
+                    + "(?, ?, ?, ?, ?, ?)";
             PreparedStatement m = conn.prepareStatement(insert_user);
             m.setString(1, user);
             m.setString(2, password);
-            m.setString(3, email);
-            m.setString(4, phone);
+            m.setString(3, firstname);
+            m.setString(4, lastname);
+            m.setString(5, email);
+            m.setString(6, phone);
             m.executeUpdate();
             
             //find uid in user_profile

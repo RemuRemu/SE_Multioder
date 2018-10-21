@@ -18,6 +18,8 @@
             register <br>
             username <input type="text" name="user" value="" /> <br>
             password <input type="password" name="pass" value="" /> <br>
+            first name <input type="text" name="first" value="" /> <br>
+            last name <input type="text" name="last" value="" /> <br>
             email <input type="text" name="mail" value="" /> <br>
             phone <input type="text" name="phone" value="" maxlength = "10"/> <br>
             <textarea name="add" rows="4" cols="20"></textarea>
