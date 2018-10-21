@@ -43,6 +43,7 @@ public class loginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Connection conn = null;
+        
         try {
             conn = seproject.getConnection();
         } catch (SQLException ex) {
