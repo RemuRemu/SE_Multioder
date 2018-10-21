@@ -1,0 +1,143 @@
+body {
+    font-family: 'Kanit', sans-serif;
+    /*background-position: center;*/
+    /*background-image: url("food1.jpg");*/
+    /*background-size: cover;*/
+/*
+    animation-name: slide;
+    animation-duration: 10s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    */
+}
+/*
+@keyframes slide {
+    0% {background-image: url("food1.jpg")}
+    20% {background-image: url("food1.jpg")}
+    40% {background-image: url("food2.jpg")}
+    60% {background-image: url("food2.jpg")}
+    80% {background-image: url("food3.jpg")}
+    100% {background-image: url("food3.jpg")}
+}
+*/
+.back {
+    position: fixed;
+    margin-top: -1em;
+    margin-left: -1em;
+    width: 102%;
+    height: 105%;
+    opacity: 0.5;
+    background-color: black;
+}
+
+.area {
+    width: 35%;
+    height: 105%;
+    background-image: url('back.png');
+    /*background-color: #858585;*/
+    /*opacity: 0.8;*/
+    margin-top: -1em;
+    margin-left: 10%;
+    padding-top: 3em;
+    padding-bottom: 3em;
+    position: relative;
+    /*margin: auto;*/
+    /*vertical-align: middle;*/
+}
+
+.area1{
+    background-image: url('back.png');
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    padding-top: 5em;
+    padding-bottom: 5em;
+    margin-top: -1em;
+    /*margin-left: 10%;*/
+    position: relative;
+    vertical-align: middle;
+}
+
+.logo_area {
+    padding-top: 3em;
+    /*margin-left: 10%;*/
+    /*width: 40%;*/
+}
+
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    height: 60%;
+    position: relative;
+    animation-name: down;
+    animation-duration: 1s;
+}
+
+.form_login {
+    /*margin-left: 10%;*/
+    margin-top: 2em;
+    /*width: 40%;*/
+    text-align: center;
+    /*opacity: 0;*/
+    position: relative;
+    animation-name: down;
+    animation-duration: 1s;
+    /*animation-delay: 1s;*/
+}
+
+.form_signup {
+    /*margin-left: 10%;*/
+    /*margin-top: 3em;*/
+    width: 600px;
+    text-align: center;
+    /*opacity: 0;*/
+    position: relative;
+}
+
+input {
+    font-family: 'Kanit', sans-serif;
+    /*border: 1px solid gray;*/
+    border-radius: 15px;
+    background-color: #DFDFDF;
+    transition: background-color 0.3s;
+    padding: 7px;
+}
+
+input[type=submit]:hover {
+    background-color: #9F9F9F;
+}
+
+button {
+    font-family: 'Kanit', sans-serif;
+    /*border: 1px solid gray;*/
+    border-radius: 15px;
+    background-color: #DFDFDF;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #9F9F9F;
+}
+
+@keyframes down {
+    from {opacity: 0; top: -20px;}
+    to {opacity: 1; top: 0px;}
+}
+/*
+.menu_area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #FFD471;
+}
+
+.menu {
+    position: relative;
+    width: 720px;
+    height: 40px;
+}*/
