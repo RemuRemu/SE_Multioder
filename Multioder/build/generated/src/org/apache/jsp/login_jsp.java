@@ -51,35 +51,35 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write(" \r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("<!DOCTYPE html>\r\n");
-      out.write("<html>\r\n");
-      out.write("    <head>\r\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
-      out.write("        <title>JSP Page</title>\r\n");
-      out.write("    </head>\r\n");
-      out.write("    <body>\r\n");
-      out.write("\r\n");
-      out.write("        <form action=\"loginServlet\" method=\"POST\">\r\n");
-      out.write("\r\n");
-      out.write("            username <input type=\"text\" name=\"user\" value=\"\" /> <br>\r\n");
-      out.write("            password <input type=\"password\" name=\"pass\" value=\"\" /> <br>\r\n");
-      out.write("\r\n");
-      out.write("            <input type=\"submit\" value=\"Login\" />\r\n");
-      out.write("        </form>\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write(" \n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("    <head>\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <title>JSP Page</title>\n");
+      out.write("    </head>\n");
+      out.write("    <body>\n");
+      out.write("\n");
+      out.write("        <form action=\"loginServlet\" method=\"POST\">\n");
+      out.write("\n");
+      out.write("            username <input type=\"text\" name=\"user\" value=\"\" /> <br>\n");
+      out.write("            password <input type=\"password\" name=\"pass\" value=\"\" /> <br>\n");
+      out.write("\n");
+      out.write("            <input type=\"submit\" value=\"Login\" />\n");
+      out.write("        </form>\n");
       out.write("        ");
       if (_jspx_meth_c_if_0(_jspx_page_context))
         return;
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("    </body>\r\n");
-      out.write("</html>\r\n");
-      out.write("\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("    </body>\n");
+      out.write("</html>\n");
+      out.write("\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -105,9 +105,9 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_if_0 = _jspx_th_c_if_0.doStartTag();
     if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\r\n");
-        out.write("            <script src=\"assets/js/sweetalert.min.js\"></script>\r\n");
-        out.write("            <script>swal(\"Username or Password Incorrect\");</script>  \r\n");
+        out.write("\n");
+        out.write("            <script src=\"assets/js/sweetalert.min.js\"></script>\n");
+        out.write("            <script>swal(\"Username or Password Incorrect\");</script>  \n");
         out.write("        ");
         int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
