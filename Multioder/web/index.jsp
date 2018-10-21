@@ -14,11 +14,11 @@
         <link rel="stylesheet" type="text/css" href="jb.css">
         <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     </head>
-    <body style="background-image: url('food1.jpg'); background-size: cover;">
+    <body style="background-image: url('pic\food1.jpg'); background-size: cover;">
         <div class="back"></div>
         <div class="area">
             <div class="logo_area">
-                <img id="logo" src="logo.png">
+                <img id="logo" src="pic\logo.png">
             </div>
             <div class="form_login">
                 <form method="post" action="home.jsp">
