@@ -60,19 +60,6 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-<<<<<<< HEAD
-      out.write("        <title>JSP Page</title>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("\n");
-      out.write("        <form action=\"loginServlet\" method=\"POST\">\n");
-      out.write("\n");
-      out.write("            username <input type=\"text\" name=\"user\" value=\"\" /> <br>\n");
-      out.write("            password <input type=\"password\" name=\"pass\" value=\"\" /> <br>\n");
-      out.write("\n");
-      out.write("            <input type=\"submit\" value=\"Login\" />\n");
-      out.write("        </form>\n");
-=======
       out.write("        <title>Multioder - Log in</title>\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n");
       out.write("        <!--<link rel=\"stylesheet\" type=\"text/css\" href=\"jb.css\">-->\n");
@@ -96,22 +83,13 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("            \n");
->>>>>>> SG
       out.write("        ");
       if (_jspx_meth_c_if_0(_jspx_page_context))
         return;
       out.write("\n");
-<<<<<<< HEAD
-      out.write("\n");
-      out.write("\n");
-      out.write("    </body>\n");
-      out.write("</html>\n");
-      out.write("\n");
-=======
       out.write("            \n");
       out.write("    </body>\n");
       out.write("</html>");
->>>>>>> SG
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
