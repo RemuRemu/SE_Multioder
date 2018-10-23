@@ -59,10 +59,7 @@ public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
-      out.write("        <title>Multioder - Log in</title>\r\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\r\n");
-      out.write("        <!--<link rel=\"stylesheet\" type=\"text/css\" href=\"jb.css\">-->\r\n");
-      out.write("        <link href=\"https://fonts.googleapis.com/css?family=Kanit\" rel=\"stylesheet\">\r\n");
+      out.write("        <title>JSP Page</title>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body style=\"background-image: url('pic/food.jpg'); background-size: cover;\">\r\n");
       out.write("        <div class=\"back\"></div>\r\n");
@@ -93,6 +90,17 @@ public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
       out.write("\r\n");
+      out.write("        <form action=\"registerServlet\" method=\"POST\">\r\n");
+      out.write("            register <br>\r\n");
+      out.write("            username <input type=\"text\" name=\"user\" value=\"\" /> <br>\r\n");
+      out.write("            password <input type=\"password\" name=\"pass\" value=\"\" /> <br>\r\n");
+      out.write("            first name <input type=\"text\" name=\"first\" value=\"\" /> <br>\r\n");
+      out.write("            last name <input type=\"text\" name=\"last\" value=\"\" /> <br>\r\n");
+      out.write("            email <input type=\"text\" name=\"mail\" value=\"\" /> <br>\r\n");
+      out.write("            phone <input type=\"text\" name=\"phone\" value=\"\" maxlength = \"10\"/> <br>\r\n");
+      out.write("            <textarea name=\"add\" rows=\"4\" cols=\"20\"></textarea>\r\n");
+      out.write("            <input type=\"submit\" value=\"regis\" />\r\n");
+      out.write("        </form>\r\n");
       out.write("        ");
       if (_jspx_meth_c_if_0(_jspx_page_context))
         return;
