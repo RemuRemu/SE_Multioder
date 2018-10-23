@@ -64,6 +64,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\r\n");
       out.write("        <!--<link rel=\"stylesheet\" type=\"text/css\" href=\"jb.css\">-->\r\n");
       out.write("        <link href=\"https://fonts.googleapis.com/css?family=Kanit\" rel=\"stylesheet\">\r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"ani.css\">\r\n");
       out.write("    </head>\r\n");
       out.write("    <body style=\"background-image: url('pic/food.jpg'); background-size: cover;\">\r\n");
       out.write("        <div class=\"back\"></div>\r\n");
@@ -82,12 +83,35 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <font size=\"4\" color=\"white\">หากยังไม่เป็นสมาชิก <a href=\"register.jsp\">คลิกที่นี่</a></font>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
-      out.write("            \r\n");
+      out.write("        \r\n");
+      out.write("        <div class=\"pic\" style=\"width: 500px; position: fixed; top: 200px; left: 795px; overflow: hidden;\">\r\n");
+      out.write("            <img src=\"pic/slogan1.png\" class=\"slide anime\" style=\"width: 100%;\">\r\n");
+      out.write("            <img src=\"pic/slogan2.png\" class=\"slide anime\" style=\"width: 100%;\">\r\n");
+      out.write("            <img src=\"pic/slogan3.png\" class=\"slide anime\" style=\"width: 100%;\">\r\n");
+      out.write("        </div>\r\n");
+      out.write("\r\n");
       out.write("        ");
       if (_jspx_meth_c_if_0(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("            \r\n");
+      out.write("        <script>\r\n");
+      out.write("        var myIndex = 0;\r\n");
+      out.write("        carousel();\r\n");
+      out.write("\r\n");
+      out.write("        function carousel() {\r\n");
+      out.write("            var i;\r\n");
+      out.write("            var x = document.getElementsByClassName(\"slide\");\r\n");
+      out.write("            for (i = 0; i < x.length; i++) {\r\n");
+      out.write("               x[i].style.display = \"none\";  \r\n");
+      out.write("            }\r\n");
+      out.write("            myIndex++;\r\n");
+      out.write("            if (myIndex > x.length) {myIndex = 1}\r\n");
+      out.write("            x[myIndex-1].style.display = \"block\";\r\n");
+      out.write("            setTimeout(carousel, 4000);\r\n");
+      out.write("        }\r\n");
+      out.write("        </script>\r\n");
+      out.write("\r\n");
       out.write("    </body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {
