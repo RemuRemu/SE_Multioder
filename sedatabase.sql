@@ -56,6 +56,7 @@ CREATE TABLE `menu` (
   `description` longtext NOT NULL,
   `price` float NOT NULL,
   `image` longtext NOT NULL,
+  `recommend` varchar(45) NOT NULL DEFAULT '0',
   PRIMARY KEY (`menuid`,`shop_id`),
   KEY `shop_menu_idx` (`shop_id`),
   CONSTRAINT `shop_menu` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shopid`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -175,6 +176,7 @@ CREATE TABLE `shop` (
   `shopid` int(11) NOT NULL,
   `shopname` varchar(45) NOT NULL,
   `shop_status` tinyint(4) NOT NULL,
+  `shoplogo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`shopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -185,7 +187,7 @@ CREATE TABLE `shop` (
 
 LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-INSERT INTO `shop` VALUES (1,'KFfree',1),(2,'McRonald',1),(3,'Pixxarhut',1),(4,'ดักกินโดนัท',1);
+INSERT INTO `shop` VALUES (1,'KFfree',1,NULL),(2,'McRonald',1,NULL),(3,'Pixxarhut',1,NULL),(4,'ดักกินโดนัท',1,NULL),(5,'HestiaFamilia',1,NULL),(6,'LokiFamilia',1,NULL),(7,'Wu',1,NULL),(8,'Shu',1,NULL),(9,'Wei',1,NULL),(10,'Orochi',1,NULL),(11,'Nuwa',0,NULL),(12,'Fuxi',0,NULL);
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-23 14:48:36
+-- Dump completed on 2018-10-23 17:20:52
