@@ -55,12 +55,14 @@ public class shopServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             ArrayList<Menu> menu_list = new ArrayList<Menu>();
-            ArrayList<Shop> shop_list = new ArrayList<Shop>();
-            String find_menu = "SELECT * FROM menu";
-
+            String name = request.getParameter("name");
+            String find_menu = "SELECT * FROM menu WHERE name = ?";
+            
             PreparedStatement menu_db = conn.prepareStatement(find_menu);
+            menu_db.setString(1, name);
             ResultSet rs = menu_db.executeQuery();
-
+            out.println("<h1>Servlet NewServlet at " + name + "</h1>");
+            
             while (rs.next()) {
                 Menu menu = new Menu();
                 menu.setMenu_id(rs.getInt("menuid"));

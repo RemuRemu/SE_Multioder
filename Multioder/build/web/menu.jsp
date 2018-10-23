@@ -16,7 +16,9 @@
     <body>
         <c:forEach var="menu"  items="${menu_list}">  
             <form action="/Multioder/shopServlet">
-            ${menu.name} 
+                ${menu.name} 
+                <input type="hidden" name="name" value=${menu.name} />
+            
             <input type="submit" value="Go to shop" />
             </form>
         </c:forEach>
