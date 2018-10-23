@@ -13,15 +13,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <sql:setDataSource var="newdatasource" driver="com.mysql.jdbc.Driver"
-url="jdbc:mysql:///seproject" user="root" password="root" />
-        <sql:query var="db" dataSource="${newdatasource}">
-            SELECT * FROM menu WHERE menuid = <%= request.getParameter("shop") %>
-        </sql:query>
-            <form action="shop.jsp" method="POST">
-        <c:forEach var="row" items="${db.rows}">
-            ${row.name} ${row.description} ${row.price} <button name="shop" type="submit" value="${row.name}">Go to shop </button> <br>
-        </c:forEach>
+        <c:forEach var="menu"  items="${menu_list}">  
+            <form action="xxx">
+                ${menu.name} 
+                ${menu.description} 
+                ${menu.price}   
             </form>
+
+
+        </c:forEach>
     </body>
 </html>

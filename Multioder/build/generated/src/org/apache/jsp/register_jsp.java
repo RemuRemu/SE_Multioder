@@ -71,24 +71,24 @@ public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <form action=\"registerServlet\" method=\"POST\">\r\n");
       out.write("                    <font size=\"7\" color=\"white\" style=\"text-shadow: 2px 2px #333\"><b>สมัครสมาชิก</b></font> <br><br>\r\n");
       out.write("                    <font size=\"3\" color=\"white\">\r\n");
-      out.write("                        ชื่อผู้ใช้ (username) <br>\r\n");
-      out.write("                        <input type=\"text\" name=\"user\" value=\"\" size=\"40px\"/> <br>\r\n");
-      out.write("                        รหัสผ่าน (password) <br>\r\n");
-      out.write("                        <input type=\"password\" name=\"pass\" value=\"\" size=\"40px\"/> <br>\r\n");
-      out.write("                        ชื่อจริง (first name) <br>\r\n");
-      out.write("                        <input type=\"text\" name=\"first\" value=\"\" size=\"40px\"/> <br>\r\n");
-      out.write("                        นามสกุล (last name) <br>\r\n");
-      out.write("                        <input type=\"text\" name=\"last\" value=\"\" size=\"40px\"/> <br>\r\n");
-      out.write("                        อีเมล์ (email) <br>\r\n");
-      out.write("                        <input type=\"text\" name=\"mail\" value=\"\" size=\"40px\"/> <br>\r\n");
-      out.write("                        โทรศัพท์ (phone) <br>\r\n");
-      out.write("                        <input type=\"text\" name=\"phone\" value=\"\" maxlength = \"10\" size=\"40px\"/> <br>\r\n");
-      out.write("                        ที่อยู่ (address) <br>\r\n");
-      out.write("                        <textarea name=\"add\" rows=\"4\" cols=\"40\"></textarea><br>\r\n");
+      out.write("                    ชื่อผู้ใช้ (username) <br>\r\n");
+      out.write("                    <input type=\"text\" name=\"user\" value=\"\" size=\"40px\"/> <br>\r\n");
+      out.write("                    รหัสผ่าน (password) <br>\r\n");
+      out.write("                    <input type=\"password\" name=\"pass\" value=\"\" size=\"40px\"/> <br>\r\n");
+      out.write("                    ชื่อจริง (first name) <br>\r\n");
+      out.write("                    <input type=\"text\" name=\"first\" value=\"\" size=\"40px\"/> <br>\r\n");
+      out.write("                    นามสกุล (last name) <br>\r\n");
+      out.write("                    <input type=\"text\" name=\"last\" value=\"\" size=\"40px\"/> <br>\r\n");
+      out.write("                    อีเมล์ (email) <br>\r\n");
+      out.write("                    <input type=\"text\" name=\"mail\" value=\"\" size=\"40px\"/> <br>\r\n");
+      out.write("                    โทรศัพท์ (phone) <br>\r\n");
+      out.write("                    <input type=\"text\" name=\"phone\" value=\"\" maxlength = \"10\" size=\"40px\"/> <br>\r\n");
+      out.write("                    ที่อยู่ (address) <br>\r\n");
+      out.write("                    <textarea name=\"add\" rows=\"4\" cols=\"40\"></textarea><br>\r\n");
       out.write("                    </font>\r\n");
-      out.write("                    \r\n");
+      out.write("\r\n");
       out.write("                    <input type=\"submit\" name=\"register\" value=\"Register\" />\r\n");
-      out.write("                    <input type=\"submit\" name=\"back\" value=\"Back\" />\r\n");
+      out.write("                    <!--<input type=\"submit\" name=\"back\" value=\"Back\" />-->\r\n");
       out.write("                </form>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
@@ -132,7 +132,8 @@ public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
       do {
         out.write("\r\n");
         out.write("            <script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>\r\n");
-        out.write("            <script>swal(\"Username or Email has already used\");</script>  \r\n");
+        out.write("            <script>swal({\"Username or Email has already used\"});</script>  \r\n");
+        out.write("\r\n");
         out.write("        ");
         int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -160,9 +161,25 @@ public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_if_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("            <script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>\r\n");
-        out.write("            <script>swal(\"Please enter all fields\");</script>  \r\n");
-        out.write("        ");
+        out.write("            <script src=\"https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js\"></script>\r\n");
+        out.write("\r\n");
+        out.write("            <script>swal({\r\n");
+        out.write("                    title: 'Are you sure?',\r\n");
+        out.write("                    text: 'Some text.',\r\n");
+        out.write("                    imageUrl: 'https://i.imgur.com/c6UHmfR.jpg',\r\n");
+        out.write("                    type: 'info',\r\n");
+        out.write("                    showCancelButton: true,\r\n");
+        out.write("                    confirmButtonColor: '#DD6B55',\r\n");
+        out.write("                    confirmButtonText: 'Yes!',\r\n");
+        out.write("                    cancelButtonText: 'No.'\r\n");
+        out.write("                }).then(() => {\r\n");
+        out.write("                    if (result.value) {\r\n");
+        out.write("                        // handle Confirm button click\r\n");
+        out.write("                    } else {\r\n");
+        out.write("                        // result.dismiss can be 'cancel', 'overlay', 'esc' or 'timer'\r\n");
+        out.write("                    }\r\n");
+        out.write("                });</script>  \r\n");
+        out.write("            ");
         int evalDoAfterBody = _jspx_th_c_if_1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;

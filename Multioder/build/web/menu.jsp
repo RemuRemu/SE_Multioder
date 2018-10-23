@@ -14,17 +14,15 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <sql:setDataSource var="newdatasource" driver="com.mysql.jdbc.Driver"
-url="jdbc:mysql:///seproject" user="root" password="root" />
-        <sql:query var="db" dataSource="${newdatasource}">
-            SELECT * FROM menu GROUP BY name
-        </sql:query>
-            <form action="shop.jsp" method="POST">
-        <c:forEach var="row" items="${db.rows}">
-            ${row.name} <button type="submit" name="shop" value="menuid"> Click To Shop </button> <br>
-                
-        </c:forEach>
+        <c:forEach var="menu"  items="${menu_list}">  
+            <form action="/Multioder/shopServlet">
+            ${menu.name} 
+            <input type="submit" value="Go to shop" />
             </form>
-                  
-    </body>
+        </c:forEach>
+        
+
+
+
+</body>
 </html>
