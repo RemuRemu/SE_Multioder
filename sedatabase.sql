@@ -56,10 +56,11 @@ CREATE TABLE `menu` (
   `description` longtext NOT NULL,
   `price` float NOT NULL,
   `image` longtext NOT NULL,
+  `recommend` varchar(45) NOT NULL DEFAULT '0',
   PRIMARY KEY (`menuid`,`shop_id`),
   KEY `shop_menu_idx` (`shop_id`),
   CONSTRAINT `shop_menu` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shopid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +69,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'ไก่ทอด',1,'พี่ให้4ชิ้น',50,'1'),(2,'ไก่ทอด',2,'พี่ให้5ชิ้ยเลย',60,'1'),(3,'ไก่ทอด',3,'เอาไปเลย6ชิ้น',70,'1');
+INSERT INTO `menu` VALUES (1,'ไก่ทอด',1,'พี่ให้4ชิ้น',50,'1','0'),(2,'ไก่ทอด',2,'พี่ให้5ชิ้ยเลย',60,'1','0'),(3,'ไก่ทอด',3,'เอาไปเลย6ชิ้น',70,'1','0'),(4,'ไก่ทอด',4,'7พอป่าว',70,'1','0'),(5,'ไก่ทอด',5,'7ก็พอแหละ',50,'1','0'),(6,'ไก่ทอด',6,'จะลองซัก8ไหม',80,'1','0'),(7,'ไก่ทอด',7,'1ชิ้นก็พอ',12,'1','0'),(8,'ไก่ทอด',8,'3มะ',35,'1','0'),(9,'ไก่ทอด',9,'5ชิ้นละ',48,'1','0'),(10,'ไก่ทอด',10,'10 ชิ้น',100,'1','0'),(11,'ไก่ทอด',11,'Don\'t be sell',0,'1','10');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,6 +176,7 @@ CREATE TABLE `shop` (
   `shopid` int(11) NOT NULL,
   `shopname` varchar(45) NOT NULL,
   `shop_status` tinyint(4) NOT NULL,
+  `shoplogo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`shopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -185,7 +187,7 @@ CREATE TABLE `shop` (
 
 LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-INSERT INTO `shop` VALUES (1,'KFfree',1),(2,'McRonald',1),(3,'Pixxarhut',1),(4,'ดักกินโดนัท',1);
+INSERT INTO `shop` VALUES (1,'KFfree',1,NULL),(2,'McRonald',1,NULL),(3,'Pixxarhut',1,NULL),(4,'ดักกินโดนัท',1,NULL),(5,'HestiaFamilia',1,NULL),(6,'LokiFamilia',1,NULL),(7,'Wu',1,NULL),(8,'Shu',1,NULL),(9,'Wei',1,NULL),(10,'Orochi',1,NULL),(11,'Nuwa',0,NULL),(12,'Fuxi',0,NULL);
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-21 14:33:45
+-- Dump completed on 2018-10-23 12:00:31
