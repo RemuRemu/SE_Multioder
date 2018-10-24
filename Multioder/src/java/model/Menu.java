@@ -16,6 +16,7 @@ public class Menu {
     private String description;
     private float price;
     private String image;
+    private int recommend;
 
     /**
      * @return the menu_id
@@ -99,6 +100,20 @@ public class Menu {
      */
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    /**
+     * @return the recommend
+     */
+    public int getRecommend() {
+        return recommend;
+    }
+
+    /**
+     * @param recommend the recommend to set
+     */
+    public void setRecommend(int recommend) {
+        this.recommend = recommend;
     }
     
 }

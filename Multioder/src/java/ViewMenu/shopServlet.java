@@ -55,26 +55,46 @@ public class shopServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             ArrayList<Menu> menu_list = new ArrayList<Menu>();
+            ArrayList<Menu> menu_rec = new ArrayList<Menu>();
             String name = request.getParameter("name");
-            String find_menu = "SELECT * FROM menu WHERE name = ?";
+            String find_menu = "SELECT * FROM menu Where name = ? ORDER BY recommend desc";
             
             PreparedStatement menu_db = conn.prepareStatement(find_menu);
             menu_db.setString(1, name);
             ResultSet rs = menu_db.executeQuery();
-            out.println("<h1>Servlet NewServlet at " + name + "</h1>");
-            
+            int count = 0;
             while (rs.next()) {
+                
+                count+= 1 ;
+                if (count<= 3){
+                 Menu rec_menu = new Menu();
+                rec_menu.setMenu_id(rs.getInt("menuid"));
+                rec_menu.setName(rs.getString("name"));
+                rec_menu.setDescription(rs.getString("description"));
+                rec_menu.setPrice(rs.getFloat("price"));
+                rec_menu.setImage(rs.getString("image"));
+                rec_menu.setRecommend(rs.getInt("recommend"));
+                menu_rec.add(rec_menu);
+                }
+                
                 Menu menu = new Menu();
                 menu.setMenu_id(rs.getInt("menuid"));
                 menu.setName(rs.getString("name"));
                 menu.setDescription(rs.getString("description"));
                 menu.setPrice(rs.getFloat("price"));
                 menu.setImage(rs.getString("image"));
+                menu.setRecommend(rs.getInt("recommend"));
                 menu_list.add(menu);
-
+                
             }
+  
+            
+ 
+
+
 
             request.setAttribute("menu_list", menu_list);
+            request.setAttribute("rec_menu_list", menu_rec);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop.jsp");
             rd.forward(request, response);
         } catch (SQLException ex) {

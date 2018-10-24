@@ -13,6 +13,20 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <h1> recommend </h1>
+        <c:forEach var="rec"  items="${rec_menu_list}">  
+            <form action="xxx"> 
+                ${rec.name} 
+                ${rec.description} 
+                ${rec.price}   
+                ${rec.recommend}   
+            </form>
+            
+
+            
+        </c:forEach>
+        
+        <h1> menu </h1>
         <c:forEach var="menu"  items="${menu_list}">  
             <form action="xxx">
                 ${menu.name} 

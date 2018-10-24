@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
+import java.util.logging.Level; 
 import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -68,6 +68,7 @@ public class menuServlet extends HttpServlet {
                 menu.setDescription(rs.getString("description"));
                 menu.setPrice(rs.getFloat("price"));
                 menu.setImage(rs.getString("image"));
+                menu.setRecommend(rs.getInt("recommend"));
                 menu_list.add(menu);
 
             }
