@@ -14,17 +14,37 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+        <ul id="myUL">
         <c:forEach var="menu"  items="${menu_list}">  
             <form action="/Multioder/shopServlet">
-                ${menu.name} 
+                 
+                <li><a>${menu.name}<input type="submit" value="Go to shop" /></a></li>
                 <input type="hidden" name="name" value=${menu.name} />
-            
-            <input type="submit" value="Go to shop" />
+
+
             </form>
         </c:forEach>
-        
+        </ul>
+        <script>
+            function myFunction() {
+                var input, filter, ul, li, a, i;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("myUL");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("a")[0];
+                    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
 
 
 
-</body>
+    </body>
 </html>
