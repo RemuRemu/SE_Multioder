@@ -24,7 +24,7 @@
             </div>
             <div class="form_login">
                 <form method="post" action="home.html">
-                    <font size="6" color="white"><b>เข้าสู่ระบบ</b></font><br><br>
+                    <font size="7" color="white"><b>เข้าสู่ระบบ</b></font><br><br>
                     <input type="text" name="username" placeholder="Username" size="40px"> <br><br>
                     <input type="password" name="password" placeholder="Password" size="40px"> <br><br>
                     <input type="submit" name="login" value="Login"><br><br>

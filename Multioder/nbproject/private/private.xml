@@ -3,24 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/style.css</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/model/Menu.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/index.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/register.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/register_comp.html</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/shop.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/ViewMenu/shopServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/Register/registerServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/META-INF/context.xml</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/controller/OrderItem.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/controller/ProcessSelection.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/login.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/ViewMenu/menuServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/model/Shop.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/controller/Cart.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/menu.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/login_comp.jsp</file>
+            <file>file:/D:/Backup/Got's%20Working/SE_Multioder/Multioder/web/menu.jsp</file>
+            <file>file:/D:/Backup/Got's%20Working/SE_Multioder/Multioder/web/login.jsp</file>
+            <file>file:/D:/Backup/Got's%20Working/SE_Multioder/Multioder/web/style_home.css</file>
+            <file>file:/D:/Backup/Got's%20Working/SE_Multioder/Multioder/web/ani.css</file>
+            <file>file:/D:/Backup/Got's%20Working/SE_Multioder/Multioder/web/index.jsp</file>
+            <file>file:/D:/Backup/Got's%20Working/SE_Multioder/Multioder/src/java/Login/loginServlet.java</file>
+            <file>file:/D:/Backup/Got's%20Working/SE_Multioder/Multioder/web/style.css</file>
+            <file>file:/D:/Backup/Got's%20Working/SE_Multioder/Multioder/web/register.jsp</file>
         </group>
     </open-files>
 </project-private>

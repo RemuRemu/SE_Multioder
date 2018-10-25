@@ -44,7 +44,7 @@ public class ProcessSelection extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Connection conn ;
+        Connection conn;
         public void init(){
             
         }

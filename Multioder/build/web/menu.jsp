@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Multioder - Home</title>
-        <link rel="stylesheet" type="text/css" href="ani.css">
+        <!--<link rel="stylesheet" type="text/css" href="ani.css">-->
         <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="style_home.css">
         <!-- <style>.slide {display: block;} </style> -->
@@ -32,7 +32,9 @@
                 <img src="pic/slogan2.png" class="slide anime" style="width: 100%;">
                 <img src="pic/slogan3.png" class="slide anime" style="width: 100%;">
             </div>
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+            <div class="title">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+            </div>
             <ul id="myUL">
             <c:forEach var="menu"  items="${menu_list}">  
                 <form action="/Multioder/shopServlet">

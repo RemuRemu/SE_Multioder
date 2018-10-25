@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Kanit', sans-serif;
-    background-color: #FFE4B4;
+    background-color: #FFF0D4;
 }
 
 .menu_area {
@@ -15,8 +15,8 @@ body {
 }
 
 .menu {
-    max-width: 1200px;
-    min-width: 1024px;
+    max-width: 1024px;
+    min-width: 720px;
     height: 50px;
     position: relative;
     margin-left: auto;
@@ -27,7 +27,7 @@ body {
 
 #home {
     width: 90px;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 20px;
     float: left;
     /*position: relative;*/
@@ -50,8 +50,8 @@ body {
 }
 
 .con_area {
-    max-width: 1200px;
-    min-width: 1024px;
+    max-width: 1024px;
+    min-width: 720px;
     height: 100%;
     background-color: red;
     margin-left: auto;
@@ -61,12 +61,36 @@ body {
 }
 
 .rec {
-    max-width: 1200px;
-    min-width: 1024px;
+    max-width: 1024px;
+    min-width: 720px;
     height: 100%;
     background-color: black;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
     position: inherit;
+}
+#myInput {
+    font-family: 'Kanit', sans-serif;
+    /*border: 1px solid gray;*/
+    border-radius: 15px;
+    background-color: #DFDFDF;
+    transition: background-color 0.3s;
+    padding: 7px;
+}
+
+.anime {
+    position: relative;
+    animation: slide 1s;
+}
+
+@keyframes slide {
+    0% {left: 1024px;}
+    100% {left: 0px;}
+}
+
+.title {
+    width: 100%;
+    height: 60px;
+    padding: 10px;
 }

@@ -20,7 +20,7 @@
         <div class="area1" style="background-image: url('pic/back.png');">
             <div class="form_signup">
                 <form action="registerServlet" method="POST">
-                    <font size="6" color="white"><b>สมัครสมาชิก</b></font> <br><br>
+                    <font size="7" color="white"><b>สมัครสมาชิก</b></font> <br><br>
                     <font size="3" color="white">
                     ชื่อผู้ใช้ (username) <br>
                     <input type="text" name="user" value="" size="40px"/> <br>
