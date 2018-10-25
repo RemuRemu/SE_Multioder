@@ -72,6 +72,7 @@ public class loginServlet extends HttpServlet {
                 session.setAttribute("username", username);
                 response.sendRedirect("login_comp.jsp");
             } else {
+                
                 response.sendRedirect("login.jsp");
             }
 

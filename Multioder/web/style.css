@@ -34,7 +34,7 @@ body {
 .area {
     width: 35%;
     height: 105%;
-    background-image: url('back.png');
+    /*background-image: url('pic/back.png');*/
     /*background-color: #858585;*/
     /*opacity: 0.8;*/
     margin-top: -1em;
@@ -47,7 +47,7 @@ body {
 }
 
 .area1{
-    background-image: url('back.png');
+    /*background-image: url('pic/back.png');*/
     margin-left: auto;
     margin-right: auto;
     width: 600px;

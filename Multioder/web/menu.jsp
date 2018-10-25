@@ -11,22 +11,42 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Multioder - Home</title>
+        <link rel="stylesheet" type="text/css" href="ani.css">
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style_home.css">
+        <!-- <style>.slide {display: block;} </style> -->
     </head>
     <body>
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-        <ul id="myUL">
-        <c:forEach var="menu"  items="${menu_list}">  
-            <form action="/Multioder/shopServlet">
-                 
-                <li><a>${menu.name}<input type="submit" value="Go to shop" /></a></li>
-                <input type="hidden" name="name" value=${menu.name} />
+        <div class="menu_area">
+            <div class="menu">
+                <a href="menu.jsp"><img id="home" src="pic/logo.png"></a>
+                <img id="choose" src="pic/menu.png">
+                <img id="shop" src="pic/sb.png">
+            </div>
+        </div>
+        
+        <div class="con_area">
+            <div class="rec">
+                <img src="pic/slogan1.png" class="slide anime" style="width: 100%;">
+                <img src="pic/slogan2.png" class="slide anime" style="width: 100%;">
+                <img src="pic/slogan3.png" class="slide anime" style="width: 100%;">
+            </div>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+            <ul id="myUL">
+            <c:forEach var="menu"  items="${menu_list}">  
+                <form action="/Multioder/shopServlet">
 
+                    <li><a>${menu.name}<input type="submit" value="Go to shop" /></a></li>
+                    <input type="hidden" name="name" value=${menu.name} />
 
-            </form>
-        </c:forEach>
-        </ul>
-        <script>
+                </form>
+            </c:forEach>
+            </ul>
+        </div>
+            
+
+            <script>
             function myFunction() {
                 var input, filter, ul, li, a, i;
                 input = document.getElementById("myInput");
@@ -43,8 +63,23 @@
                 }
             }
         </script>
+        
+        <script>
+        var myIndex = 0;
+        carousel();
 
-
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("slide");
+            for (i = 0; i < x.length; i++) {
+               x[i].style.display = "none";  
+            }
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}
+            x[myIndex-1].style.display = "block";
+            setTimeout(carousel, 3000);
+        }
+        </script>
 
     </body>
 </html>

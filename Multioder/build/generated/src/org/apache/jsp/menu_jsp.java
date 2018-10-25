@@ -63,15 +63,34 @@ public final class menu_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>JSP Page</title>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
+      out.write("        <input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Search for names..\" title=\"Type in a name\">\r\n");
+      out.write("        <ul id=\"myUL\">\r\n");
       out.write("        ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("        \r\n");
+      out.write("        </ul>\r\n");
+      out.write("        <script>\r\n");
+      out.write("            function myFunction() {\r\n");
+      out.write("                var input, filter, ul, li, a, i;\r\n");
+      out.write("                input = document.getElementById(\"myInput\");\r\n");
+      out.write("                filter = input.value.toUpperCase();\r\n");
+      out.write("                ul = document.getElementById(\"myUL\");\r\n");
+      out.write("                li = ul.getElementsByTagName(\"li\");\r\n");
+      out.write("                for (i = 0; i < li.length; i++) {\r\n");
+      out.write("                    a = li[i].getElementsByTagName(\"a\")[0];\r\n");
+      out.write("                    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {\r\n");
+      out.write("                        li[i].style.display = \"\";\r\n");
+      out.write("                    } else {\r\n");
+      out.write("                        li[i].style.display = \"none\";\r\n");
+      out.write("                    }\r\n");
+      out.write("                }\r\n");
+      out.write("            }\r\n");
+      out.write("        </script>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("</body>\r\n");
+      out.write("    </body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -103,10 +122,15 @@ public final class menu_jsp extends org.apache.jasper.runtime.HttpJspBase
         do {
           out.write("  \r\n");
           out.write("            <form action=\"/Multioder/shopServlet\">\r\n");
-          out.write("            ");
+          out.write("                 \r\n");
+          out.write("                <li><a>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${menu.name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" \r\n");
-          out.write("            <input type=\"submit\" value=\"Go to shop\" />\r\n");
+          out.write("<input type=\"submit\" value=\"Go to shop\" /></a></li>\r\n");
+          out.write("                <input type=\"hidden\" name=\"name\" value=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${menu.name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write(" />\r\n");
+          out.write("\r\n");
+          out.write("\r\n");
           out.write("            </form>\r\n");
           out.write("        ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();

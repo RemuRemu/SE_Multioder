@@ -18,8 +18,20 @@
         <link rel="stylesheet" type="text/css" href="ani.css">
     </head>
     <body>
-
-                    <input type="submit" value="Login" />
+        <body style="font-family: 'Kanit', sans-serif; background-image: url('pic/food.jpg'); background-size: cover;">
+        <!-- <img src="food1.jpg" style="position: fixed; top: 0px; left: 0px; width: 105%;"> -->
+        <div class="back"></div>
+        <!-- <img src="back.png" style="width: 35%; height: 97%; margin-top: -1em; margin-left: 10%; padding-top: 2em; padding-bottom: 3em; position: fixed;"> -->
+        <div class="area" style="background-image: url('pic/back.png');">
+            <div class="logo_area">
+                <img id="logo" src="pic/logo.png">
+            </div>
+            <div class="form_login">
+                <form method="post" action="loginServlet">
+                    <font size="6" color="white"><b>เข้าสู่ระบบ</b></font><br><br>
+                    <input type="text" name="user" placeholder="Username" size="40px"> <br><br>
+                    <input type="password" name="pass" placeholder="Password" size="40px"> <br><br>
+                    <input type="submit" name="login" value="Login"><br><br>
                 </form>
                 <font size="4" color="white">หากยังไม่เป็นสมาชิก <a href="register.jsp">คลิกที่นี่</a></font>
             </div>

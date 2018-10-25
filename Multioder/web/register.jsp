@@ -11,13 +11,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <!--<link rel="stylesheet" type="text/css" href="jb.css">-->
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     </head>
-    <body style="background-image: url('pic/food.jpg'); background-size: cover;">
+    <body style="font-family: 'Kanit', sans-serif; background-image: url('pic/food.jpg'); background-size: cover;">
         <div class="back"></div>
         <div class="area1" style="background-image: url('pic/back.png');">
             <div class="form_signup">
                 <form action="registerServlet" method="POST">
-                    <font size="7" color="white" style="text-shadow: 2px 2px #333"><b>สมัครสมาชิก</b></font> <br><br>
+                    <font size="6" color="white"><b>สมัครสมาชิก</b></font> <br><br>
                     <font size="3" color="white">
                     ชื่อผู้ใช้ (username) <br>
                     <input type="text" name="user" value="" size="40px"/> <br>
@@ -40,18 +43,7 @@
                 </form>
             </div>
         </div>
-
-        <form action="registerServlet" method="POST">
-            register <br>
-            username <input type="text" name="user" value="" /> <br>
-            password <input type="password" name="pass" value="" /> <br>
-            first name <input type="text" name="first" value="" /> <br>
-            last name <input type="text" name="last" value="" /> <br>
-            email <input type="text" name="mail" value="" /> <br>
-            phone <input type="text" name="phone" value="" maxlength = "10"/> <br>
-            <textarea name="add" rows="4" cols="20"></textarea>
-            <input type="submit" value="regis" />
-        </form>
+        
         <c:if test="${flag == 1}">
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script>swal({"Username or Email has already used"});</script>  
