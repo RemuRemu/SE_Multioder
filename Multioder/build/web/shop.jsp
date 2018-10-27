@@ -14,6 +14,10 @@
     </head>
     <body>
         <h1> recommend </h1>
+
+                       
+
+ 
         <c:forEach var="rec"  items="${rec_menu_list}">  
             <form action="xxx"> 
                 ${rec.name} 
@@ -28,10 +32,13 @@
         
         <h1> menu </h1>
         <c:forEach var="menu"  items="${menu_list}">  
-            <form action="xxx">
+            <form action="/Multioder/ProcessSelection">
                 ${menu.name} 
                 ${menu.description} 
                 ${menu.price}   
+                ${menu.menu_id}   
+               
+                <button type="submit" name="add" value="${menu.menu_id}" > add Cart</button>
             </form>
 
 

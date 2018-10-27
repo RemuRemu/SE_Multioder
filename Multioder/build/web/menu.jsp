@@ -18,7 +18,9 @@
         <!-- <style>.slide {display: block;} </style> -->
     </head>
     <body>
+       
         <div class="menu_area">
+             <a href="cart.jsp"><button type="submit" >cart</button></a>
             <div class="menu">
                 <a href="menu.jsp"><img id="home" src="pic/logo.png"></a>
                 <img id="choose" src="pic/menu.png">

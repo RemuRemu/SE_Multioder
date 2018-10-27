@@ -13,7 +13,7 @@
     </head>
     <body>
         <a href="menuServlet"><button type="submit">Go to menu</button></a>
-        <% controller.Cart ord = (controller.Cart) session.getAttribute("cart"); %>
+        <% model.Cart ord = (model.Cart) session.getAttribute("cart"); %>
         <% if (ord != null) { %>
         
         <% for (int i = 0; i < ord.getAccs().size(); i++) { %>
@@ -23,6 +23,8 @@
            </form>         
         <% } %>
         <% } %>
+        
+        
         
     </body>
 </html>
