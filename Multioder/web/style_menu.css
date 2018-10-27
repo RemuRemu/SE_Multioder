@@ -6,7 +6,7 @@ body {
 
 .menu_area {
     width: 100%;
-    height: 70px;
+    height: 50px;
     background-color: #FFA200;
     position: fixed;
     top: 0;
@@ -22,29 +22,29 @@ body {
     margin-left: auto;
     margin-right: auto;
     vertical-align: middle;
-    padding: 5px;
+    /*padding: 5px;*/
 }
 
 #home {
-    width: 90px;
-    margin-top: 5px;
+    width: 60px;
+    margin-top: 8px;
     margin-left: 20px;
     float: left;
     /*position: relative;*/
 }
 
 #choose {
-    width: 36px;
+    width: 22px;
     float: right;
-    margin-top: 27px;
+    margin-top: 20px;
     margin-right: 20px;
     /*position: relative;*/
 }
 
 #shop {
-    width: 45px;
+    width: 25px;
     float: right;
-    margin-top: 13px;
+    margin-top: 14px;
     margin-right: 20px;
     /*position: relative;*/
 }
@@ -53,7 +53,7 @@ body {
     max-width: 1024px;
     min-width: 720px;
     height: 100%;
-    background-color: red;
+    /*background-color: red;*/
     margin-left: auto;
     margin-right: auto;
     /*overflow: hidden;*/
@@ -74,7 +74,7 @@ body {
     font-family: 'Kanit', sans-serif;
     /*border: 1px solid gray;*/
     border-radius: 15px;
-    background-color: #DFDFDF;
+    background-color: #FFDD9E;
     transition: background-color 0.3s;
     padding: 7px;
     float: right;
@@ -91,7 +91,13 @@ body {
 }
 
 .title {
-    width: 90%;
+    width: 95%;
     height: 60px;
-    padding: 10px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.head_name {
+    text-shadow: 2px 2px gray;
 }
