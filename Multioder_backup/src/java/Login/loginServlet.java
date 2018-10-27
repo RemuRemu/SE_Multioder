@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ViewMenu;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,26 +10,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
-import model.Menu;
-import model.Shop;
 
 /**
  *
  * @author Chronical
  */
-@WebServlet(name = "shopServlet", urlPatterns = {"/shopServlet"})
-public class shopServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/loginServlet"})
+public class loginServlet extends HttpServlet {
 
     @Resource(name = "seproject")
     private DataSource seproject;
@@ -47,60 +43,40 @@ public class shopServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Connection conn = null;
+        
         try {
             conn = seproject.getConnection();
         } catch (SQLException ex) {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
-        String foodName = request.getParameter("food");
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            out.print(foodName);
-            ArrayList<Menu> menu_list = new ArrayList<Menu>();
-            ArrayList<Menu> menu_rec = new ArrayList<Menu>();
-            String name = request.getParameter("name");
-            String find_menu = "SELECT * FROM menu Where name = ? ORDER BY recommend desc";
-            
-            PreparedStatement menu_db = conn.prepareStatement(find_menu);
-            menu_db.setString(1, name);
-            ResultSet rs = menu_db.executeQuery();
-            int count = 0;
-            while (rs.next()) {
-                
-                count+= 1 ;
-                if (count<= 3){
-                 Menu rec_menu = new Menu();
-                rec_menu.setMenu_id(rs.getInt("menuid"));
-                rec_menu.setName(rs.getString("name"));
-                rec_menu.setDescription(rs.getString("description"));
-                rec_menu.setPrice(rs.getFloat("price"));
-                rec_menu.setImage(rs.getString("image"));
-                rec_menu.setRecommend(rs.getInt("recommend"));
-                menu_rec.add(rec_menu);
-                }
-                
-                Menu menu = new Menu();
-                menu.setMenu_id(rs.getInt("menuid"));
-                menu.setName(rs.getString("name"));
-                menu.setDescription(rs.getString("description"));
-                menu.setPrice(rs.getFloat("price"));
-                menu.setImage(rs.getString("image"));
-                menu.setRecommend(rs.getInt("recommend"));
-                menu_list.add(menu);
-                
+            boolean loginflag = false;
+            String username = request.getParameter("user");
+            String password = request.getParameter("pass");
+            //find user and pass
+            String find_user = "SELECT username,password FROM userprofile WHERE  username = ? and password = ?";
+            PreparedStatement user_db = conn.prepareStatement(find_user);
+            user_db.setString(1, username);
+            user_db.setString(2, password);
+            ResultSet user_rs = user_db.executeQuery();
+
+            if (user_rs.next() == true) {
+                loginflag = true;
+
             }
-  
+            HttpSession session = request.getSession();
+            session.setAttribute("loginflag", loginflag);
             
- 
+            if (loginflag == true) {
+                session.setAttribute("username", username);
+                response.sendRedirect("login_comp.jsp");
+            } else {
+                response.sendRedirect("login.jsp");
+            }
 
-
-
-            request.setAttribute("menu_list", menu_list);
-            request.setAttribute("rec_menu_list", menu_rec);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop.jsp");
-            rd.forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(menuServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (conn != null) {
             try {

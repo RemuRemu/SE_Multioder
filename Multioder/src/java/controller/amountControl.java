@@ -24,8 +24,8 @@ import javax.sql.DataSource;
  *
  * @author Amp
  */
-@WebServlet(name = "ProcessSelection", urlPatterns = {"/ProcessSelection"})
-public class ProcessSelection extends HttpServlet {
+@WebServlet(name = "amountControl", urlPatterns = {"/amountControl"})
+public class amountControl extends HttpServlet {
 
     @Resource(name = "seproject")
     private DataSource seproject;
@@ -49,35 +49,30 @@ public class ProcessSelection extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Connection conn;
-        public void init(){
-            
-        }
         response.setContentType("text/html;charset=UTF-8");
-        
         HttpSession session = request.getSession();
             Cart cart = (Cart) session.getAttribute("cart");
-            if (cart == null) {
-                cart = new Cart(conn);
-                session.setAttribute("cart", cart);
+        if(cart == null){
+            response.sendRedirect("menuServlet");
+        }
+        int menu_id = Integer.parseInt(request.getParameter("menuid"));
+            if (request.getParameter("amount").equals("increase")){
+                cart.addQuentity(menu_id, 1);
+                response.sendRedirect("cart.jsp");
             }
-            String accid = request.getParameter("add");
-            int acc_id = Integer.parseInt(accid);
-//            else{
-                cart.addItem(acc_id,1);
-                response.sendRedirect("menuServlet");
-//            }
-            
+            if(request.getParameter("amount").equals("decrease")){
+                cart.removeQuentity(menu_id, 1);
+                 response.sendRedirect("cart.jsp");
+            }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProcessSelection</title>");            
+            out.println("<title>Servlet amountControl</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProcessSelection at " + request.getContextPath() + "</h1>");
-            out.println(request.getParameter("amountI") + " " + request.getParameter("amountD"));
+            out.println("<h1>Servlet amountControl at " + request.getParameter("amount") + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

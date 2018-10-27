@@ -57,46 +57,25 @@ public class shopServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             out.print(foodName);
             ArrayList<Menu> menu_list = new ArrayList<Menu>();
-            ArrayList<Menu> menu_rec = new ArrayList<Menu>();
-            String name = request.getParameter("name");
-            String find_menu = "SELECT * FROM menu Where name = ? ORDER BY recommend desc";
-            
+            ArrayList<Shop> shop_list = new ArrayList<Shop>();
+            String find_menu = "SELECT * FROM menu WHERE name = ?";
             PreparedStatement menu_db = conn.prepareStatement(find_menu);
-            menu_db.setString(1, name);
+            menu_db.setString(1, foodName);
             ResultSet rs = menu_db.executeQuery();
-            int count = 0;
+
             while (rs.next()) {
-                
-                count+= 1 ;
-                if (count<= 3){
-                 Menu rec_menu = new Menu();
-                rec_menu.setMenu_id(rs.getInt("menuid"));
-                rec_menu.setName(rs.getString("name"));
-                rec_menu.setDescription(rs.getString("description"));
-                rec_menu.setPrice(rs.getFloat("price"));
-                rec_menu.setImage(rs.getString("image"));
-                rec_menu.setRecommend(rs.getInt("recommend"));
-                menu_rec.add(rec_menu);
-                }
-                
                 Menu menu = new Menu();
                 menu.setMenu_id(rs.getInt("menuid"));
                 menu.setName(rs.getString("name"));
                 menu.setDescription(rs.getString("description"));
                 menu.setPrice(rs.getFloat("price"));
                 menu.setImage(rs.getString("image"));
-                menu.setRecommend(rs.getInt("recommend"));
                 menu_list.add(menu);
-                
+                out.print("1");
+
             }
-  
-            
- 
 
-
-
-            request.setAttribute("menu_list", menu_list);
-            request.setAttribute("rec_menu_list", menu_rec);
+            request.setAttribute("menu_list2", menu_list);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop.jsp");
             rd.forward(request, response);
         } catch (SQLException ex) {

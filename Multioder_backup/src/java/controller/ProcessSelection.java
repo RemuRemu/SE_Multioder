@@ -49,10 +49,6 @@ public class ProcessSelection extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Connection conn;
-        public void init(){
-            
-        }
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession();
