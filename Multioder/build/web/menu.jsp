@@ -41,7 +41,7 @@
                 <form action="/Multioder/shopServlet">
 
                     <li><a>${menu.name}<input type="submit" value="Go to shop" /></a></li>
-                    <input type="hidden" name="name" value=${menu.name} />
+                    <input type="hidden" name="name" value="${menu.name}" />
 
                 </form>
             </c:forEach>
