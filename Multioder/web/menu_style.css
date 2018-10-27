@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    font-family: 'Kanit', sans-serif;
+    background-color: #FFF0D4;
+}
+
+.menu_area {
+    width: 100%;
+    height: 50px;
+    background-color: #FFA200;
+    position: fixed;
+    top: 0;
+    transform: translateZ(0);
+    z-index: 100;
+    overflow: hidden;
+}
+
+.menu {
+    max-width: 1024px;
+    min-width: 720px;
+    height: 50px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    /*padding: 5px;*/
+}
+
+#home {
+    width: 60px;
+    margin-top: 8px;
+    margin-left: 20px;
+    float: left;
+    /*position: relative;*/
+}
+
+#choose {
+    width: 22px;
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+    /*position: relative;*/
+}
+
+#shop {
+    width: 25px;
+    float: right;
+    margin-top: 14px;
+    margin-right: 20px;
+    /*position: relative;*/
+}
+
+.con_area {
+    max-width: 1024px;
+    min-width: 720px;
+    height: 100%;
+    /*background-color: red;*/
+    margin-left: auto;
+    margin-right: auto;
+    /*overflow: hidden;*/
+    margin-top: 70px;
+}
+
+.rec {
+    max-width: 1024px;
+    min-width: 720px;
+    height: 100%;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    position: inherit;
+}
+#myInput {
+    font-family: 'Kanit', sans-serif;
+    /*border: 1px solid gray;*/
+    border-radius: 15px;
+    background-color: #FFDD9E;
+    transition: background-color 0.3s;
+    padding: 7px;
+    float: right;
+}
+
+.anime {
+    position: relative;
+    animation: slide 1s;
+}
+
+@keyframes slide {
+    0% {left: 1024px;}
+    100% {left: 0px;}
+}
+
+.title {
+    width: 95%;
+    height: 60px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.head_name {
+    text-shadow: 2px 2px gray;
+}
+
+.food_area {
+    padding-left: 5%;
+}
+
+.food {
+    width: 40%;
+    display: inline-block;
+    margin: 10px;
+}

@@ -14,7 +14,7 @@
         <title>Multioder - Home</title>
         <!--<link rel="stylesheet" type="text/css" href="ani.css">-->
         <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style_menu.css">
+        <link rel="stylesheet" type="text/css" href="menu_style.css">
         <!-- <style>.slide {display: block;} </style> -->
     </head>
     <body>
