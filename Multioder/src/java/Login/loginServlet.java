@@ -70,9 +70,8 @@ public class loginServlet extends HttpServlet {
             
             if (loginflag == true) {
                 session.setAttribute("username", username);
-                response.sendRedirect("menu.jsp");
+                response.sendRedirect("menuServlet");
             } else {
-                
                 response.sendRedirect("login.jsp");
             }
 

@@ -17,8 +17,8 @@
         <link rel="stylesheet" type="text/css" href="menu_style.css">
         <!-- <style>.slide {display: block;} </style> -->
     </head>
-    <body>
-       
+    <body style="background-image: url('pic/food_menu.jpg'); background-size: auto; background-attachment: fixed;">
+        <div class="back"></div>
         <div class="menu_area">
             <div class="menu">
                 <a href="menuServlet"><img id="home" src="pic/logo.png"></a>
@@ -29,20 +29,23 @@
         
         <div class="con_area">
             <div class="rec">
-                <img src="pic/slogan1.png" class="slide anime" style="width: 100%;">
-                <img src="pic/slogan2.png" class="slide anime" style="width: 100%;">
-                <img src="pic/slogan3.png" class="slide anime" style="width: 100%;">
+                <img src="pic/rec1.jpg" class="slide anime" style="width: 100%;">
+                <img src="pic/rec2.jpg" class="slide anime" style="width: 100%;">
+                <img src="pic/rec3.jpg" class="slide anime" style="width: 100%;">
+                
             </div>
             <div class="title">
                 <font class="head_name" size="6" color="black">รายการอาหาร</font>
                 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="ค้นหาชื่ออาหาร.." title="Type in a name" size="40px">
             </div>
             <div class="food_area">
-                <ul id="myUL">
+                <ul id="myUL" style="list-style-type: none;">
                 <c:forEach var="menu"  items="${menu_list}">  
                     <div class="food">
                         <form action="/Multioder/shopServlet">
-                            <li><a>${menu.name}<input type="submit" value="Go to shop" /></a></li>
+                            <img src="pic/menu_dish/${menu.image}.jpg" align="middle" style="width: 300px; height: 175px;">
+                            <li class="food_name"><a>${menu.name}<br>
+                            <input type="submit" value="เลือกอาหาร" /></a></li>
                             <input type="hidden" name="name" value="${menu.name}" />
                         </form>
                     </div>

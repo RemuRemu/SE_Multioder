@@ -86,7 +86,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
       out.write("        \r\n");
-      out.write("        <div class=\"pic\" style=\"width: 500px; position: fixed; top: 30%; left: 70%; overflow: hidden;\">\r\n");
+      out.write("        <div class=\"pic\" style=\"width: 500px; position: fixed; top: 28%; left: 50%; overflow: hidden;\">\r\n");
       out.write("            <img src=\"pic/slogan1.png\" class=\"slide anime\" style=\"width: 100%;\">\r\n");
       out.write("            <img src=\"pic/slogan2.png\" class=\"slide anime\" style=\"width: 100%;\">\r\n");
       out.write("            <img src=\"pic/slogan3.png\" class=\"slide anime\" style=\"width: 100%;\">\r\n");

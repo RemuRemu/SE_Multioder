@@ -1,13 +1,25 @@
 body {
     margin: 0;
     font-family: 'Kanit', sans-serif;
-    background-color: #F0EFEA;
+}
+
+.back {
+    position: fixed;
+    top: 0;
+    /*margin-top: -1em;*/
+    /*margin-left: -1em;*/
+    width: 102%;
+    height: 105%;
+    opacity: 0.5;
+    background-color: white;
+    transform: translateZ(0);
+    z-index: -100;
 }
 
 .menu_area {
     width: 100%;
     height: 50px;
-    background-color: #A10115;
+    background-color: #FE7A47;
     position: fixed;
     top: 0;
     transform: translateZ(0);
@@ -27,8 +39,8 @@ body {
 }
 
 #home {
-    width: 60px;
-    margin-top: 8px;
+    width: 70px;
+    margin-top: 4px;
     margin-left: 20px;
     float: left;
     /*position: relative;*/
@@ -51,6 +63,7 @@ body {
 }
 
 .con_area {
+    background-color: #F0EFEA;
     max-width: 1024px;
     min-width: 720px;
     height: 100%;
@@ -58,7 +71,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     /*overflow: hidden;*/
-    margin-top: 70px;
+    margin-top: 60px;
 }
 
 .rec {
@@ -71,11 +84,12 @@ body {
     overflow: hidden;
     position: inherit;
 }
+
 #myInput {
     font-family: 'Kanit', sans-serif;
     /*border: 1px solid gray;*/
     border-radius: 15px;
-    background-color: #C0B2B5;
+    background-color: #F5CA99;
     transition: background-color 0.3s;
     padding: 7px;
     float: right;
@@ -83,12 +97,12 @@ body {
 
 .anime {
     position: relative;
-    animation: slide 1s;
+    animation: fade 1s;
 }
 
-@keyframes slide {
-    0% {left: 1024px;}
-    100% {left: 0px;}
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
 .title {
@@ -108,10 +122,30 @@ body {
 }
 
 .food {
+    background-color: #F5CA99; 
     width: 40%;
     display: inline-block;
     margin: 10px;
     border: 2px solid black;
     border-radius: 10px;
     padding: 10px;
+    text-align: center;
+}
+
+.food_name {
+    font-size: 20px;
+    /*color: white;*/
+}
+
+input, textarea {
+    font-family: 'Kanit', sans-serif;
+    /*border: 1px solid gray;*/
+    border-radius: 15px;
+    background-color: #DFDFDF;
+    transition: background-color 0.3s;
+    padding: 7px;
+}
+
+input[type=submit]:hover {
+    background-color: #9F9F9F;
 }

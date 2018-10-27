@@ -15,7 +15,7 @@
         <!--<link rel="stylesheet" type="text/css" href="jb.css">-->
         <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     </head>
-    <body style="font-family: 'Kanit', sans-serif; background-image: url('pic/food.jpg'); background-size: cover;">
+    <body style="font-family: 'Kanit', sans-serif; background-image: url('pic/food.jpg'); background-size: cover; background-attachment: fixed;">
         <div class="back"></div>
         <div class="area1" style="background-image: url('pic/back.png');">
             <div class="form_signup">

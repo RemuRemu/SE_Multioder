@@ -17,8 +17,7 @@
         <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="ani.css">
     </head>
-    <body>
-        <body style="font-family: 'Kanit', sans-serif; background-image: url('pic/food.jpg'); background-size: cover;">
+    <body style="font-family: 'Kanit', sans-serif; background-image: url('pic/food.jpg'); background-size: cover; background-attachment: fixed;">
         <!-- <img src="food1.jpg" style="position: fixed; top: 0px; left: 0px; width: 105%;"> -->
         <div class="back"></div>
         <!-- <img src="back.png" style="width: 35%; height: 97%; margin-top: -1em; margin-left: 10%; padding-top: 2em; padding-bottom: 3em; position: fixed;"> -->
@@ -44,7 +43,7 @@
         </div>
 
         <c:if test="${loginflag == false}">
-            <script src="assets/js/sweetalert.min.js"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script>swal("Username or Password Incorrect");</script>  
         </c:if>
             
