@@ -21,7 +21,7 @@
        
         <div class="menu_area">
             <div class="menu">
-                <a href="menu.jsp"><img id="home" src="pic/logo.png"></a>
+                <a href="menuServlet"><img id="home" src="pic/logo.png"></a>
                 <img id="choose" src="pic/menu.png">
                 <a href="cart.jsp"><img id="shop" src="pic/sb.png"></a>
             </div>
