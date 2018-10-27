@@ -66,8 +66,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link href=\"https://fonts.googleapis.com/css?family=Kanit\" rel=\"stylesheet\">\r\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"ani.css\">\r\n");
       out.write("    </head>\r\n");
-      out.write("    <body>\r\n");
-      out.write("        <body style=\"font-family: 'Kanit', sans-serif; background-image: url('pic/food.jpg'); background-size: cover;\">\r\n");
+      out.write("    <body style=\"font-family: 'Kanit', sans-serif; background-image: url('pic/food.jpg'); background-size: cover; background-attachment: fixed;\">\r\n");
       out.write("        <!-- <img src=\"food1.jpg\" style=\"position: fixed; top: 0px; left: 0px; width: 105%;\"> -->\r\n");
       out.write("        <div class=\"back\"></div>\r\n");
       out.write("        <!-- <img src=\"back.png\" style=\"width: 35%; height: 97%; margin-top: -1em; margin-left: 10%; padding-top: 2em; padding-bottom: 3em; position: fixed;\"> -->\r\n");
@@ -143,7 +142,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("            <script src=\"assets/js/sweetalert.min.js\"></script>\r\n");
+        out.write("            <script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>\r\n");
         out.write("            <script>swal(\"Username or Password Incorrect\");</script>  \r\n");
         out.write("        ");
         int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();

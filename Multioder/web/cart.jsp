@@ -24,6 +24,9 @@
         <% } %>
         <% } %>
         
+        <form action="addressServlet">
+            <input type="submit" value="Next" />
+        </form>
         
         
     </body>
