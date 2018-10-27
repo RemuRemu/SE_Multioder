@@ -14,17 +14,16 @@
         <title>Multioder - Home</title>
         <!--<link rel="stylesheet" type="text/css" href="ani.css">-->
         <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style_menu.css">
+        <link rel="stylesheet" type="text/css" href="menu_style.css">
         <!-- <style>.slide {display: block;} </style> -->
     </head>
     <body>
        
         <div class="menu_area">
-             <a href="cart.jsp"><button type="submit" >cart</button></a>
             <div class="menu">
-                <a href="menu.jsp"><img id="home" src="pic/logo.png"></a>
+                <a href="menuServlet"><img id="home" src="pic/logo.png"></a>
                 <img id="choose" src="pic/menu.png">
-                <img id="shop" src="pic/sb.png">
+                <a href="cart.jsp"><img id="shop" src="pic/sb.png"></a>
             </div>
         </div>
         
@@ -38,16 +37,19 @@
                 <font class="head_name" size="6" color="black">รายการอาหาร</font>
                 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="ค้นหาชื่ออาหาร.." title="Type in a name" size="40px">
             </div>
-            <ul id="myUL">
-            <c:forEach var="menu"  items="${menu_list}">  
-                <form action="/Multioder/shopServlet">
-
-                    <li><a>${menu.name}<input type="submit" value="Go to shop" /></a></li>
-                    <input type="hidden" name="name" value="${menu.name}" />
-
-                </form>
-            </c:forEach>
-            </ul>
+            <div class="food_area">
+                <ul id="myUL">
+                <c:forEach var="menu"  items="${menu_list}">  
+                    <div class="food">
+                        <form action="/Multioder/shopServlet">
+                            <li><a>${menu.name}<input type="submit" value="Go to shop" /></a></li>
+                            <input type="hidden" name="name" value="${menu.name}" />
+                        </form>
+                    </div>
+                </c:forEach>
+                </ul>
+            </div>
+            
         </div>
             
 
@@ -57,13 +59,16 @@
                 input = document.getElementById("myInput");
                 filter = input.value.toUpperCase();
                 ul = document.getElementById("myUL");
+                box = ul.getElementsByClassName("food");
                 li = ul.getElementsByTagName("li");
                 for (i = 0; i < li.length; i++) {
                     a = li[i].getElementsByTagName("a")[0];
                     if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
                         li[i].style.display = "";
+                        box[i].style.display = "";
                     } else {
                         li[i].style.display = "none";
+                        box[i].style.display = "none";
                     }
                 }
             }

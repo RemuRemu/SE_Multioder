@@ -37,7 +37,7 @@
             </div>
         </div>
         
-        <div class="pic" style="width: 500px; position: fixed; top: 200px; left: 725px; overflow: hidden;">
+        <div class="pic" style="width: 500px; position: fixed; top: 28%; left: 50%; overflow: hidden;">
             <img src="pic/slogan1.png" class="slide anime" style="width: 100%;">
             <img src="pic/slogan2.png" class="slide anime" style="width: 100%;">
             <img src="pic/slogan3.png" class="slide anime" style="width: 100%;">

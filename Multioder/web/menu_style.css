@@ -1,17 +1,18 @@
 body {
     margin: 0;
     font-family: 'Kanit', sans-serif;
-    background-color: #FFF0D4;
+    background-color: #F0EFEA;
 }
 
 .menu_area {
     width: 100%;
     height: 50px;
-    background-color: #FFA200;
+    background-color: #A10115;
     position: fixed;
     top: 0;
     transform: translateZ(0);
     z-index: 100;
+    overflow: hidden;
 }
 
 .menu {
@@ -74,7 +75,7 @@ body {
     font-family: 'Kanit', sans-serif;
     /*border: 1px solid gray;*/
     border-radius: 15px;
-    background-color: #FFDD9E;
+    background-color: #C0B2B5;
     transition: background-color 0.3s;
     padding: 7px;
     float: right;
@@ -103,5 +104,14 @@ body {
 }
 
 .food_area {
-    padding: 5%;
+    padding-left: 5%;
+}
+
+.food {
+    width: 40%;
+    display: inline-block;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
 }
