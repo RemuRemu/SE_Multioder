@@ -97,7 +97,7 @@ body {
     position: relative;
 }
 
-input {
+input, textarea {
     font-family: 'Kanit', sans-serif;
     /*border: 1px solid gray;*/
     border-radius: 15px;
@@ -126,6 +126,7 @@ button:hover {
     from {opacity: 0; top: -20px;}
     to {opacity: 1; top: 0px;}
 }
+
 /*
 .menu_area {
     position: fixed;

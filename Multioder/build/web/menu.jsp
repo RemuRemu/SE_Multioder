@@ -20,11 +20,10 @@
     <body>
        
         <div class="menu_area">
-             <a href="cart.jsp"><button type="submit" >cart</button></a>
             <div class="menu">
                 <a href="menu.jsp"><img id="home" src="pic/logo.png"></a>
                 <img id="choose" src="pic/menu.png">
-                <img id="shop" src="pic/sb.png">
+                <a href="cart.jsp"><img id="shop" src="pic/sb.png"></a>
             </div>
         </div>
         
@@ -38,16 +37,20 @@
                 <font class="head_name" size="6" color="black">รายการอาหาร</font>
                 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="ค้นหาชื่ออาหาร.." title="Type in a name" size="40px">
             </div>
-            <ul id="myUL">
-            <c:forEach var="menu"  items="${menu_list}">  
-                <form action="/Multioder/shopServlet">
-
-                    <li><a>${menu.name}<input type="submit" value="Go to shop" /></a></li>
-                    <input type="hidden" name="name" value="${menu.name}" />
-
-                </form>
-            </c:forEach>
-            </ul>
+            <div class="food_area">
+                <ul id="myUL">
+                <c:forEach var="menu"  items="${menu_list}">  
+                    <div class="food">
+                        <form action="/Multioder/shopServlet">
+                            <li><a>${menu.name}<input type="submit" value="Go to shop" /></a></li>
+                            <input type="hidden" name="name" value="${menu.name}" />
+                        </form>
+                    </div>
+                    
+                </c:forEach>
+                </ul>
+            </div>
+            
         </div>
             
 
