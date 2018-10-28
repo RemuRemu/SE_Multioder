@@ -22,8 +22,9 @@
                     <option value=${add.address_id}>${add.address_des}</option>
                     
                 </c:forEach>
+                   
             </select>
         </form>
-
+         <a href="newAddress.jsp">เพิ่มที่อยู่ใหม่</a>
     </body>
 </html>
