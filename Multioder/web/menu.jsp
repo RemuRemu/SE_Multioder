@@ -14,16 +14,16 @@
         <title>Multioder - Home</title>
         <!--<link rel="stylesheet" type="text/css" href="ani.css">-->
         <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="menu_style.css">
+        <link rel="stylesheet" type="text/css" href="menustyle.css">
         <!-- <style>.slide {display: block;} </style> -->
     </head>
     <body style="background-image: url('pic/food_menu.jpg'); background-size: auto; background-attachment: fixed;">
         <div class="back"></div>
         <div class="menu_area">
             <div class="menu">
-                <a href="menuServlet"><img id="home" src="pic/logo.png"></a>
-                <img id="choose" src="pic/menu.png">
-                <a href="cart.jsp"><img id="shop" src="pic/sb.png"></a>
+                <a href="menuServlet"><div id="home_area"><img src="pic/logo.png" id="home"></div></a>
+                <div id="choose"></div>
+                <a href="cart.jsp"><div id="shop"></div></a>
             </div>
         </div>
         

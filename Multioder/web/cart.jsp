@@ -9,25 +9,56 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Multioder - Your Cart</title>
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="menustyle.css">
     </head>
-    <body>
-        <a href="menuServlet"><button type="submit">Go to menu</button></a>
-        <% model.Cart ord = (model.Cart) session.getAttribute("cart"); %>
-        <% if (ord != null) { %>
+    <body style="background-image: url('pic/food_menu.jpg'); background-size: auto; background-attachment: fixed;">
+        <div class="back"></div>
+        <div class="menu_area">
+            <div class="menu">
+                <a href="menuServlet"><div id="home_area"><img src="pic/logo.png" id="home"></div></a>
+                <div id="choose"></div>
+                <a href="cart.jsp"><div id="shop"></div></a>
+            </div>
+        </div>
         
-        <% for (int i = 0; i < ord.getAccs().size(); i++) { %>
-        <form action="amountControl" method="POST">
-            <%= ord.getAccs().get(i).getAcc_id() %> <%= ord.getAccs().get(i).getPrice() %> <%= ord.getAccs().get(i).getQuentity() %> <input type="hidden" name="menuid" value="<%= ord.getAccs().get(i).getAcc_id() %>" />
-            <button type="submit" name="amount" value="decrease">ลด</button> <button type="submit" name="amount" value="increase">เพิ่ม</button><br>
-           </form>         
-        <% } %>
-        <% } %>
-        
-        <form action="addressServlet">
-            <input type="submit" value="Next" />
-        </form>
-        
+        <div class="con_area">
+            <div class="title">
+                <font class="head_name" size="6" color="black">ตะกร้าอาหารของคุณ</font>
+                <a href="menuServlet"><button type="submit" class="go_back">กลับสู่หน้าหลัก</button></a>
+            </div>
+            <div class="cart_area">
+                <% model.Cart ord = (model.Cart) session.getAttribute("cart"); %>
+                <% if (ord != null) { %>
+
+                <% for (int i = 0; i < ord.getAccs().size(); i++) { %>
+                <div class="food_cart">
+                    <form action="amountControl" method="POST">
+                        <div>
+                            
+                        </div>
+                        <div>
+                            <%= ord.getAccs().get(i).getPrice()%>
+                            <%--<%= ord.getAccs().get(i).getAcc_id() %>--%>
+                            <br>
+                            จำนวนที่ต้องการ &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getAccs().get(i).getQuentity() %> &nbsp;จาน &nbsp;&nbsp;
+                            <input type="hidden" name="menuid" value="<%= ord.getAccs().get(i).getAcc_id() %>" />
+                            <button type="submit" name="amount" value="increase">เพิ่ม</button>
+                            <button type="submit" name="amount" value="decrease">ลด</button><br>
+                            ราคารวม &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getAccs().get(i).getPrice() %> บาท
+                        </div>
+                    </form> 
+                </div> 
+                <% } %>
+                <% } %>
+                <div class="next_area">
+                    <form action="addressServlet">
+                        <input type="submit" value="Next" class="next"/>
+                    </form>
+                </div>
+            </div>
+        </div>
         
     </body>
 </html>

@@ -38,28 +38,58 @@ body {
     /*padding: 5px;*/
 }
 
-#home {
-    width: 70px;
-    margin-top: 4px;
-    margin-left: 20px;
+#home_area {
+    height: 50px;
+    background-size: cover;
+    width: 75px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
     float: left;
-    /*position: relative;*/
+    transition: background-color 0.3s;
+}
+
+#home_area:hover {
+    background-color: white;
+}
+
+#home {
+    width: 75px;
 }
 
 #choose {
-    width: 22px;
+    width: 30px;
+    height: 30px;
+    background-image: url('pic/menu.png');
+    background-size: cover;
+    margin-top: 11px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    transition: background-image 0.3s;
     float: right;
-    margin-top: 20px;
-    margin-right: 20px;
-    /*position: relative;*/
 }
 
 #shop {
-    width: 25px;
+    width: 40px;
+    height: 35px;
+    background-image: url('pic/sb.png');
+    background-size: cover;
+    margin-top: 7px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    transition: background-image 0.3s;
     float: right;
-    margin-top: 14px;
-    margin-right: 20px;
-    /*position: relative;*/
+}
+
+#choose:hover {
+    background-image: url('pic/menu_hover.png');
+}
+
+#shop:hover {
+    background-image: url('pic/sb_hover.png');
 }
 
 .con_area {
@@ -72,6 +102,11 @@ body {
     margin-right: auto;
     /*overflow: hidden;*/
     margin-top: 60px;
+    margin-bottom: 10px;
+}
+
+.go_back {
+    float: right;
 }
 
 .rec {
@@ -107,18 +142,27 @@ body {
 
 .title {
     width: 95%;
-    height: 60px;
+    height: 50px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subtitle {
+    width: 95%;
+    height: 30px;
     padding: 15px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .head_name {
-    text-shadow: 2px 2px gray;
+    text-shadow: 1.5px 1.5px gray;
 }
 
-.food_area {
+.food_area{
     padding-left: 5%;
+    padding-bottom: 10px;
 }
 
 .food {
@@ -132,20 +176,46 @@ body {
     text-align: center;
 }
 
+.food_cart {
+    background-color: #F5CA99; 
+    width: 94%;
+    display: inline-block;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: right;
+}
+
 .food_name {
     font-size: 20px;
     /*color: white;*/
 }
 
-input, textarea {
+input, textarea, button {
     font-family: 'Kanit', sans-serif;
     /*border: 1px solid gray;*/
     border-radius: 15px;
     background-color: #DFDFDF;
     transition: background-color 0.3s;
     padding: 7px;
+    margin-top: 5px;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, button:hover {
     background-color: #9F9F9F;
+}
+
+.cart_area {
+    padding-left: 2%;
+    padding-bottom: 15px;
+}
+
+.next_area {
+    width: 97.5%;
+    height: 50px;
+}
+
+.next {
+    float: right;
 }
