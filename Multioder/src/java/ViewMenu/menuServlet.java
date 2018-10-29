@@ -55,7 +55,12 @@ public class menuServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             ArrayList<Menu> menu_list = new ArrayList<Menu>();
-            String find_menu = "SELECT * FROM menu GROUP BY name";
+            String find_menu = "SELECT M.menuid, M.name ,M.shop_id , M.description , M.price ,M.image, M.recommend , S.shopid , S.shop_status\n" +
+                               "FROM seproject.menu M\n" +
+                               "JOIN seproject.shop S\n" +
+                               "ON (M.shop_id = S.shopid)\n" +
+                               "where S.shop_status = 1\n" +
+                               "Group by M.name;";
 
             ArrayList<Shop> shop_list = new ArrayList<Shop>();
             PreparedStatement acc_db = conn.prepareStatement(find_menu);

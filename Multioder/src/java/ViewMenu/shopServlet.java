@@ -59,7 +59,12 @@ public class shopServlet extends HttpServlet {
             ArrayList<Menu> menu_list = new ArrayList<Menu>();
             ArrayList<Menu> menu_rec = new ArrayList<Menu>();
             String name = request.getParameter("name");
-            String find_menu = "SELECT * FROM menu Where name = ? ORDER BY recommend desc";
+            String find_menu = "SELECT M.menuid, M.name ,M.shop_id , M.description , M.price ,M.image, M.recommend , S.shopid , S.shop_status\n" +
+                                "FROM seproject.menu M\n" +
+                                "JOIN seproject.shop S\n" +
+                                "ON (M.shop_id = S.shopid)\n" +
+                                "where S.shop_status = 1 and  M.name = ? ;";
+                    
             
             PreparedStatement menu_db = conn.prepareStatement(find_menu);
             menu_db.setString(1, name);
