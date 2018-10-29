@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Multioder - Register</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <!--<link rel="stylesheet" type="text/css" href="jb.css">-->
         <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
@@ -41,6 +41,7 @@
                     <input type="submit" name="register" value="Register" />
                     <!--<input type="submit" name="back" value="Back" />-->
                 </form>
+                <a href="login.jsp"><button type="submit" style="padding: 6px;">กลับสู่หน้าล็อกอิน</button></a>
             </div>
         </div>
         
