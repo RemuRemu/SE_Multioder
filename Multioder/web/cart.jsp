@@ -29,6 +29,7 @@
                 <a href="menuServlet"><button type="submit" class="go_back">กลับสู่หน้าหลัก</button></a>
             </div>
             <div class="cart_area">
+                <% int count = 0; %>
                 <% model.Cart ord = (model.Cart) session.getAttribute("cart"); %>
                 <% if (ord != null) { %>
 
@@ -39,18 +40,25 @@
                             
                         </div>
                         <div>
-                            <%= ord.getAccs().get(i).getPrice()%>
-                            <%--<%= ord.getAccs().get(i).getAcc_id() %>--%>
+                            
+                            
+                            <%= ord.getAccs().get(i).getFoodname() %> 
+                            <%= ord.getAccs().get(i).getName() %> 
+                            <%= ord.getAccs().get(i).getPrice() %>
+                            <img src="pic/menu_dish/<%= ord.getAccs().get(i).getImage()%>.jpg">
                             <br>
                             จำนวนที่ต้องการ &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getAccs().get(i).getQuentity() %> &nbsp;จาน &nbsp;&nbsp;
                             <input type="hidden" name="menuid" value="<%= ord.getAccs().get(i).getAcc_id() %>" />
                             <button type="submit" name="amount" value="increase">เพิ่ม</button>
-                            <button type="submit" name="amount" value="decrease">ลด</button><br>
-                            ราคารวม &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getAccs().get(i).getPrice() %> บาท
+                            <button type="submit" name="amount" value="decrease">ลด</button>
+                            <button type="submit" name="amount" value="remove">เอาออก</button><br>
+                            
                         </div>
+                       
                     </form> 
                 </div> 
                 <% } %>
+                ราคารวม &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getTotal() %> บาท     
                 <% } %>
                 <div class="next_area">
                     <form action="addressServlet">

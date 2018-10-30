@@ -38,12 +38,15 @@ public class Cart {
 
             }
             if (item == null) {
-                String sql = "SELECT * FROM menu WHERE  menuid = ?";
+                String sql = "SELECT * from menu join shop on (menu.shop_id = shop.shopid) where menuid = ?";
                 PreparedStatement s_acc = conn.prepareStatement(sql);
                 s_acc.setInt(1, menu_id);
                 ResultSet rs = s_acc.executeQuery();
                 while (rs.next()) {
                     OrderItem acc = new OrderItem();
+                    acc.setName(rs.getString("shopname"));
+                    acc.setFoodname(rs.getString("name"));
+                    acc.setImage(rs.getString("image"));
                     acc.setAcc_id(menu_id);
                     acc.setQuentity(quentity);
                     acc.setPrice(rs.getDouble("price"));
@@ -97,7 +100,7 @@ public class Cart {
 
             }
         quentity = item.getQuentity() - quentity;
-        if(quentity == 0){
+        if(quentity < 0){
             removeItem(count);
         }
         else{

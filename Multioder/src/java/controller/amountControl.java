@@ -65,6 +65,14 @@ public class amountControl extends HttpServlet {
                 cart.removeQuentity(menu_id, 1);
                  response.sendRedirect("cart.jsp");
             }
+            if(request.getParameter("amount").equals("remove")){
+                for (int i = 0; i < cart.getAccs().size(); i++){
+                    if(cart.getAccs().get(i).getAcc_id() == menu_id){
+                    cart.removeItem(i);
+                    }
+                }
+                 response.sendRedirect("cart.jsp");
+            }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");

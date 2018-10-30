@@ -25,18 +25,40 @@ import javax.sql.DataSource;
 public class OrderItem {
         
     private ServletContext context;
-
+    private String name;
+    private String foodname;
+    private String image;
     private double price;
     private int quentity;
     private int order_id;
     private int acc_id;
     private int item_num;
     private double amount;
-
+    
     public OrderItem() {
         
     }
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getFoodname() {
+        return foodname;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    public void setFoodname(String foodname) {
+        this.foodname = foodname;
+    }
     /**
      * @return the price
      */
