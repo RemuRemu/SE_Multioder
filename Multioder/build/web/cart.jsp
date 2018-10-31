@@ -62,7 +62,7 @@
                 <% } %>
                 <div class="next_area">
                     <form action="addressServlet">
-                        <input type="submit" value="Next" class="next"/>
+                        <input type="submit" value="ถัดไป" class="next"/>
                     </form>
                 </div>
             </div>
