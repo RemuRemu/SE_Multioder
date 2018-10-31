@@ -37,17 +37,17 @@
                 <div class="food_cart">
                     <form action="amountControl" method="POST">
                         <div>
-                            
+                            <img src="pic/menu_dish/<%= ord.getAccs().get(i).getImage()%>.jpg" align="left" style="width: 200px; height: 125px;">
                         </div>
                         <div>
+                            <font size="4"><b>
+                                <%= ord.getAccs().get(i).getFoodname() %> 
+                                (<%= ord.getAccs().get(i).getName() %>)
+                            </b></font><br>
                             
-                            
-                            <%= ord.getAccs().get(i).getFoodname() %> 
-                            <%= ord.getAccs().get(i).getName() %> 
-                            <%= ord.getAccs().get(i).getPrice() %>
-                            <img src="pic/menu_dish/<%= ord.getAccs().get(i).getImage()%>.jpg">
+                            ราคาจานละ &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getAccs().get(i).getPrice() %> &nbsp;บาท
                             <br>
-                            จำนวนที่ต้องการ &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getAccs().get(i).getQuentity() %> &nbsp;จาน &nbsp;&nbsp;
+                            จำนวนที่ต้องการ &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getAccs().get(i).getQuentity() %> &nbsp;จาน <br>
                             <input type="hidden" name="menuid" value="<%= ord.getAccs().get(i).getAcc_id() %>" />
                             <button type="submit" name="amount" value="increase">เพิ่ม</button>
                             <button type="submit" name="amount" value="decrease">ลด</button>
@@ -58,7 +58,9 @@
                     </form> 
                 </div> 
                 <% } %>
-                ราคารวม &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getTotal() %> บาท     
+                <div class="total" style="width: 94%; margin-left: auto; margin-right: auto; text-align: right">
+                    <font size="4"><b>ราคารวมทั้งหมด &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getTotal() %> บาท </b></font>
+                </div>
                 <% } %>
                 <div class="next_area">
                     <form action="addressServlet">
