@@ -38,7 +38,7 @@
                 <c:forEach var="rec"  items="${rec_menu_list}">  
                 <div>
                     <form action="xxx"> 
-                        ${rec.name} 
+                        ${rec.shopname} 
                         ${rec.description} 
                         ${rec.price}   
                         ${rec.recommend}   
@@ -54,7 +54,7 @@
                 <c:forEach var="menu"  items="${menu_list}">  
                 <div>
                         <form action="/Multioder/ProcessSelection">
-                        ${menu.name} 
+                        ${menu.shopname} 
                         ${menu.description} 
                         ${menu.price}   
                         ${menu.menu_id}   

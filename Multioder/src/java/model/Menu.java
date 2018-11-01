@@ -12,12 +12,20 @@ package model;
 public class Menu {
     private int menu_id;
     private String name;
+    private String shopname;
     private int shop_id;
     private String description;
     private float price;
     private String image;
     private int recommend;
 
+    public String getShopname() {
+        return shopname;
+    }
+
+    public void setShopname(String shopname) {
+        this.shopname = shopname;
+    }
     /**
      * @return the menu_id
      */

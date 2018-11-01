@@ -59,7 +59,7 @@ public class shopServlet extends HttpServlet {
             ArrayList<Menu> menu_list = new ArrayList<Menu>();
             ArrayList<Menu> menu_rec = new ArrayList<Menu>();
             String name = request.getParameter("name");
-            String find_menu = "SELECT M.menuid, M.name ,M.shop_id , M.description , M.price ,M.image, M.recommend , S.shopid , S.shop_status\n" +
+            String find_menu = "SELECT M.menuid, M.name ,M.shop_id , M.description , M.price ,M.image, M.recommend, S.shopname , S.shopid , S.shop_status\n" +
                                 "FROM seproject.menu M\n" +
                                 "JOIN seproject.shop S\n" +
                                 "ON (M.shop_id = S.shopid)\n" +
@@ -75,6 +75,7 @@ public class shopServlet extends HttpServlet {
                 count+= 1 ;
                 if (count<= 3){
                  Menu rec_menu = new Menu();
+                 rec_menu.setShopname(rs.getString("shopname"));
                 rec_menu.setMenu_id(rs.getInt("menuid"));
                 rec_menu.setName(rs.getString("name"));
                 rec_menu.setDescription(rs.getString("description"));
@@ -85,6 +86,7 @@ public class shopServlet extends HttpServlet {
                 }
                 
                 Menu menu = new Menu();
+                menu.setShopname(rs.getString("shopname"));
                 menu.setMenu_id(rs.getInt("menuid"));
                 menu.setName(rs.getString("name"));
                 menu.setDescription(rs.getString("description"));

@@ -48,6 +48,7 @@
                             ราคาจานละ &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getAccs().get(i).getPrice() %> &nbsp;บาท
                             <br>
                             จำนวนที่ต้องการ &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getAccs().get(i).getQuentity() %> &nbsp;จาน <br>
+                            <%= ord.getAccs().get(i).getQuentity() * ord.getAccs().get(i).getPrice() %> บาท
                             <input type="hidden" name="menuid" value="<%= ord.getAccs().get(i).getAcc_id() %>" />
                             <button type="submit" name="amount" value="increase">เพิ่ม</button>
                             <button type="submit" name="amount" value="decrease">ลด</button>
