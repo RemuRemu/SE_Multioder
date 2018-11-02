@@ -63,6 +63,15 @@
             setTimeout(carousel, 4000);
         }
         </script>
+        
+        <c:if test="${flag == 3}">
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script>swal({
+                title: "ลงทะเบียนสำเร็จ!",
+                icon: "success",
+                button: "OK!",});
+            </script> 
+        </c:if>
 
     </body>
 </html>

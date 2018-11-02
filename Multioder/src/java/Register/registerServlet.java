@@ -122,7 +122,11 @@ public class registerServlet extends HttpServlet {
             a.setString(1, address);
             a.setInt(2, uid);
             a.executeUpdate();
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/register_comp.html");
+            
+            int pass = 3;
+            request.setAttribute("flag", pass);
+            
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
             rd.forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(registerServlet.class.getName()).log(Level.SEVERE, null, ex);
