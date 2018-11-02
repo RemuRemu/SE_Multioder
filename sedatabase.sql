@@ -29,7 +29,7 @@ CREATE TABLE `address` (
   PRIMARY KEY (`address_id`,`userprofile_uid`),
   KEY `userprofile_address_id_idx` (`userprofile_uid`),
   CONSTRAINT `userprofile_address_id` FOREIGN KEY (`userprofile_uid`) REFERENCES `userprofile` (`uid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (1,'72/6น้า',1),(2,'72/5',1);
+INSERT INTO `address` VALUES (1,'72/6น้า',1),(2,'72/5',1),(3,'72/6 ต.หนามแดง อ.เมือง จ.ฉะเชิงเทรา 24000',3),(4,'72/4 ต.หนามแดง อ.เมือง จ.ฉะเชิงเทรา 24000',3),(5,'คณะเทคโนโลยีสารสนเทศ 10520',3),(6,'11/12 อ.หัวหิน จ. ประจวบคีรีขันธ์ 77110',4),(7,'11/13 อ.หัวหิน จ. ประจวบคีรีขันธ์ 77110',4),(8,'11/14 อ.หัวหิน จ. ประจวบคีรีขันธ์ 77110',4);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,7 +208,7 @@ CREATE TABLE `userprofile` (
   `phone` varchar(45) NOT NULL,
   PRIMARY KEY (`uid`),
   UNIQUE KEY `uid_UNIQUE` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +217,7 @@ CREATE TABLE `userprofile` (
 
 LOCK TABLES `userprofile` WRITE;
 /*!40000 ALTER TABLE `userprofile` DISABLE KEYS */;
-INSERT INTO `userprofile` VALUES (1,'zhinagikuz','Hinagiku12','อิศรา','โพธิ์อ่อน','59070193@kmitl.ac.th','082-7877079'),(2,'asd','asd','asd','asd','lololol@gmitl.ac.th','089-9393934'),(3,'test','test','test','test','test','082-4598956');
+INSERT INTO `userprofile` VALUES (1,'zhinagikuz','Hinagiku12','อิศรา','โพธิ์อ่อน','59070193@kmitl.ac.th','082-7877079'),(2,'asd','asd','asd','asd','lololol@gmitl.ac.th','089-9393934'),(3,'test','test','test','test','test','082-4598956'),(4,'amp2541','2541','Patchara','Hetchara','59070116@kmitl.ac.th','088-6112111');
 /*!40000 ALTER TABLE `userprofile` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -230,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-27 13:22:53
+-- Dump completed on 2018-11-02 11:23:59
