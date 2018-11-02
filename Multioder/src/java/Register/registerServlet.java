@@ -50,6 +50,7 @@ public class registerServlet extends HttpServlet {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String user = request.getParameter("user");
