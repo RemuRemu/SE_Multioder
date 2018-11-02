@@ -24,40 +24,30 @@
                 <a href="cart.jsp"><div id="shop"></div></a>
             </div>
         </div>
-        
+
         <div class="con_area">
             <div class="title">
                 <font class="head_name" size="6" color="black">เลือกที่อยู่ที่ต้องการจัดส่ง</font>
                 <a href="cart.jsp"><button type="submit" class="go_back">ย้อนกลับ</button></a>
             </div>
             <div class="addr" style="width: 94%; margin-left: auto; margin-right: auto;">
-                <form action="addOrder">
+                <form action="addOrderServlet" method="POST">
                     <font size="4">My address is </font>
                     <select name="address_id" class="form-control" placeholder="เลือกที่อยู่ของคุณ">
                         <c:forEach var="add" items="${add_list}">
                             <option value=${add.address_id}>${add.address_des}</option>
+
                         </c:forEach>
                     </select>
-                </form>
-                <a href="newAddress.jsp">เพิ่มที่อยู่ใหม่</a>
+                     <input type="submit" value="สั่ง" />
+                     </form>
+
+                    <a href="newAddress.jsp">เพิ่มที่อยู่ใหม่</a>
             </div>
-            <div class="pay" style="width: 94%; margin-left: auto; margin-right: auto; margin-bottom: 15px; margin-top: 15px;">
-                <form action="paymentServlet" method="POST">
-                <script type="text/javascript" src="https://cdn.omise.co/omise.js"
-                        data-key="pkey_test_5br77ofbj0xi13v5xqz"
-                        data-image="http://bit.ly/customer_image"
-                        data-frame-label="Multiorder"
-                        data-button-label="จ่ายเงิน"
-                        data-submit-label="ยืนยัน"
-                        data-location="no"
-                        data-amount="${cart.total*100}"
-                        data-currency="thb">
-                </script>
-                </form>
-            </div>
-                
+
+
         </div>
-        
-        
+
+
     </body>
 </html>
