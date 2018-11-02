@@ -116,6 +116,10 @@
                     <form action="addressServlet">
                         <input type="submit" value="ถัดไป" class="next"/>
                     </form>
+                     <form action="cleareServlet">
+                        <input type="submit" value="ลบสินค้าทั้งหมด" class="next"/>
+                    </form>
+                    
                 </div>
             </div>
         </div>

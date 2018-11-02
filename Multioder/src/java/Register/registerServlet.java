@@ -70,6 +70,14 @@ public class registerServlet extends HttpServlet {
                 rd.forward(request, response);
                 return;
             } 
+            if (email.indexOf("@")==-1 && email.indexOf(".")==-1) {
+                int fail = 3;
+                request.setAttribute("flag", fail);
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/register.jsp");
+                rd.forward(request, response);
+                return;
+            } 
+
             //find same username,email
             String find_sameuser = "SELECT username FROM userprofile WHERE  username = ?";
             String find_sameemail = "SELECT email FROM userprofile WHERE  email = ?";

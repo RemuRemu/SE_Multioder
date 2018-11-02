@@ -177,6 +177,7 @@ public class addOrderServlet extends HttpServlet {
                     Logger.getLogger(addOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            cart.removeCart();
             //forward to order comp
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/order_comp.jsp");
             rd.forward(request, response);

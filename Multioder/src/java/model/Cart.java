@@ -126,6 +126,9 @@ public class Cart {
         point = (int) (totala/10);
         return point;
     }
+    public void removeCart(){
+        accs.removeAll(accs);
+    }
 
     private DataSource getSeproject() throws NamingException {
         Context c = new InitialContext();

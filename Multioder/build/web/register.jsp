@@ -57,6 +57,13 @@
 
 
         </c:if>
+             <c:if test="${flag == 3}">
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script>swal("รูปแบบอีเมลไม่ถูกต้อง");</script> 
+            
+
+
+        </c:if>
 
 
     </body>
