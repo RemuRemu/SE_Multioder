@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : cart
     Created on : Oct 23, 2018, 5:48:12 PM
@@ -108,10 +109,11 @@
                     </form> 
                 </div> 
                 <% } %>
+                 <% if (ord.getTotal() > 0) { %>
                 <div class="total" style="width: 94%; margin-left: auto; margin-right: auto; text-align: right">
                     <font size="4"><b>ราคารวมทั้งหมด &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getTotal() %> บาท </b></font>
                 </div>
-                <% } %>
+                
                 <div class="next_area">
                     <form action="addressServlet">
                         <input type="submit" value="ถัดไป" class="next"/>
@@ -121,6 +123,11 @@
                     </form>
                     
                 </div>
+                    <%}else{%>
+                    ไม่มีสินค้าในตะกร้า
+                    
+                    <%}%>
+                <% } %>
             </div>
         </div>
         </div>
