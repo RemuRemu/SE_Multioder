@@ -17,10 +17,7 @@
         <link rel="stylesheet" type="text/css" href="menustyle.css">
         <!-- <style>.slide {display: block;} </style> -->
         <style>
-            body {
-                font-family: "Lato", sans-serif;
-                transition: background-color .5s;
-            }
+
 
             .sidenav {
                 height: 100%;
