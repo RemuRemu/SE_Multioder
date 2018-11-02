@@ -5,6 +5,10 @@
  */
 package Order;
 
+import co.omise.Client;
+import co.omise.ClientException;
+import co.omise.models.Charge;
+import co.omise.models.OmiseException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -96,8 +100,8 @@ public class addOrderServlet extends HttpServlet {
                 //insert order
                 ArrayList<Order> order_list = new ArrayList<Order>();
                 String insert_order = "INSERT INTO `order`"
-                        + "(buy_date, status,address, total, userprofile_uid) VALUES"
-                        + "(?, ?, ?, ?, ?)";
+                        + "(buy_date, status,address, total, userprofile_uid, shop_id) VALUES"
+                        + "(?, ?, ?, ?, ?, ?)";
 
                 PreparedStatement c = conn.prepareStatement(insert_order, PreparedStatement.RETURN_GENERATED_KEYS);
                 Timestamp date = new Timestamp(System.currentTimeMillis());
@@ -107,6 +111,7 @@ public class addOrderServlet extends HttpServlet {
                 c.setString(3, address);
                 c.setDouble(4, total);
                 c.setInt(5, uid);
+                c.setInt(6, 1);
                 c.executeUpdate();
 
                 ResultSet rs_number = c.getGeneratedKeys();
@@ -121,6 +126,9 @@ public class addOrderServlet extends HttpServlet {
                 ResultSet rs = f.executeQuery();
                 rs.next();
                 int order_id = rs.getInt("order_id");
+
+                double sprice = total * 100;
+                int total_price = (int) sprice;
 
                 //insert order_item
                 List<OrderItem> accs = cart.getAccs();
@@ -143,13 +151,39 @@ public class addOrderServlet extends HttpServlet {
                     i_item.executeUpdate();
                     item_num += 1;
                 }
-            } 
+                Client client = new Client("pkey_test_5br77ofbj0xi13v5xqz", "skey_test_5br77ofc1db6vlm3fxc");
+                String omiseToken = request.getParameter("omiseToken");
+
+                try {
+                    Charge charge = client.charges().create(new Charge.Create()
+                            .amount(total_price) // THB 1,000.00
+                            .currency("THB")
+                            .card(omiseToken));
+                    System.out.println("created charge: " + charge.getId());
+
+                    Timestamp time = new Timestamp(System.currentTimeMillis());
+                    //insert payment
+                    String insert_payment = "INSERT INTO payment"
+                            + "(date,order_id, amount) VALUES"
+                            + "(?, ?, ?)";
+
+                    PreparedStatement p = conn.prepareStatement(insert_payment);
+                    p.setTimestamp(1, time);
+                    p.setInt(2, order_id);
+                    p.setDouble(3, total);
+                    p.executeUpdate();
+
+                } catch (OmiseException ex) {
+                    Logger.getLogger(addOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
             //forward to order comp
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/order_comp.jsp");
             rd.forward(request, response);
-            
 
         } catch (SQLException ex) {
+            Logger.getLogger(addOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClientException ex) {
             Logger.getLogger(addOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (conn != null) {

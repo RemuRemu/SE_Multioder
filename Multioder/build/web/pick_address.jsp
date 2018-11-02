@@ -39,10 +39,19 @@
 
                         </c:forEach>
                     </select>
-                     <input type="submit" value="สั่ง" />
-                     </form>
+                    <script type="text/javascript" src="https://cdn.omise.co/omise.js"
+                            data-key="pkey_test_5br77ofbj0xi13v5xqz"
+                            data-image="http://bit.ly/customer_image"
+                            data-frame-label="Multiorder"
+                            data-button-label="จ่ายเงิน"
+                            data-submit-label="ยืนยัน"
+                            data-location="no"
+                            data-amount="${cart.total*100}"
+                            data-currency="thb">
+                    </script>
+                </form>
 
-                    <a href="newAddress.jsp">เพิ่มที่อยู่ใหม่</a>
+                <a href="newAddress.jsp">เพิ่มที่อยู่ใหม่</a>
             </div>
 
 
