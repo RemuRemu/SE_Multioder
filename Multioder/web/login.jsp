@@ -44,7 +44,7 @@
 
         <c:if test="${loginflag == false}">
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-            <script>swal("Username or Password Incorrect");</script>  
+            <script>swal("ชื่อผู้ใช้หรือพาสเวิร์ดไม่ถูกต้อง");</script>  
         </c:if>
             
         <script>

@@ -44,32 +44,19 @@
                 <a href="login.jsp"><button type="submit" style="padding: 6px;">กลับสู่หน้าล็อกอิน</button></a>
             </div>
         </div>
-        
+
         <c:if test="${flag == 1}">
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-            <script>swal({"Username or Email has already used"});</script>  
+            <script>swal("ชื่อผู้ใช้งานหรืออีเมลได้ถูกใช้งานไปแล้ว");</script>  
 
         </c:if>
         <c:if test="${flag == 2}">
-            <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script>swal("กรุณากรอกข้อมูลให้ครบทุกช่อง");</script> 
+            
 
-            <script>swal({
-                    title: 'Are you sure?',
-                    text: 'Please enter all fields',
-                    imageUrl: '',
-                    type: 'info',
-                    showCancelButton: true,
-                    confirmButtonColor: '#DD6B55',
-                    confirmButtonText: 'Cancle',
-                    cancelButtonText: 'Yes'
-                }).then(() => {
-                    if (result.value) {
-                        // handle Confirm button click
-                    } else {
-                        // result.dismiss can be 'cancel', 'overlay', 'esc' or 'timer'
-                    }
-                });</script>  
-            </c:if>
+
+        </c:if>
 
 
     </body>

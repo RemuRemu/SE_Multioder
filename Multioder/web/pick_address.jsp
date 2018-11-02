@@ -48,7 +48,7 @@
                         data-image="http://bit.ly/customer_image"
                         data-frame-label="Multiorder"
                         data-button-label="จ่ายเงิน"
-                        data-submit-label="Submit"
+                        data-submit-label="ยืนยัน"
                         data-location="no"
                         data-amount="${cart.total*100}"
                         data-currency="thb">

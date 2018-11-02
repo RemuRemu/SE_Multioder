@@ -55,8 +55,18 @@ public class addaddressServlet extends HttpServlet {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
         String _addAddress = request.getParameter("newAddress");
+        
+        if (_addAddress.isEmpty()){
+                int fail = 1;
+                request.setAttribute("addressflag", fail);
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/newAddress.jsp");
+                rd.forward(request, response);
+                return;
+        }
+        else{
+        HttpSession session = request.getSession();
+ 
         String username = (String)session.getAttribute("username");
         String find_user = "SELECT * FROM userprofile WHERE username = ?";
         PreparedStatement user = conn.prepareStatement(find_user);
@@ -74,7 +84,7 @@ public class addaddressServlet extends HttpServlet {
             a.executeUpdate();
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/addressServlet");
             rd.forward(request, response);
-            
+            }
             
             }
             if (conn != null) {

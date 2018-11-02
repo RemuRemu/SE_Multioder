@@ -3,8 +3,9 @@
     Created on : Oct 28, 2018, 8:48:14 AM
     Author     : USER
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,5 +38,10 @@
             </div>
                 
         </div>
+        <c:if test="${addressflag == 1}">
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script>swal("ที่อยู่ไม่สามารถเว้นว่างได้");</script>  
+
+        </c:if>
     </body>
 </html>
