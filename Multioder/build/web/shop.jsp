@@ -38,7 +38,8 @@
                 <c:forEach var="rec"  items="${rec_menu_list}">  
                     <div class="shop" style="width: 97%; margin-left: auto; margin-right: auto; margin-bottom: 15px;
                          background-color: #F5CA99; border: 2px solid black; border-radius: 10px;padding: 10px;">
-                        <form action="xxx"> 
+                        <form action="/Multioder/ProcessSelection">
+                            <button type="submit" name="add" value="${rec.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
                             <font size="5"><b>${rec.shopname}</b></font> <br>
                             รายละเอียด : ${rec.description} <br>
                             ราคาจานล่ะ : ${rec.price} บาท
@@ -52,15 +53,15 @@
             </div>
             <div class="shop_area" style="width: 94%; margin-left: auto; margin-right: auto;">
                 <c:forEach var="menu"  items="${menu_list}">  
-                <div class="shop" style="width: 97%; margin-left: auto; margin-right: auto; margin-bottom: 15px;
-                     background-color: #F5CA99; border: 2px solid black; border-radius: 10px;padding: 10px; font-size: 17px;">
+                    <div class="shop" style="width: 97%; margin-left: auto; margin-right: auto; margin-bottom: 15px;
+                         background-color: #F5CA99; border: 2px solid black; border-radius: 10px;padding: 10px; font-size: 17px;">
                         <form action="/Multioder/ProcessSelection">
-                            <button type="submit" name="add" value="${menu.menu_id}" style="float: right;"> add Cart</button>
+                            <button type="submit" name="add" value="${menu.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
                             <font size="5"><b>${menu.shopname} </b></font> <br>
                             รายละเอียด : ${menu.description} <br>
                             ราคาจานล่ะ : ${menu.price} บาท <br>
-                    </form>
-                </div>
+                        </form>
+                    </div>
                 </c:forEach>
             </div>
             

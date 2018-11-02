@@ -30,13 +30,13 @@
                 <font class="head_name" size="6" color="black">เลือกที่อยู่ที่ต้องการจัดส่ง</font>
                 <a href="cart.jsp"><button type="submit" class="go_back">ย้อนกลับ</button></a>
             </div>
-            <div class="addr" style="width: 94%; margin-left: auto; margin-right: auto;">
+            <div class="addr" style="width: 94%; margin-left: auto; margin-right: auto; margin-bottom: 20px;">
                 <form action="addOrderServlet" method="POST">
                     <font size="4">My address is </font>
-                    <select name="address_id" class="form-control" placeholder="เลือกที่อยู่ของคุณ">
+                    <select name="address_id" class="form-control" placeholder="เลือกที่อยู่ของคุณ" style=" font-family: 'Kanit', sans-serif; 
+                            width: 400px; border-radius: 15px; background-color: #DFDFDF; padding: 7px; margin-top: 5px;">
                         <c:forEach var="add" items="${add_list}">
                             <option value=${add.address_id}>${add.address_des}</option>
-
                         </c:forEach>
                     </select>
                     <script type="text/javascript" src="https://cdn.omise.co/omise.js"
@@ -50,13 +50,8 @@
                             data-currency="thb">
                     </script>
                 </form>
-
-                <a href="newAddress.jsp">เพิ่มที่อยู่ใหม่</a>
+                <a href="newAddress.jsp"><button type="submit">เพิ่มที่อยู่ใหม่</button></a>
             </div>
-
-
         </div>
-
-
     </body>
 </html>

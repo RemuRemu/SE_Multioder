@@ -75,7 +75,7 @@ public class shopServlet extends HttpServlet {
                 count+= 1 ;
                 if (count<= 3){
                  Menu rec_menu = new Menu();
-                 rec_menu.setShopname(rs.getString("shopname"));
+                rec_menu.setShopname(rs.getString("shopname"));
                 rec_menu.setMenu_id(rs.getInt("menuid"));
                 rec_menu.setName(rs.getString("name"));
                 rec_menu.setDescription(rs.getString("description"));

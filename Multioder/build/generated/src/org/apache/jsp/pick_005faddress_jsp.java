@@ -89,7 +89,7 @@ public final class pick_005faddress_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("\r\n");
       out.write("                    </select>\r\n");
       out.write("                    <script type=\"text/javascript\" src=\"https://cdn.omise.co/omise.js\"\r\n");
-      out.write("                            data-key=\"pkey_ter_5br77ofbj0xi13v5xqz\"\r\n");
+      out.write("                            data-key=\"pkey_test_5br77ofbj0xi13v5xqz\"\r\n");
       out.write("                            data-image=\"http://bit.ly/customer_image\"\r\n");
       out.write("                            data-frame-label=\"Multiorder\"\r\n");
       out.write("                            data-button-label=\"จ่ายเงิน\"\r\n");
@@ -100,9 +100,9 @@ public final class pick_005faddress_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("\"\r\n");
       out.write("                            data-currency=\"thb\">\r\n");
       out.write("                    </script>\r\n");
-      out.write("                    <a href=\"newAddress.jsp\">เพิ่มที่อยู่ใหม่</a>\r\n");
-      out.write("\r\n");
       out.write("                </form>\r\n");
+      out.write("\r\n");
+      out.write("                <a href=\"newAddress.jsp\">เพิ่มที่อยู่ใหม่</a>\r\n");
       out.write("            </div>\r\n");
       out.write("\r\n");
       out.write("\r\n");
