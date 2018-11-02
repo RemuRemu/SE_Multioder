@@ -34,32 +34,31 @@
             <div class="subtitle">
                 <font class="head_name" size="5" color="black">ร้านค้าแนะนำ</font>
             </div>
-            <div class="food_area">
+            <div class="shop_area" style="width: 94%; margin-left: auto; margin-right: auto;">
                 <c:forEach var="rec"  items="${rec_menu_list}">  
-                <div>
-                    <form action="xxx"> 
-                        ${rec.shopname} 
-                        ${rec.description} 
-                        ${rec.price}   
-                        ${rec.recommend}   
-                    </form>
-                </div>
+                    <div class="shop" style="width: 97%; margin-left: auto; margin-right: auto; margin-bottom: 15px;
+                         background-color: #F5CA99; border: 2px solid black; border-radius: 10px;padding: 10px;">
+                        <form action="xxx"> 
+                            <font size="5"><b>${rec.shopname}</b></font> <br>
+                            รายละเอียด : ${rec.description} <br>
+                            ราคาจานล่ะ : ${rec.price} บาท
+                        </form>
+                    </div>
                 </c:forEach>
             </div>
             
             <div class="subtitle">
                 <font class="head_name" size="5" color="black">ร้านค้าทั้งหมด</font>
             </div>
-            <div class="food_area">
+            <div class="shop_area" style="width: 94%; margin-left: auto; margin-right: auto;">
                 <c:forEach var="menu"  items="${menu_list}">  
-                <div>
+                <div class="shop" style="width: 97%; margin-left: auto; margin-right: auto; margin-bottom: 15px;
+                     background-color: #F5CA99; border: 2px solid black; border-radius: 10px;padding: 10px; font-size: 17px;">
                         <form action="/Multioder/ProcessSelection">
-                        ${menu.shopname} 
-                        ${menu.description} 
-                        ${menu.price}   
-                        ${menu.menu_id}   
-
-                        <button type="submit" name="add" value="${menu.menu_id}" > add Cart</button>
+                            <button type="submit" name="add" value="${menu.menu_id}" style="float: right;"> add Cart</button>
+                            <font size="5"><b>${menu.shopname} </b></font> <br>
+                            รายละเอียด : ${menu.description} <br>
+                            ราคาจานล่ะ : ${menu.price} บาท <br>
                     </form>
                 </div>
                 </c:forEach>

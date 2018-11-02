@@ -32,7 +32,6 @@
                 <img src="pic/rec1.jpg" class="slide anime" style="width: 100%;">
                 <img src="pic/rec2.jpg" class="slide anime" style="width: 100%;">
                 <img src="pic/rec3.jpg" class="slide anime" style="width: 100%;">
-                
             </div>
             <div class="title">
                 <font class="head_name" size="6" color="black">รายการอาหาร</font>
@@ -43,7 +42,7 @@
                 <c:forEach var="menu"  items="${menu_list}">  
                     <div class="food">
                         <form action="/Multioder/shopServlet">
-                            <img src="pic/menu_dish/${menu.image}.jpg" align="middle" style="width: 300px; height: 175px;">
+                            <img src="pic/menu_dish/${menu.image}.jpg" align="middle" style="max-width: 300px; max-height: 125px;">
                             <li class="food_name"><a>${menu.name}<br>
                             <input type="submit" value="เลือกอาหาร" /></a></li>
                             <input type="hidden" name="name" value="${menu.name}" />
