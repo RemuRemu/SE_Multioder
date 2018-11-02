@@ -9,8 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-
+        <style>
             .sidenav {
                 height: 100%;
                 width: 0;

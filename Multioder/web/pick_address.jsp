@@ -10,8 +10,6 @@
 <html>
     <head>
         <style>
-
-
             .sidenav {
                 height: 100%;
                 width: 0;
@@ -91,7 +89,6 @@
                     </select>
                     <script type="text/javascript" src="https://cdn.omise.co/omise.js"
                             data-key="pkey_test_5br77ofbj0xi13v5xqz"
-                            data-image="http://bit.ly/customer_image"
                             data-frame-label="Multiorder"
                             data-button-label="จ่ายเงิน"
                             data-submit-label="ยืนยัน"

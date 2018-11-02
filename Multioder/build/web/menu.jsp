@@ -17,8 +17,6 @@
         <link rel="stylesheet" type="text/css" href="menustyle.css">
         <!-- <style>.slide {display: block;} </style> -->
         <style>
-
-
             .sidenav {
                 height: 100%;
                 width: 0;
