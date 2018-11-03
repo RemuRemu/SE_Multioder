@@ -89,8 +89,9 @@
                         <form action="/Multioder/ProcessSelection">
                             <button type="submit" name="add" value="${rec.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
                             <font size="5"><b>${rec.shopname}</b></font> <br>
+                            <img src="pic/menu_dish/${rec.image}.jpg"> <br>
                             รายละเอียด : ${rec.description} <br>
-                            ราคาจานล่ะ : ${rec.price} บาท
+                            ราคาต่อจาน : ${rec.price} บาท
                         </form>
                     </div>
                 </c:forEach>
@@ -106,6 +107,7 @@
                         <form action="/Multioder/ProcessSelection">
                             <button type="submit" name="add" value="${menu.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
                             <font size="5"><b>${menu.shopname} </b></font> <br>
+                            <img src="pic/menu_dish/${menu.image}.jpg"> <br>
                             รายละเอียด : ${menu.description} <br>
                             ราคาจานล่ะ : ${menu.price} บาท <br>
                         </form>
