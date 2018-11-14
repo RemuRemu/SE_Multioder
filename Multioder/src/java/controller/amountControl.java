@@ -66,8 +66,8 @@ public class amountControl extends HttpServlet {
                  response.sendRedirect("cart.jsp");
             }
             if(request.getParameter("amount").equals("remove")){
-                for (int i = 0; i < cart.getAccs().size(); i++){
-                    if(cart.getAccs().get(i).getAcc_id() == menu_id){
+                for (int i = 0; i < cart.getMenus().size(); i++){
+                    if(cart.getMenus().get(i).getMenu_id() == menu_id){
                     cart.removeItem(i);
                     }
                 }

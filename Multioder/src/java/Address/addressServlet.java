@@ -74,7 +74,7 @@ public class addressServlet extends HttpServlet {
                 //find add in address table that match uid and insert them in list
 
             ArrayList<Address> add_list = new ArrayList<Address>();
-                String find_add = "SELECT * FROM address WHERE userprofile_uid = ?";
+                String find_add = "SELECT * FROM address WHERE userprofile_uid = ? ORDER BY address_id DESC";
                 PreparedStatement address = conn.prepareStatement(find_add);
                 address.setInt(1, user_id);
                 ResultSet rs_add = address.executeQuery();

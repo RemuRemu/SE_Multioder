@@ -60,10 +60,10 @@ public class ProcessSelection extends HttpServlet {
                 cart = new Cart(conn);
                 session.setAttribute("cart", cart);
             }
-            String accid = request.getParameter("add");
-            int acc_id = Integer.parseInt(accid);
+            String menuid = request.getParameter("add");
+            int menu_id = Integer.parseInt(menuid);
 //            else{
-                cart.addItem(acc_id,1);
+                cart.addItem(menu_id,1);
                 response.sendRedirect("menuServlet");
 //            }
             

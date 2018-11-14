@@ -131,11 +131,11 @@ public class addOrderServlet extends HttpServlet {
                 int total_price = (int) sprice;
 
                 //insert order_item
-                List<OrderItem> accs = cart.getAccs();
+                List<OrderItem> menus = cart.getMenus();
                 int item_num = 1;
-                for (int i = 0; i < accs.size(); i++) {
-                    OrderItem item = accs.get(i);
-                    int menuid = item.getAcc_id();
+                for (int i = 0; i < menus.size(); i++) {
+                    OrderItem item = menus.get(i);
+                    int menuid = item.getMenu_id();
                     double price = item.getPrice();
                     int quentity = item.getQuentity();
                     String insert_item = "INSERT INTO order_item"

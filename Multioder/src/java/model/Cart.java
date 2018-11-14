@@ -24,14 +24,14 @@ import javax.sql.DataSource;
 public class Cart {
 
     Connection conn;
-    private List<OrderItem> accs;
+    private List<OrderItem> menus;
     public void addItem(int menu_id, int quentity) {
         try{
              
             OrderItem item = null;
-            for (int i = 0; i < accs.size(); i++) {
-                OrderItem check = accs.get(i);
-                int id = check.getAcc_id();
+            for (int i = 0; i < menus.size(); i++) {
+                OrderItem check = menus.get(i);
+                int id = check.getMenu_id();
                 if (menu_id == id) {
                    item = check;
                 }
@@ -39,18 +39,18 @@ public class Cart {
             }
             if (item == null) {
                 String sql = "SELECT * from menu join shop on (menu.shop_id = shop.shopid) where menuid = ?";
-                PreparedStatement s_acc = conn.prepareStatement(sql);
-                s_acc.setInt(1, menu_id);
-                ResultSet rs = s_acc.executeQuery();
+                PreparedStatement s_menu = conn.prepareStatement(sql);
+                s_menu.setInt(1, menu_id);
+                ResultSet rs = s_menu.executeQuery();
                 while (rs.next()) {
-                    OrderItem acc = new OrderItem();
-                    acc.setName(rs.getString("shopname"));
-                    acc.setFoodname(rs.getString("name"));
-                    acc.setImage(rs.getString("image"));
-                    acc.setAcc_id(menu_id);
-                    acc.setQuentity(quentity);
-                    acc.setPrice(rs.getDouble("price"));
-                    accs.add(acc);
+                    OrderItem menu = new OrderItem();
+                    menu.setName(rs.getString("shopname"));
+                    menu.setFoodname(rs.getString("name"));
+                    menu.setImage(rs.getString("image"));
+                    menu.setMenu_id(menu_id);
+                    menu.setQuentity(quentity);
+                    menu.setPrice(rs.getDouble("price"));
+                    menus.add(menu);
                 }
             }
             else {
@@ -64,20 +64,20 @@ public class Cart {
         }
     }
 
-    public List<OrderItem> getAccs() {
-        return accs;
+    public List<OrderItem> getMenus() {
+        return menus;
     }
 
     public Cart(Connection conn) {
         this.conn = conn;
-        accs = new LinkedList<OrderItem>();
+        menus = new LinkedList<OrderItem>();
     }
 
     public void addQuentity(int menu_id, int quentity){
         OrderItem item = null;
-            for (int i = 0; i < accs.size(); i++) {
-                OrderItem check = accs.get(i);
-                int id = check.getAcc_id();
+            for (int i = 0; i < menus.size(); i++) {
+                OrderItem check = menus.get(i);
+                int id = check.getMenu_id();
                 if (menu_id == id) {
                    item = check;
                 }
@@ -90,9 +90,9 @@ public class Cart {
     public void removeQuentity(int menu_id, int quentity){
         OrderItem item = null;
         int count = 0;
-            for (int i = 0; i < accs.size(); i++) {
-                OrderItem check = accs.get(i);
-                int id = check.getAcc_id();
+            for (int i = 0; i < menus.size(); i++) {
+                OrderItem check = menus.get(i);
+                int id = check.getMenu_id();
                 if (menu_id == id) {
                    item = check;
                    count = i;
@@ -108,12 +108,12 @@ public class Cart {
         }
     }
     public void removeItem(int count){
-        accs.remove(count);
+        menus.remove(count);
     }
     public double getTotal() {
         double total = 0;
-        for (int i = 0; i < accs.size(); i++) {
-            OrderItem item = accs.get(i);
+        for (int i = 0; i < menus.size(); i++) {
+            OrderItem item = menus.get(i);
             double amount = item.getAmount();
             total += amount;
         }
@@ -127,7 +127,7 @@ public class Cart {
         return point;
     }
     public void removeCart(){
-        accs.removeAll(accs);
+        menus.removeAll(menus);
     }
 
     private DataSource getSeproject() throws NamingException {

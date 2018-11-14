@@ -31,12 +31,17 @@ public class OrderItem {
     private double price;
     private int quentity;
     private int order_id;
-    private int acc_id;
+    private int menu_id;
     private int item_num;
+    private int shop_id;
     private double amount;
     
     public OrderItem() {
         
+    }
+
+    public OrderItem(ServletContext context) {
+        this.context = context;
     }
     public String getName() {
         return name;
@@ -104,15 +109,15 @@ public class OrderItem {
     /**
      * @return the acc_id
      */
-    public int getAcc_id() {
-        return acc_id;
+    public int getMenu_id() {
+        return menu_id;
     }
 
     /**
      * @param acc_id the acc_id to set
      */
-    public void setAcc_id(int acc_id) {
-        this.acc_id = acc_id;
+    public void setMenu_id(int menu_id) {
+        this.menu_id = menu_id;
     }
 
     /**
@@ -134,6 +139,47 @@ public class OrderItem {
      */
     public double getAmount() {
         return quentity * price;
+    }
+
+    /**
+     * @return the shop_id
+     */
+    public int getShop_id() {
+        return shop_id;
+    }
+
+    /**
+     * @param shop_id the shop_id to set
+     */
+    public void setShop_id(int shop_id) {
+        this.shop_id = shop_id;
+    }
+    
+    public Menu getMenu() throws SQLException {
+            DataSource ds = (DataSource) context.getAttribute("dataSource");
+            Connection conn = ds.getConnection();
+            
+        String sql = "SELECT * FROM menu WHERE  menuid = ?";
+        PreparedStatement s_menu = conn.prepareStatement(sql);
+        s_menu.setInt(1, menu_id);
+        ResultSet rs = s_menu.executeQuery();
+        rs.next();
+        Menu menu = new Menu();
+        menu.setName(rs.getString("name"));
+        menu.setShop_id(rs.getInt("shop_id"));
+        menu.setDescription(rs.getString("description"));
+        menu.setPrice(rs.getFloat("price"));
+        menu.setImage(rs.getString("image"));
+        menu.setRecommend(rs.getInt("recommend"));
+        if(conn !=null){
+            try{
+                conn.close();
+            }catch(SQLException e){
+                
+            }
+        }
+        return menu;
+
     }
 
 

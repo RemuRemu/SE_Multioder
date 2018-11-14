@@ -65,6 +65,7 @@
 
     <body style="background-image: url('pic/food_menu.jpg'); background-size: auto; background-attachment: fixed;">
         <div id="mySidenav" class="sidenav">
+            <a href="showProfileServlet">Profile</a>
             <a href="logoutServlet">Logout</a>
         </div>
 

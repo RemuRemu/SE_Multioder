@@ -83,23 +83,23 @@
                 <% model.Cart ord = (model.Cart) session.getAttribute("cart"); %>
                 <% if (ord != null) { %>
 
-                <% for (int i = 0; i < ord.getAccs().size(); i++) { %>
+                <% for (int i = 0; i < ord.getMenus().size(); i++) { %>
                 <div class="food_cart">
                     <form action="amountControl" method="POST">
                         <div>
-                            <img src="pic/menu_dish/<%= ord.getAccs().get(i).getImage()%>.jpg" align="left" style="width: 200px; height: 125px;">
+                            <img src="pic/menu_dish/<%= ord.getMenus().get(i).getImage()%>.jpg" align="left" style="width: 200px; height: 125px;">
                         </div>
                         <div>
                             <font size="4"><b>
-                                <%= ord.getAccs().get(i).getFoodname() %> 
-                                (<%= ord.getAccs().get(i).getName() %>)
+                                <%= ord.getMenus().get(i).getFoodname() %> 
+                                (<%= ord.getMenus().get(i).getName() %>)
                             </b></font><br>
                             
-                            ราคาจานละ &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getAccs().get(i).getPrice() %> &nbsp;บาท
+                            ราคาจานละ &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getMenus().get(i).getPrice() %> &nbsp;บาท
                             <br>
-                            จำนวนที่ต้องการ &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getAccs().get(i).getQuentity() %> &nbsp;จาน <br>
-                            <b>ราคารวม &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getAccs().get(i).getQuentity() * ord.getAccs().get(i).getPrice() %> บาท </b><br>
-                            <input type="hidden" name="menuid" value="<%= ord.getAccs().get(i).getAcc_id() %>" />
+                            จำนวนที่ต้องการ &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getMenus().get(i).getQuentity() %> &nbsp;จาน <br>
+                            <b>ราคารวม &nbsp;&nbsp;&nbsp;&nbsp; <%= ord.getMenus().get(i).getQuentity() * ord.getMenus().get(i).getPrice() %> บาท </b><br>
+                            <input type="hidden" name="menuid" value="<%= ord.getMenus().get(i).getMenu_id() %>" />
                             <button type="submit" name="amount" value="increase">เพิ่ม</button>
                             <button type="submit" name="amount" value="decrease">ลด</button>
                             <button type="submit" name="amount" value="remove">เอาออก</button><br>

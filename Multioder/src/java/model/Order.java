@@ -16,7 +16,7 @@ public class Order {
     private Date buy_date;
     private String status;
     private String address;
-    private int total;
+    private double total;
     private int userprifile_uid;
     private int shop_id;
 
@@ -79,14 +79,14 @@ public class Order {
     /**
      * @return the total
      */
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
     /**
      * @param total the total to set
      */
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
