@@ -44,9 +44,10 @@ public class Cart {
                 ResultSet rs = s_menu.executeQuery();
                 while (rs.next()) {
                     OrderItem menu = new OrderItem();
-                    menu.setName(rs.getString("shopname"));
-                    menu.setFoodname(rs.getString("name"));
+                    menu.setName(rs.getString("name"));
+                    menu.setShopname(rs.getString("shopname"));
                     menu.setImage(rs.getString("image"));
+                    menu.setShop_id(rs.getInt("shop_id"));
                     menu.setMenu_id(menu_id);
                     menu.setQuentity(quentity);
                     menu.setPrice(rs.getDouble("price"));
@@ -119,13 +120,7 @@ public class Cart {
         }
         return total;
     }
-    public double getPoint() {
-        int point = 0;
-        double totala = 0;
-        totala = this.getTotal();
-        point = (int) (totala/10);
-        return point;
-    }
+
     public void removeCart(){
         menus.removeAll(menus);
     }

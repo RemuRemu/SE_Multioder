@@ -22,6 +22,7 @@
                     <th>Name</th>
                     <th>Quantity</th>
                     <th>Price</th>
+                    <th>Shop</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +33,7 @@
                         <td>${ord.menu.name} </td>
                         <td>${ord.quentity}</td>
                         <td>${ord.price} </td>
+                        <td>${ord.shopname} </td>
                     </tr>
                 </c:forEach>
             </tbody>

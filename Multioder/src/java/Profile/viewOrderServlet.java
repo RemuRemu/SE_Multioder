@@ -64,13 +64,20 @@ public class viewOrderServlet extends HttpServlet {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
+
                 OrderItem ord = new OrderItem(getServletContext());
                 ord.setPrice(rs.getDouble("price"));
                 ord.setQuentity(rs.getInt("amount"));
                 ord.setMenu_id(rs.getInt("menu_id"));
                 ord.setItem_num(rs.getInt("itemnumber"));
                 ord.setOrder_id(rs.getInt("order_id"));
-                ord.setShop_id(rs.getInt("shop_id"));
+                int shop_id = rs.getInt("shop_id");
+                String shop = "select * from shop where shopid = ?";
+                PreparedStatement s = conn.prepareStatement(shop);
+                s.setInt(1, shop_id);
+                ResultSet rs_s = s.executeQuery();
+                rs_s.next();
+                ord.setShopname(rs_s.getString("shopname"));
                 ordlist.add(ord);
             }
             String s_order = "select * from `order` where order_id = ?";

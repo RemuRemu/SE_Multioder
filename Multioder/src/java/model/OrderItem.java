@@ -5,7 +5,6 @@
  */
 package model;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,36 +22,29 @@ import javax.sql.DataSource;
  * @author Chronical
  */
 public class OrderItem {
-        
+
     private ServletContext context;
-    private String name;
-    private String foodname;
+
     private String image;
+    private String name;
+    private String shopname;
+
     private double price;
     private int quentity;
     private int order_id;
     private int menu_id;
     private int item_num;
     private int shop_id;
-    private double amount;
-    
+
     public OrderItem() {
-        
+
     }
 
     public OrderItem(ServletContext context) {
         this.context = context;
     }
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getFoodname() {
-        return foodname;
-    }
+
 
     public String getImage() {
         return image;
@@ -61,9 +53,7 @@ public class OrderItem {
     public void setImage(String image) {
         this.image = image;
     }
-    public void setFoodname(String foodname) {
-        this.foodname = foodname;
-    }
+
     /**
      * @return the price
      */
@@ -154,11 +144,11 @@ public class OrderItem {
     public void setShop_id(int shop_id) {
         this.shop_id = shop_id;
     }
-    
+
     public Menu getMenu() throws SQLException {
-            DataSource ds = (DataSource) context.getAttribute("dataSource");
-            Connection conn = ds.getConnection();
-            
+        DataSource ds = (DataSource) context.getAttribute("dataSource");
+        Connection conn = ds.getConnection();
+
         String sql = "SELECT * FROM menu WHERE  menuid = ?";
         PreparedStatement s_menu = conn.prepareStatement(sql);
         s_menu.setInt(1, menu_id);
@@ -171,16 +161,45 @@ public class OrderItem {
         menu.setPrice(rs.getFloat("price"));
         menu.setImage(rs.getString("image"));
         menu.setRecommend(rs.getInt("recommend"));
-        if(conn !=null){
-            try{
+        if (conn != null) {
+            try {
                 conn.close();
-            }catch(SQLException e){
-                
+            } catch (SQLException e) {
+
             }
         }
         return menu;
 
     }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the shopname
+     */
+    public String getShopname() {
+        return shopname;
+    }
+
+    /**
+     * @param shopname the shopname to set
+     */
+    public void setShopname(String shopname) {
+        this.shopname = shopname;
+    }
+
 
 
 }

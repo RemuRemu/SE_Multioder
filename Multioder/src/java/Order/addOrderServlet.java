@@ -100,8 +100,8 @@ public class addOrderServlet extends HttpServlet {
                 //insert order
                 ArrayList<Order> order_list = new ArrayList<Order>();
                 String insert_order = "INSERT INTO `order`"
-                        + "(buy_date, status,address, total, userprofile_uid, shop_id) VALUES"
-                        + "(?, ?, ?, ?, ?, ?)";
+                        + "(buy_date, status,address, total, userprofile_uid) VALUES"
+                        + "(?, ?, ?, ?, ?)";
 
                 PreparedStatement c = conn.prepareStatement(insert_order, PreparedStatement.RETURN_GENERATED_KEYS);
                 Timestamp date = new Timestamp(System.currentTimeMillis());
@@ -111,7 +111,6 @@ public class addOrderServlet extends HttpServlet {
                 c.setString(3, address);
                 c.setDouble(4, total);
                 c.setInt(5, uid);
-                c.setInt(6, 1);
                 c.executeUpdate();
 
                 ResultSet rs_number = c.getGeneratedKeys();
@@ -138,6 +137,7 @@ public class addOrderServlet extends HttpServlet {
                     int menuid = item.getMenu_id();
                     double price = item.getPrice();
                     int quentity = item.getQuentity();
+                    int shop_id = item.getShop_id();
                     String insert_item = "INSERT INTO order_item"
                             + "(itemnumber, menu_id,order_id, price, amount,shop_id) VALUES"
                             + "(?, ?, ?, ?, ?,?)";
@@ -147,7 +147,7 @@ public class addOrderServlet extends HttpServlet {
                     i_item.setInt(3, order_id);
                     i_item.setDouble(4, price);
                     i_item.setInt(5, quentity);
-                    i_item.setInt(6, 1);
+                    i_item.setInt(6, shop_id);
                     i_item.executeUpdate();
                     item_num += 1;
                 }
