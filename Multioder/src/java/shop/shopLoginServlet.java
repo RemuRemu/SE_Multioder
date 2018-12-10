@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Login;
+package shop;
 
+import Login.loginServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -26,8 +27,8 @@ import javax.sql.DataSource;
  *
  * @author Chronical
  */
-@WebServlet(urlPatterns = {"/loginServlet"})
-public class loginServlet extends HttpServlet {
+@WebServlet(name = "shopLoginServlet", urlPatterns = {"/shopLoginServlet"})
+public class shopLoginServlet extends HttpServlet {
 
     @Resource(name = "seproject")
     private DataSource seproject;
@@ -87,7 +88,6 @@ public class loginServlet extends HttpServlet {
             }
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

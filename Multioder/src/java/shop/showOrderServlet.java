@@ -3,17 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Login;
+package shop;
 
+import Profile.showProfileServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,13 +24,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import model.Order;
+import model.OrderItem;
+import model.ShopOrder;
 
 /**
  *
  * @author Chronical
  */
-@WebServlet(urlPatterns = {"/loginServlet"})
-public class loginServlet extends HttpServlet {
+@WebServlet(name = "showOrderServlet", urlPatterns = {"/showOrderServlet"})
+public class showOrderServlet extends HttpServlet {
 
     @Resource(name = "seproject")
     private DataSource seproject;
@@ -44,7 +50,6 @@ public class loginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Connection conn = null;
-        
         try {
             conn = seproject.getConnection();
         } catch (SQLException ex) {
@@ -52,32 +57,55 @@ public class loginServlet extends HttpServlet {
         }
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            boolean loginflag = false;
-            String username = request.getParameter("user");
-            String password = request.getParameter("pass");
-            //find user and pass
-            String find_user = "SELECT username,password FROM userprofile WHERE  username = ? and password = ?";
-            PreparedStatement user_db = conn.prepareStatement(find_user);
-            user_db.setString(1, username);
-            user_db.setString(2, password);
-            ResultSet user_rs = user_db.executeQuery();
+//            HttpSession session = request.getSession();
+//            String username = (String) session.getAttribute("username");
+            String shopname = "KFfree";
+            String user = "SELECT * FROM shop WHERE shopname = ?";
+            PreparedStatement c = conn.prepareStatement(user);
+            c.setString(1, shopname);
+            ResultSet rs = c.executeQuery();
+            rs.next();
+            int s_id = rs.getInt("shopid");
+            ArrayList<ShopOrder> s_ordlist = new ArrayList<ShopOrder>();
+            String find_order = "SELECT * FROM order_item WHERE shop_id = ? ORDER BY order_id ASC";
+            PreparedStatement a = conn.prepareStatement(find_order);
+            a.setInt(1, s_id);
+            ResultSet rs_a = a.executeQuery();
+            while (rs_a.next()) {
 
-            if (user_rs.next() == true) {
-                loginflag = true;
+
+                ShopOrder ord = new ShopOrder();
+                int menu_id = rs_a.getInt("menu_id");
+                String menu = "SELECT * FROM menu WHERE menuid = ?";
+                PreparedStatement m = conn.prepareStatement(menu);
+                m.setInt(1, menu_id);
+                ResultSet rs_m = m.executeQuery();
+                rs_m.next();
+                ord.setFoodname(rs_m.getString("name"));
+
+                        
+                ord.setPrice(rs_a.getDouble("price"));
+                ord.setQuentity(rs_a.getInt("amount"));
+
+                int order_id = rs_a.getInt("order_id");
+
+                String order = "SELECT * FROM `order` WHERE order_id = ?";
+                PreparedStatement o = conn.prepareStatement(order);
+                o.setInt(1, order_id);
+                ResultSet rs_o = o.executeQuery();
+                rs_o.next();
+                ord.setOrder_id(rs_o.getInt("order_id"));
+                ord.setBuy_date(rs_o.getDate("buy_date"));
+
+                s_ordlist.add(ord);
 
             }
-            HttpSession session = request.getSession();
-            session.setAttribute("loginflag", loginflag);
-            
-            if (loginflag == true) {
-                session.setAttribute("username", username);
-                response.sendRedirect("menuServlet");
-            } else {
-                response.sendRedirect("login.jsp");
-            }
 
+            request.setAttribute("s_ordlist", s_ordlist);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop/show_order.jsp");
+            rd.forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(showProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (conn != null) {
             try {

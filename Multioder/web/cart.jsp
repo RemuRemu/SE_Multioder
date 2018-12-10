@@ -91,7 +91,7 @@
                         </div>
                         <div>
                             <font size="4"><b>
-                                <%= ord.getMenus().get(i).getFoodname() %> 
+                               
                                 (<%= ord.getMenus().get(i).getName() %>)
                             </b></font><br>
                             
