@@ -5,7 +5,7 @@
  */
 package shop;
 
-import Profile.showProfileServlet;
+import Profile.viewOrderServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -22,18 +22,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import model.Order;
 import model.OrderItem;
-import model.ShopOrder;
 
 /**
  *
  * @author Chronical
  */
-@WebServlet(name = "showOrderServlet", urlPatterns = {"/showOrderServlet"})
-public class showOrderServlet extends HttpServlet {
+@WebServlet(name = "viewShopOrderServlet", urlPatterns = {"/viewShopOrderServlet"})
+public class viewShopOrderServlet extends HttpServlet {
 
     @Resource(name = "seproject")
     private DataSource seproject;
@@ -57,44 +55,30 @@ public class showOrderServlet extends HttpServlet {
         }
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-//            HttpSession session = request.getSession();
-//            String username = (String) session.getAttribute("username");
-            String shopname = "KFfree";
-            String user = "SELECT * FROM shop WHERE shopname = ?";
-            PreparedStatement c = conn.prepareStatement(user);
-            c.setString(1, shopname);
-            ResultSet rs = c.executeQuery();
-            rs.next();
-            int s_id = rs.getInt("shopid");
-            ArrayList<Order> s_ordlist = new ArrayList<Order>();
-            String find_order = "SELECT * FROM order_item WHERE shop_id = ? ORDER BY order_id ASC";
-            PreparedStatement a = conn.prepareStatement(find_order);
-            a.setInt(1, s_id);
-            ResultSet rs_a = a.executeQuery();
-            while (rs_a.next()) {
+            String order = request.getParameter("ord_id");
+            int order_id = Integer.parseInt(order);
+            ArrayList<OrderItem> s_itemlist = new ArrayList<OrderItem>();
+            String sql = "select * from order_item where order_id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, order_id);
+            ResultSet rs = stmt.executeQuery();
 
-                int order_id = rs_a.getInt("order_id");
+            while (rs.next()) {
 
-                String order = "SELECT * FROM `order` WHERE order_id = ?";
-                PreparedStatement o = conn.prepareStatement(order);
-                o.setInt(1, order_id);
-                ResultSet rs_o = o.executeQuery();
-                while (rs_o.next()) {
-                    Order ord = new Order();
-                    ord.setOrder_id(rs_o.getInt("order_id"));
-                    ord.setBuy_date(rs_o.getDate("buy_date"));
-                    ord.setStatus(rs_o.getString("status"));
-                    ord.setAddress(rs_o.getString("address"));
-                    ord.setTotal(rs_o.getInt("total"));
-                    s_ordlist.add(ord);
-                }
+                OrderItem item = new OrderItem(getServletContext());
+                item.setPrice(rs.getDouble("price"));
+                item.setQuentity(rs.getInt("amount"));
+                item.setMenu_id(rs.getInt("menu_id"));
+                item.setItem_num(rs.getInt("itemnumber"));
+                item.setOrder_id(rs.getInt("order_id"));
+                s_itemlist.add(item);
             }
 
-            request.setAttribute("s_ordlist", s_ordlist);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop/show_order.jsp");
+            request.setAttribute("s_itemlist", s_itemlist);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop/view_order.jsp");
             rd.forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(showProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(viewOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (conn != null) {
             try {

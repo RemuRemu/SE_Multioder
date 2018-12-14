@@ -1,11 +1,11 @@
 <%-- 
-    Document   : show_order
-    Created on : Dec 9, 2018, 2:13:28 PM
+    Document   : view_order
+    Created on : Dec 14, 2018, 8:17:05 PM
     Author     : Chronical
 --%>
 
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,41 +18,31 @@
     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>Order</h1>
-
-
-    <table  id="s_order" border="1" class="table table-striped table-border checkout-table">
+    <table id="s_item" border="1" class="table table-striped table-border checkout-table">
         <thead>
             <tr>
-                <th>Order ID</th>
-                <th>Buy Date</th>
-                <th>Total price</th>
-                <th>Address</th>
-                <th></th>
+                <th>Item number</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="ord" items="${s_ordlist}">
-                <tr>
-                    <td>${ord.order_id} </td>
-                    <td>${ord.buy_date} </td>
-                    <td>${ord.total}</td>
-                    <td>${ord.address}</td>
-                    <td><a href="viewShopOrderServlet?ord_id=${ord.order_id}" > View </a></td>
+            <c:forEach var="ord" items="${s_itemlist}">
+                <tr> 
+
+                    <td>${ord.item_num} </td>
+                    <td>${ord.menu.name} </td>
+                    <td>${ord.quentity}</td>
+                    <td>${ord.price} </td>
                 </tr>
-
             </c:forEach>
-
         </tbody>
     </table>
-
-
-</table>
-<a href="shop/shop_login.jsp">Back</button></a>
 </body>
 <script>
     $(document).ready(function () {
-        $('#s_order').dataTable();
+        $('#s_item').dataTable();
     });
 </script>
 </html>
