@@ -86,7 +86,7 @@
                 <a href="cart.jsp"><div id="shop"></div></a>
             </div>
         </div>
-        <div id="mainbody" onclick="closeNav()">
+        <div id="mainbody" onclick="closeNav()"></div>
         <div class="con_area">
             <div class="image spinner">
                 <img src="pic/complete.png" align="middle" style="margin: 30px;">

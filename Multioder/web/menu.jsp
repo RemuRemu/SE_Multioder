@@ -77,7 +77,7 @@
                 <a href="cart.jsp"><div id="shop"></div></a>
             </div>
         </div>
-        <div id="mainbody" onclick="closeNav()">
+        <div id="mainbody" onclick="closeNav()"></div>
             <div class="con_area">
                 <div class="rec">
                     <img src="pic/rec1.jpg" class="slide anime" style="width: 100%;">

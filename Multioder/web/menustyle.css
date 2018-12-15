@@ -41,7 +41,7 @@ body {
 #home_area {
     height: 50px;
     background-size: cover;
-    width: 75px;
+    /*width: 75px;*/
     padding-top: 5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -96,7 +96,7 @@ body {
     background-color: #F0EFEA;
     max-width: 1024px;
     min-width: 720px;
-    height: 100%;
+    /*height: 100%;*/
     /*background-color: red;*/
     margin-left: auto;
     margin-right: auto;

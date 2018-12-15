@@ -72,7 +72,7 @@
             </div>
         </div>
         
-        <div id="mainbody" onclick="closeNav()">
+        <div id="mainbody" onclick="closeNav()"></div>
         <div class="con_area">
             <div class="title">
                 <font class="head_name" size="6" color="black">ตะกร้าอาหารของคุณ</font>
