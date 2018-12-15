@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import model.Order;
+import model.Profile;
 
 /**
  *
@@ -77,6 +78,24 @@ public class showProfileServlet extends HttpServlet {
                 ord.setUserprifile_uid(rs_a.getInt("userprofile_uid"));
                 ordlist.add(ord);
             }
+            String profile = "SELECT * FROM userprofile WHERE uid = ?";
+            PreparedStatement p = conn.prepareStatement(profile);
+            p.setInt(1, u_id);
+            ResultSet rs_p = p.executeQuery();
+
+            
+            Profile pro = new Profile();
+            while (rs_p.next()) {
+                pro.setUid(rs_p.getInt("uid"));
+                pro.setUsername(rs_p.getString("username")); 
+                pro.setPassword(rs_p.getString("password")); 
+                pro.setFirstname(rs_p.getString("firstname")); 
+                pro.setLastname(rs_p.getString("lastname"));
+                pro.setEmail(rs_p.getString("email")); 
+                pro.setPhone(rs_p.getString("phone")); 
+
+            }
+            request.setAttribute("pro", pro);
 
             request.setAttribute("ordlist", ordlist);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/profile.jsp");
