@@ -89,7 +89,7 @@
                         <form action="/Multioder/ProcessSelection">
                             <button type="submit" name="add" value="${rec.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
                             <font size="5"><b>${rec.shopname}</b></font> <br>
-                            <img src="pic/menu_dish/${rec.image}.jpg"> <br>
+                            <img src="pic/menu_dish/${rec.image}.jpg" style="max-width: 300px; max-height: 125px;"> <br>
                             รายละเอียด : ${rec.description} <br>
                             ราคาต่อจาน : ${rec.price} บาท
                         </form>
