@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `address`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `address` (
   `address_id` int(11) NOT NULL AUTO_INCREMENT,
-  `address_des` varchar(45) NOT NULL,
+  `address_des` longtext NOT NULL,
   `userprofile_uid` int(11) NOT NULL,
   PRIMARY KEY (`address_id`,`userprofile_uid`),
   KEY `userprofile_address_id_idx` (`userprofile_uid`),
   CONSTRAINT `userprofile_address_id` FOREIGN KEY (`userprofile_uid`) REFERENCES `userprofile` (`uid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,32 @@ LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
 INSERT INTO `address` VALUES (1,'72/6น้า',1),(2,'72/5',1),(3,'72/6 ต.หนามแดง อ.เมือง จ.ฉะเชิงเทรา 24000',3),(4,'72/4 ต.หนามแดง อ.เมือง จ.ฉะเชิงเทรา 24000',3),(5,'คณะเทคโนโลยีสารสนเทศ 10520',3),(6,'11/12 อ.หัวหิน จ. ประจวบคีรีขันธ์ 77110',4),(7,'11/13 อ.หัวหิน จ. ประจวบคีรีขันธ์ 77110',4),(8,'11/14 อ.หัวหิน จ. ประจวบคีรีขันธ์ 77110',4);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `employees`
+--
+
+DROP TABLE IF EXISTS `employees`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `employees` (
+  `emid` int(11) NOT NULL,
+  `emuser` varchar(45) DEFAULT NULL,
+  `empass` varchar(45) DEFAULT NULL,
+  `emfirstname` varchar(45) DEFAULT NULL,
+  `emlastname` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`emid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `employees`
+--
+
+LOCK TABLES `employees` WRITE;
+/*!40000 ALTER TABLE `employees` DISABLE KEYS */;
+/*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -139,6 +165,33 @@ LOCK TABLES `order_item` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `orderist`
+--
+
+DROP TABLE IF EXISTS `orderist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `orderist` (
+  `orderid` int(11) NOT NULL,
+  `status` enum('prepare','sending','done') DEFAULT 'prepare',
+  `shopid` int(11) NOT NULL,
+  PRIMARY KEY (`orderid`,`shopid`),
+  KEY `shopid_idx` (`shopid`),
+  CONSTRAINT `orderid` FOREIGN KEY (`orderid`) REFERENCES `order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `shopid` FOREIGN KEY (`shopid`) REFERENCES `shop` (`shopid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orderist`
+--
+
+LOCK TABLES `orderist` WRITE;
+/*!40000 ALTER TABLE `orderist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderist` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `payment`
 --
 
@@ -177,7 +230,10 @@ CREATE TABLE `shop` (
   `shopname` varchar(45) NOT NULL,
   `shop_status` tinyint(4) NOT NULL,
   `shoplogo` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`shopid`)
+  `shopusername` varchar(45) DEFAULT NULL,
+  `shoppassword` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`shopid`),
+  UNIQUE KEY `shopusername_UNIQUE` (`shopusername`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -187,7 +243,7 @@ CREATE TABLE `shop` (
 
 LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-INSERT INTO `shop` VALUES (1,'KFfree',1,NULL),(2,'McRonald',1,NULL),(3,'Pixxarhut',1,NULL),(4,'ดักกินโดนัท',1,NULL),(5,'HestiaFamilia',1,NULL),(6,'LokiFamilia',1,NULL),(7,'Wu',1,NULL),(8,'Shu',1,NULL),(9,'Wei',1,NULL),(10,'Orochi',1,NULL),(11,'Nuwa',0,NULL),(12,'Fuxi',0,NULL);
+INSERT INTO `shop` VALUES (1,'KFfree',1,NULL,'kfc','kfc'),(2,'McRonald',1,NULL,'mc','mc'),(3,'Pixxarhut',1,NULL,'pizza','pizza'),(4,'ดักกินโดนัท',1,NULL,'donut','donut'),(5,'HestiaFamilia',1,NULL,NULL,NULL),(6,'LokiFamilia',1,NULL,NULL,NULL),(7,'Wu',1,NULL,NULL,NULL),(8,'Shu',1,NULL,NULL,NULL),(9,'Wei',1,NULL,NULL,NULL),(10,'Orochi',1,NULL,NULL,NULL),(11,'Nuwa',0,NULL,NULL,NULL),(12,'Fuxi',0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,4 +286,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-02 13:19:44
+-- Dump completed on 2018-12-15 13:41:30
