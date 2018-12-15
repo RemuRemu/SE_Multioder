@@ -113,11 +113,8 @@ CREATE TABLE `order` (
   `address` varchar(45) NOT NULL,
   `total` varchar(45) NOT NULL,
   `userprofile_uid` int(11) NOT NULL,
-  `shop_id` int(11) NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `userprofile_order_uid_idx` (`userprofile_uid`),
-  KEY `shop_order_idx` (`shop_id`),
-  CONSTRAINT `shop_order` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shopid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `userprofile_order_uid` FOREIGN KEY (`userprofile_uid`) REFERENCES `userprofile` (`uid`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -286,4 +283,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-15 13:41:30
+-- Dump completed on 2018-12-15 14:45:17
