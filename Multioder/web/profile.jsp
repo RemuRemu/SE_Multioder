@@ -6,14 +6,15 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
-<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+        <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Multioder - Profile</title>
         <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
@@ -66,6 +67,7 @@
     </head>
     <body style="background-image: url('pic/food_menu.jpg'); background-size: auto; background-attachment: fixed;">
         <div id="mySidenav" class="sidenav">
+            <a href="showProfileServlet">Profile</a>
             <a href="logoutServlet">Logout</a>
         </div>
         <div class="back"></div>
@@ -76,45 +78,46 @@
                 <a href="cart.jsp"><div id="shop"></div></a>
             </div>
         </div>
-        <div id="mainbody" onclick="closeNav()"></div>
+        <div id="mainbody" onclick="closeNav()">
 
-        <div class="con_area">
-            <div class="profile" style="width: 90%; margin: auto; padding-top: 1.5em; padding-bottom: 1.5em;">
-                <font class="head_name" size='6' color='black'>Profile</font><br>
-                <font size='4'>
-                Email: ${pro.email}<br>
-                First name: ${pro.firstname}<br>
-                Last name: ${pro.lastname}<br>
-                Phone: ${pro.phone}<br><br>
-                <a href="showEditProfileServlet"><button>Edit Profile</button></a>
-                <a href="menuServlet"><button>Back</button></a>
-                </font>
-                <br><br><hr style="border-top: 2px solid #000;"><br>
-                <font class="head_name" size='6' color='black'>Order</font>
-                <font size='4'>
-                <table id="profile" border="1" class="table table-striped table-border checkout-table">
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Buy Date</th>
-                            <th>Total price</th>
-                            <th>Address</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="ord" items="${ordlist}">
+            <div class="con_area">
+                <div class="profile" style="width: 90%; margin: auto; padding-top: 1.5em; padding-bottom: 1.5em;">
+                    <font class="head_name" size='6' color='black'>Profile</font><br>
+                    <font size='4'>
+                    Email: ${pro.email}<br>
+                    First name: ${pro.firstname}<br>
+                    Last name: ${pro.lastname}<br>
+                    Phone: ${pro.phone}<br><br>
+                    <a href="showEditProfileServlet"><button>Edit Profile</button></a>
+                    <a href="menuServlet"><button>Back</button></a>
+                    </font>
+                    <br><br><hr style="border-top: 2px solid #000;"><br>
+                    <font class="head_name" size='6' color='black'>Order</font>
+                    <font size='4'>
+                    <table id="profile" border="1" class="table table-striped table-border checkout-table">
+                        <thead>
                             <tr>
-                                <td>${ord.order_id} </td>
-                                <td>${ord.buy_date} </td>
-                                <td>${ord.total}</td>
-                                <td>${ord.address}</td>
-                                <td><a href="viewOrderServlet?ord_id=${ord.order_id}" > View </a></td>
+                                <th>Order ID</th>
+                                <th>Buy Date</th>
+                                <th>Total price</th>
+                                <th>Address</th>
                             </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="ord" items="${ordlist}">
+                                <tr>
+                                    <td>${ord.order_id} </td>
+                                    <td>${ord.buy_date} </td>
+                                    <td>${ord.total}</td>
+                                    <td>${ord.address}</td>
+                                    <td><a href="viewOrderServlet?ord_id=${ord.order_id}" > View </a></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
 
-                </font>
+                    </font>
+                </div>
             </div>
         </div>
         <script>
@@ -122,5 +125,19 @@
                 $('#profile').dataTable();
             });
         </script>
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "-250px";
+                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+                document.body.style.backgroundColor = "white";
+            }
+        </script>
+
     </body>
 </html>

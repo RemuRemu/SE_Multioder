@@ -60,6 +60,7 @@
     </head>
     <body style="background-image: url('pic/food_menu.jpg'); background-size: auto; background-attachment: fixed;">
         <div id="mySidenav" class="sidenav">
+            <a href="showProfileServlet">Profile</a>
             <a href="logoutServlet">Logout</a>
         </div>
         <div class="back"></div>
@@ -70,52 +71,62 @@
                 <a href="cart.jsp"><div id="shop"></div></a>
             </div>
         </div>
-        <div id="mainbody" onclick="closeNav()"></div>
-        
-        <div class="con_area">
-        <form action="editProfileServlet" method="POST">
-            Old Password: <input type="password" name="old_pass" value=""/>
-            New Password: <input type="password" name="new_pass" value=""/>
-            Email: <input type="text" name="email" value="${pro.email}"/>
-            First name: <input type="text" name="firstname" value="${pro.firstname}"/>
-            Last name: <input type="text" name="lastname" value="${pro.lastname}"/>
-            Phone: <input type="text" name="phone" value="${pro.phone}"/>
+        <div id="mainbody" onclick="closeNav()">
+            <div class="con_area">
+                <div class="profile" style="width: 90%; margin: auto; padding-top: 1.5em; padding-bottom: 1.5em;">
+                    <font class="head_name" size='6' color='black'>Edit Profile</font><br>
+                    <form action="editProfileServlet" method="POST">
+                        Old Password: <input type="password" name="old_pass" value=""/><br>
+                        New Password: <input type="password" name="new_pass" value=""/><br>
+                        Email: <input type="text" name="email" value="${pro.email}"/><br>
+                        First name: <input type="text" name="firstname" value="${pro.firstname}"/><br>
+                        Last name: <input type="text" name="lastname" value="${pro.lastname}"/><br>
+                        Phone: <input type="text" name="phone" value="${pro.phone}"/><br>
 
-            <input type="submit" value="Save" />
-        </form>
-
-
-
-        <table border="1" class="table table-striped table-border checkout-table">
-            <thead>
-                <tr>
-                    <th>Address</th>
-                </tr>
-            </thead>
-            <tbody>
-            <form action="deleteAddressServlet" method="POST">
-                <c:forEach var="add" items="${addlist}">
-
-                    <tr>
-                        <td>${add.address_des} </td>              
-                    
-                    <form action="deleteAddressServlet" method="POST">
-                        <input type="hidden" name="add_id" value="${add.address_id}" />
-                        <td><input type="submit" value="delete" /></td>
+                        <input type="submit" value="Save" />
                     </form>
-                    
-                    </tr>
-
-                </c:forEach>
-            </form>
-
-        </tbody>
-    </table>
-    <a href="newAddress.jsp">Add new address</a>
-    <c:if test="${password == 1}">
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script>swal("Password incorrect");</script>  
-    </c:if>
+                    <br><br><hr style="border-top: 2px solid #000;"><br>
+                    <font class="head_name" size='6' color='black'>Edit Address</font><br>
+                    <table border="1" class="table table-striped table-border checkout-table">
+                        <thead>
+                            <tr>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <form action="deleteAddressServlet" method="POST">
+                            <c:forEach var="add" items="${addlist}">
+                                <tr>
+                                    <td>${add.address_des} </td>              
+                                <form action="deleteAddressServlet" method="POST">
+                                    <input type="hidden" name="add_id" value="${add.address_id}" />
+                                    <td><input type="submit" value="delete" /></td>
+                                </form>
+                                </tr>
+                            </c:forEach>
+                        </form>
+                        </tbody>
+                    </table>
+                    <a href="newAddress.jsp">Add new address</a>
+                    <c:if test="${password == 1}">
+                        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                        <script>swal("Password incorrect");</script>  
+                    </c:if>
+                </div>
+            </div>
         </div>
-</body>
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "-250px";
+                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+                document.body.style.backgroundColor = "white";
+            }
+        </script>
+    </body>
 </html>

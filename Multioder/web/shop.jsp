@@ -72,52 +72,52 @@
                 <a href="cart.jsp"><div id="shop"></div></a>
             </div>
         </div>
-        <div id="mainbody" onclick="closeNav()"></div>
-        <div class="con_area">
-            <div class="title">
-                <font class="head_name" size="6" color="black">เลือกร้านค้าที่ต้องการ</font>
-                <a href="menuServlet"><button type="submit" class="go_back">กลับสู่หน้าหลัก</button></a>
+        <div id="mainbody" onclick="closeNav()">
+            <div class="con_area">
+                <div class="title">
+                    <font class="head_name" size="6" color="black">เลือกร้านค้าที่ต้องการ</font>
+                    <a href="menuServlet"><button type="submit" class="go_back">กลับสู่หน้าหลัก</button></a>
+                </div>
+
+                <div class="subtitle">
+                    <font class="head_name" size="5" color="black">ร้านค้าแนะนำ</font>
+                </div>
+                <div class="shop_area" style="width: 94%; margin-left: auto; margin-right: auto;">
+                    <c:forEach var="rec"  items="${rec_menu_list}">  
+                        <div class="shop" style="width: 97%; margin-left: auto; margin-right: auto; margin-bottom: 15px;
+                             background-color: #F5CA99; border: 2px solid black; border-radius: 10px;padding: 10px;">
+                            <form action="/Multioder/ProcessSelection">
+                                <button type="submit" name="add" value="${rec.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
+                                <font size="5"><b>${rec.shopname}</b></font> <br>
+                                <img src="pic/menu_dish/${rec.image}.jpg" style="max-width: 300px; max-height: 125px;"> <br>
+                                รายละเอียด : ${rec.description} <br>
+                                ราคาต่อจาน : ${rec.price} บาท
+                            </form>
+                        </div>
+                    </c:forEach>
+                </div>
+
+                <div class="subtitle">
+                    <font class="head_name" size="5" color="black">ร้านค้าทั้งหมด</font>
+                </div>
+                <div class="shop_area" style="width: 94%; margin-left: auto; margin-right: auto;">
+                    <c:forEach var="menu"  items="${menu_list}">  
+                        <div class="shop" style="width: 97%; margin-left: auto; margin-right: auto; margin-bottom: 15px;
+                             background-color: #F5CA99; border: 2px solid black; border-radius: 10px;padding: 10px; font-size: 17px;">
+                            <form action="/Multioder/ProcessSelection">
+                                <button type="submit" name="add" value="${menu.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
+                                <font size="5"><b>${menu.shopname} </b></font> <br>
+                                <img src="pic/menu_dish/${menu.image}.jpg"> <br>
+                                รายละเอียด : ${menu.description} <br>
+                                ราคาจานล่ะ : ${menu.price} บาท <br>
+                            </form>
+                        </div>
+                    </c:forEach>
+                </div>
+
             </div>
-            
-            <div class="subtitle">
-                <font class="head_name" size="5" color="black">ร้านค้าแนะนำ</font>
-            </div>
-            <div class="shop_area" style="width: 94%; margin-left: auto; margin-right: auto;">
-                <c:forEach var="rec"  items="${rec_menu_list}">  
-                    <div class="shop" style="width: 97%; margin-left: auto; margin-right: auto; margin-bottom: 15px;
-                         background-color: #F5CA99; border: 2px solid black; border-radius: 10px;padding: 10px;">
-                        <form action="/Multioder/ProcessSelection">
-                            <button type="submit" name="add" value="${rec.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
-                            <font size="5"><b>${rec.shopname}</b></font> <br>
-                            <img src="pic/menu_dish/${rec.image}.jpg" style="max-width: 300px; max-height: 125px;"> <br>
-                            รายละเอียด : ${rec.description} <br>
-                            ราคาต่อจาน : ${rec.price} บาท
-                        </form>
-                    </div>
-                </c:forEach>
-            </div>
-            
-            <div class="subtitle">
-                <font class="head_name" size="5" color="black">ร้านค้าทั้งหมด</font>
-            </div>
-            <div class="shop_area" style="width: 94%; margin-left: auto; margin-right: auto;">
-                <c:forEach var="menu"  items="${menu_list}">  
-                    <div class="shop" style="width: 97%; margin-left: auto; margin-right: auto; margin-bottom: 15px;
-                         background-color: #F5CA99; border: 2px solid black; border-radius: 10px;padding: 10px; font-size: 17px;">
-                        <form action="/Multioder/ProcessSelection">
-                            <button type="submit" name="add" value="${menu.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
-                            <font size="5"><b>${menu.shopname} </b></font> <br>
-                            <img src="pic/menu_dish/${menu.image}.jpg"> <br>
-                            รายละเอียด : ${menu.description} <br>
-                            ราคาจานล่ะ : ${menu.price} บาท <br>
-                        </form>
-                    </div>
-                </c:forEach>
-            </div>
-            
         </div>
-        </div>
-         <script>
+        <script>
             function openNav() {
                 document.getElementById("mySidenav").style.width = "250px";
                 document.getElementById("main").style.marginLeft = "-250px";
