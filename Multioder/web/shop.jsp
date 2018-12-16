@@ -62,7 +62,6 @@
     </head>
     <body style="background-image: url('pic/food_menu.jpg'); background-size: auto; background-attachment: fixed;">
         <div id="mySidenav" class="sidenav">
-            <a href="showProfileServlet">Profile</a>
             <a href="logoutServlet">Logout</a>
         </div>
         <div class="back"></div>
@@ -86,7 +85,7 @@
                 <div class="shop_area" style="width: 94%; margin-left: auto; margin-right: auto;">
                     <c:forEach var="rec"  items="${rec_menu_list}">  
                         <div class="shop" style="width: 97%; margin-left: auto; margin-right: auto; margin-bottom: 15px;
-                             background-color: #F5CA99; border: 2px solid black; border-radius: 10px;padding: 10px;">
+                             background-color: #F5CA99; border-radius: 10px; padding: 10px; box-shadow: 2px 2px 5px grey;">
                             <form action="/Multioder/ProcessSelection">
                                 <button type="submit" name="add" value="${rec.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
                                 <font size="5"><b>${rec.shopname}</b></font> <br>
@@ -104,11 +103,11 @@
                 <div class="shop_area" style="width: 94%; margin-left: auto; margin-right: auto;">
                     <c:forEach var="menu"  items="${menu_list}">  
                         <div class="shop" style="width: 97%; margin-left: auto; margin-right: auto; margin-bottom: 15px;
-                             background-color: #F5CA99; border: 2px solid black; border-radius: 10px;padding: 10px; font-size: 17px;">
+                             background-color: #F5CA99; border-radius: 10px;padding: 10px; font-size: 17px; box-shadow: 2px 2px 5px gray;">
                             <form action="/Multioder/ProcessSelection">
                                 <button type="submit" name="add" value="${menu.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
                                 <font size="5"><b>${menu.shopname} </b></font> <br>
-                                <img src="pic/menu_dish/${menu.image}.jpg"> <br>
+                                <img src="pic/menu_dish/${menu.image}.jpg" style="max-width: 300px; max-height: 125px;"> <br>
                                 รายละเอียด : ${menu.description} <br>
                                 ราคาจานล่ะ : ${menu.price} บาท <br>
                             </form>
