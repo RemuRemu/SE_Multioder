@@ -103,6 +103,7 @@ body {
     /*overflow: hidden;*/
     margin-top: 60px;
     margin-bottom: 10px;
+    box-shadow: 3px 3px 20px grey;
 }
 
 .go_back {
@@ -219,4 +220,8 @@ input[type=submit]:hover, button:hover {
 
 .next {
     float: right;
+}
+
+tr {
+    padding: 1em;
 }

@@ -76,28 +76,34 @@
                 <div class="profile" style="width: 90%; margin: auto; padding-top: 1.5em; padding-bottom: 1.5em;">
                     <font class="head_name" size='6' color='black'>Edit Profile</font><br>
                     <form action="editProfileServlet" method="POST">
-                        Old Password: <input type="password" name="old_pass" value=""/><br>
-                        New Password: <input type="password" name="new_pass" value=""/><br>
-                        Email: <input type="text" name="email" value="${pro.email}"/><br>
-                        First name: <input type="text" name="firstname" value="${pro.firstname}"/><br>
-                        Last name: <input type="text" name="lastname" value="${pro.lastname}"/><br>
-                        Phone: <input type="text" name="phone" value="${pro.phone}"/><br>
+                        <font size='4'>
+                        Old Password: <input type="password" name="old_pass" value="" style="font-size: 1em;"/><br>
+                        New Password: <input type="password" name="new_pass" value="" style="font-size: 1em;"/><br>
+                        Email: <input type="text" name="email" value="${pro.email}" style="font-size: 1em;"/><br>
+                        First name: <input type="text" name="firstname" value="${pro.firstname}" style="font-size: 1em;"/><br>
+                        Last name: <input type="text" name="lastname" value="${pro.lastname}" style="font-size: 1em;"/><br>
+                        Phone: <input type="text" name="phone" value="${pro.phone}" style="font-size: 1em;"/><br>
 
                         <input type="submit" value="Save" />
+                        </font>
                     </form>
+
                     <br><br><hr style="border-top: 2px solid #000;"><br>
                     <font class="head_name" size='6' color='black'>Edit Address</font><br>
-                    <table border="1" class="table table-striped table-border checkout-table">
+                    
+                    <table border="1" class="table table-striped table-border checkout-table" style="font-size: 1.1em;">
+                        <!--<font size='4'>-->
                         <thead>
                             <tr>
                                 <th>Address</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                         <form action="deleteAddressServlet" method="POST">
                             <c:forEach var="add" items="${addlist}">
                                 <tr>
-                                    <td>${add.address_des} </td>              
+                                    <td>${add.address_des} </td>
                                 <form action="deleteAddressServlet" method="POST">
                                     <input type="hidden" name="add_id" value="${add.address_id}" />
                                     <td><input type="submit" value="delete" /></td>
@@ -106,7 +112,9 @@
                             </c:forEach>
                         </form>
                         </tbody>
+                        <!--</font>-->
                     </table>
+                    
                     <a href="newAddress.jsp">Add new address</a>
                     <c:if test="${password == 1}">
                         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
