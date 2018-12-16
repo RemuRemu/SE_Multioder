@@ -107,9 +107,6 @@ body {
     padding-bottom: 1em;
 }
 
-.go_back {
-    float: right;
-}
 
 .rec {
     max-width: 1024px;
@@ -129,7 +126,6 @@ body {
     background-color: #F5CA99;
     transition: background-color 0.3s;
     padding: 7px;
-    float: right;
 }
 
 .anime {
@@ -143,6 +139,8 @@ body {
 }
 
 .title {
+    display: flex;
+    justify-content: space-between;
     width: 95%;
     height: 50px;
     padding: 15px;
@@ -203,6 +201,7 @@ input, textarea, button {
     transition: background-color 0.3s;
     padding: 7px;
     margin-top: 5px;
+    color: black;
 }
 
 input[type=submit]:hover, button:hover {
