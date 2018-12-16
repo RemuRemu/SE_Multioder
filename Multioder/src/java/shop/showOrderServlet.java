@@ -57,9 +57,8 @@ public class showOrderServlet extends HttpServlet {
         }
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-//            HttpSession session = request.getSession();
-//            String username = (String) session.getAttribute("username");
-            String shopname = "KFfree";
+            HttpSession session = request.getSession(); 
+            String shopname = (String) session.getAttribute("shopname");
             String user = "SELECT * FROM shop WHERE shopname = ?";
             PreparedStatement c = conn.prepareStatement(user);
             c.setString(1, shopname);

@@ -57,22 +57,23 @@ public class shopLoginServlet extends HttpServlet {
             String username = request.getParameter("user");
             String password = request.getParameter("pass");
             //find user and pass
-            String find_user = "SELECT username,password FROM userprofile WHERE  username = ? and password = ?";
+            String find_user = "SELECT shopname,shopusername,shoppassword FROM shop WHERE  shopusername = ? and shoppassword = ?";
             PreparedStatement user_db = conn.prepareStatement(find_user);
             user_db.setString(1, username);
             user_db.setString(2, password);
             ResultSet user_rs = user_db.executeQuery();
-
+            String shopname= null;
             if (user_rs.next() == true) {
                 loginflag = true;
+             shopname = user_rs.getString("shopname");
 
             }
             HttpSession session = request.getSession();
             session.setAttribute("loginflag", loginflag);
             
             if (loginflag == true) {
-                session.setAttribute("username", username);
-                response.sendRedirect("menuServlet");
+                session.setAttribute("shopname", shopname);
+                response.sendRedirect("showOrderServlet");
             } else {
                 response.sendRedirect("login.jsp");
             }

@@ -18,6 +18,9 @@
     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </head>
     <body>
+        
+        <a href="addnewshop.jsp"><input type="submit" value="Add new Shop" /></a>
+        
         <table id="shop_admin" border="1">
                <thead>
                 <tr>
@@ -25,6 +28,7 @@
                     <th>Name</th>
                     <th>Shop status</th>
                     <th>Logo</th>
+                    <th></th>
                 </tr>
             </thead>
         <c:forEach var="shop" items="${shop_list}">
@@ -33,24 +37,30 @@
                     <td>${shop.shopid}</td>
                     <td>${shop.shopname}</td>
                     <td>
+                        <select name="status">
                     <c:set var = "status" scope = "session" value = "${shop.shop_status}"/>
                     <c:choose> 
                     <c:when test = "${shop.shop_status == true}">
-                                     active
+                                    <option> active</option>
+                                    <option>inactive</option>
                                 </c:when>
                     <c:when test = "${shop.shop_status == false}">
-                                     inactive
+                                     <option>inactive</option>
+                                     <option> active</option>
                                 </c:when>
                     <c:otherwise>
                                     No comment sir...
                     </c:otherwise>
                      </c:choose>     
+                                    </select>  
                                     </td>
                     <td>${shop.shoplogo}</td>
+                    <td>View</td>
                 </tr>
                 
             </tbody>
         </c:forEach>
+            
              </table>
         
     </body>
