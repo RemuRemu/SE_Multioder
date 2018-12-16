@@ -67,8 +67,8 @@
     </head>
     <body style="background-image: url('pic/food_menu.jpg'); background-size: auto; background-attachment: fixed;">
         <div id="mySidenav" class="sidenav">
-            <a href="showProfileServlet">Profile</a>
-            <a href="logoutServlet">Logout</a>
+            <a href="showProfileServlet">ข้อมูลส่วนตัว</a>
+            <a href="logoutServlet">ออกจากระบบ</a>
         </div>
         <div class="back"></div>
         <div class="menu_area">
@@ -88,19 +88,19 @@
                     First name: ${pro.firstname}<br>
                     Last name: ${pro.lastname}<br>
                     Phone: ${pro.phone}<br><br>
-                    <a href="showEditProfileServlet"><button>Edit Profile</button></a>
-                    <a href="menuServlet"><button>Back</button></a>
+                    <a href="showEditProfileServlet"><button>แก้ไขข้อมูลส่วนตัว</button></a>
+                    <a href="menuServlet"><button>กลับสู่หน้าหลัก</button></a>
                     </font>
                     <br><br><hr style="border-top: 2px solid #000;"><br>
                     <font class="head_name" size='6' color='black'>Order</font>
-                    <font size='4'>
-                    <table id="profile" border="1" class="table table-striped table-border checkout-table">
+                    <table id="profile" border="1" class="table table-striped table-border checkout-table" style="font-size: 1.15em;">
                         <thead>
                             <tr>
                                 <th>Order ID</th>
                                 <th>Buy Date</th>
                                 <th>Total price</th>
                                 <th>Address</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -110,13 +110,11 @@
                                     <td>${ord.buy_date} </td>
                                     <td>${ord.total}</td>
                                     <td>${ord.address}</td>
-                                    <td><a href="viewOrderServlet?ord_id=${ord.order_id}" > View </a></td>
+                                    <td><a href="viewOrderServlet?ord_id=${ord.order_id}" ><button> View </button></a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
                     </table>
-
-                    </font>
                 </div>
             </div>
         </div>
