@@ -138,14 +138,17 @@ body {
     100% {opacity: 1;}
 }
 
-.title {
-    display: flex;
-    justify-content: space-between;
+.title, .title_comp {
     width: 95%;
     height: 50px;
     padding: 15px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
 }
 
 .subtitle {

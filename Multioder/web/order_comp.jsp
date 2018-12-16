@@ -92,7 +92,7 @@
             <div class="image spinner">
                 <img src="pic/complete.png" align="middle" style="margin: 30px;">
             </div>
-            <div class="title" style="text-align: center; margin-top: -20px;">
+            <div class="title_comp" style="text-align: center; margin-top: -20px;">
                 <font class="head_name" size="6" color="black">สั่งซื้ออาหารสำเร็จ</font>
             </div>
             <div style="text-align: center; margin-bottom: 20px;">
