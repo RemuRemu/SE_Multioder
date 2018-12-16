@@ -101,9 +101,14 @@ body {
     margin-left: auto;
     margin-right: auto;
     /*overflow: hidden;*/
-    margin-top: 60px;
-    margin-bottom: 10px;
+    margin-top: 3em;
+    margin-bottom: 3em;
     box-shadow: 3px 3px 20px grey;
+    padding-bottom: 1em;
+}
+
+.go_back {
+    float: right;
 }
 
 .rec {
@@ -124,6 +129,7 @@ body {
     background-color: #F5CA99;
     transition: background-color 0.3s;
     padding: 7px;
+    float: right;
 }
 
 .anime {
@@ -137,8 +143,6 @@ body {
 }
 
 .title {
-    display: flex;
-    justify-content: space-between;
     width: 95%;
     height: 50px;
     padding: 15px;
@@ -180,10 +184,10 @@ body {
     width: 94%;
     display: inline-block;
     margin: 10px;
-    border: 2px solid black;
     border-radius: 10px;
     padding: 10px;
     text-align: right;
+    box-shadow: 2px 2px 5px grey;
 }
 
 .food_name {
@@ -199,7 +203,6 @@ input, textarea, button {
     transition: background-color 0.3s;
     padding: 7px;
     margin-top: 5px;
-    color: black;
 }
 
 input[type=submit]:hover, button:hover {
@@ -218,4 +221,8 @@ input[type=submit]:hover, button:hover {
 
 .next {
     float: right;
+}
+
+td, th {
+    padding: 1em;
 }
