@@ -55,7 +55,7 @@
                                     </select>  
                                     </td>
                     <td>${shop.shoplogo}</td>
-                    <td>View</td>
+                    <td><a href="viewShopDetailServlet?id=${shop.shopid}">View</a></td>
                 </tr>
                 
             </tbody>
