@@ -222,6 +222,6 @@ input[type=submit]:hover, button:hover {
     float: right;
 }
 
-tr {
+td, th {
     padding: 1em;
 }
