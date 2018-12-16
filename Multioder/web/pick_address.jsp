@@ -62,6 +62,7 @@
     </head>
     <body style="background-image: url('pic/food_menu.jpg'); background-size: auto; background-attachment: fixed;">
         <div id="mySidenav" class="sidenav">
+            <a href="showProfileServlet">Profile</a>
             <a href="logoutServlet">Logout</a>
         </div>
         <div class="back"></div>
@@ -72,7 +73,7 @@
                 <a href="cart.jsp"><div id="shop"></div></a>
             </div>
         </div>
-        <div id="mainbody" onclick="closeNav()"></div>
+        <div id="mainbody" onclick="closeNav()">
         <div class="con_area">
             <div class="title">
                 <font class="head_name" size="6" color="black">เลือกที่อยู่ที่ต้องการจัดส่ง</font>
