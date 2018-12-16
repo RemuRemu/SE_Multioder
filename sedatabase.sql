@@ -84,8 +84,8 @@ CREATE TABLE `menu` (
   `image` longtext NOT NULL,
   `recommend` varchar(45) NOT NULL DEFAULT '0',
   PRIMARY KEY (`menuid`,`shop_id`),
-  KEY `shop_menu_idx` (`shop_id`),
-  CONSTRAINT `shop_menu` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shopid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `shop_id_idx` (`shop_id`),
+  CONSTRAINT `shop_id` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shopid`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -142,10 +142,11 @@ CREATE TABLE `order_item` (
   `price` varchar(45) NOT NULL,
   `amount` int(11) NOT NULL,
   `shop_id` int(11) NOT NULL,
-  PRIMARY KEY (`itemnumber`,`menu_id`,`order_id`),
+  PRIMARY KEY (`itemnumber`,`menu_id`,`order_id`,`shop_id`),
+  UNIQUE KEY `shop_id_UNIQUE` (`shop_id`),
   KEY `menu_order_item_idx` (`menu_id`),
   KEY `order_order_item_idx` (`order_id`),
-  KEY `shop_order_item_idx` (`shop_id`),
+  KEY `shop_id_idx` (`shop_id`),
   CONSTRAINT `menu_order_item` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menuid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `order_order_item` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `shop_order_item` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shopid`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -171,11 +172,9 @@ DROP TABLE IF EXISTS `orderist`;
 CREATE TABLE `orderist` (
   `orderid` int(11) NOT NULL,
   `status` enum('prepare','sending','done') DEFAULT 'prepare',
-  `shopid` int(11) NOT NULL,
-  PRIMARY KEY (`orderid`,`shopid`),
-  KEY `shopid_idx` (`shopid`),
-  CONSTRAINT `orderid` FOREIGN KEY (`orderid`) REFERENCES `order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `shopid` FOREIGN KEY (`shopid`) REFERENCES `shop` (`shopid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `shopid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`orderid`),
+  CONSTRAINT `orderid` FOREIGN KEY (`orderid`) REFERENCES `order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -223,7 +222,7 @@ DROP TABLE IF EXISTS `shop`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `shop` (
-  `shopid` int(11) NOT NULL,
+  `shopid` int(11) NOT NULL AUTO_INCREMENT,
   `shopname` varchar(45) NOT NULL,
   `shop_status` tinyint(4) NOT NULL,
   `shoplogo` varchar(45) DEFAULT NULL,
@@ -231,7 +230,7 @@ CREATE TABLE `shop` (
   `shoppassword` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`shopid`),
   UNIQUE KEY `shopusername_UNIQUE` (`shopusername`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -283,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-15 14:45:17
+-- Dump completed on 2018-12-16 14:01:30
