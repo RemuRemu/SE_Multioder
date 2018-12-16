@@ -79,42 +79,48 @@
         <div id="mainbody" onclick="closeNav()"></div>
 
         <div class="con_area">
-            <h1>Profile</h1>
-            Email: ${pro.email}
-            First name: ${pro.firstname}
-            Last name: ${pro.lastname}
-            Phone: ${pro.phone}
-            <h1>Order</h1>
-            <table id="profile" border="1" class="table table-striped table-border checkout-table">
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Buy Date</th>
-                        <th>Total price</th>
-                        <th>Address</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="ord" items="${ordlist}">
+            <div class="profile" style="width: 90%; margin: auto; padding-top: 1.5em; padding-bottom: 1.5em;">
+                <font class="head_name" size='6' color='black'>Profile</font><br>
+                <font size='4'>
+                Email: ${pro.email}<br>
+                First name: ${pro.firstname}<br>
+                Last name: ${pro.lastname}<br>
+                Phone: ${pro.phone}<br><br>
+                <a href="showEditProfileServlet"><button>Edit Profile</button></a>
+                <a href="menuServlet"><button>Back</button></a>
+                </font>
+                <br><br><hr style="border-top: 2px solid #000;"><br>
+                <font class="head_name" size='6' color='black'>Order</font>
+                <font size='4'>
+                <table id="profile" border="1" class="table table-striped table-border checkout-table">
+                    <thead>
                         <tr>
-                            <td>${ord.order_id} </td>
-                            <td>${ord.buy_date} </td>
-                            <td>${ord.total}</td>
-                            <td>${ord.address}</td>
-                            <td><a href="viewOrderServlet?ord_id=${ord.order_id}" > View </a></td>
+                            <th>Order ID</th>
+                            <th>Buy Date</th>
+                            <th>Total price</th>
+                            <th>Address</th>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="ord" items="${ordlist}">
+                            <tr>
+                                <td>${ord.order_id} </td>
+                                <td>${ord.buy_date} </td>
+                                <td>${ord.total}</td>
+                                <td>${ord.address}</td>
+                                <td><a href="viewOrderServlet?ord_id=${ord.order_id}" > View </a></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
 
-            <a href="showEditProfileServlet">Edit Profile</a>
-            <a href="menuServlet">Back</button></a>
+                </font>
+            </div>
         </div>
-            <script>
-                $(document).ready(function () {
-                    $('#profile').dataTable();
-                });
-            </script>
-</body>
-
+        <script>
+            $(document).ready(function () {
+                $('#profile').dataTable();
+            });
+        </script>
+    </body>
 </html>
