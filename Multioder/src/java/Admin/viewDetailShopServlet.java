@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -62,16 +63,18 @@ public class viewDetailShopServlet extends HttpServlet {
         PreparedStatement m = conn.prepareStatement(find_shop);
         m.setInt(1,shopid);
         ResultSet rs = m.executeQuery();
-        Shop shop = new Shop();
+       Shop shop = new Shop();
+        if(rs.next()){
+        
         shop.setShopid(shopid);
         shop.setShopname(rs.getString("shopname"));
         shop.setShop_status(rs.getBoolean("shop_status"));
         shop.setShoplogo(rs.getString("shoplogo"));
         shop.setShopusername(rs.getString("shopusername"));
         shop.setShoppassword(rs.getString("shoppassword"));
-        
-        request.setAttribute("shop", shop);
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin_showshop.jsp");
+        }
+        request.setAttribute("shopdetail", shop);
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin_shopdetail.jsp");
             rd.forward(request, response);
         }
     }
