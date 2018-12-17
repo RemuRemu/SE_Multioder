@@ -14,6 +14,8 @@ public class Shop {
     private String shopname;
     private boolean shop_status;
     private String shoplogo;
+    private String shopusername;
+    private String shoppassword;
 
     /**
      * @return the shopid
@@ -69,6 +71,34 @@ public class Shop {
      */
     public void setShoplogo(String shoplogo) {
         this.shoplogo = shoplogo;
+    }
+
+    /**
+     * @return the shopusername
+     */
+    public String getShopusername() {
+        return shopusername;
+    }
+
+    /**
+     * @return the shoppassword
+     */
+    public String getShoppassword() {
+        return shoppassword;
+    }
+
+    /**
+     * @param shoppassword the shoppassword to set
+     */
+    public void setShoppassword(String shoppassword) {
+        this.shoppassword = shoppassword;
+    }
+
+    /**
+     * @param shopusername the shopusername to set
+     */
+    public void setShopusername(String shopusername) {
+        this.shopusername = shopusername;
     }
 
     /**

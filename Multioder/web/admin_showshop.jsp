@@ -35,27 +35,27 @@
             <tbody>
                 <tr>
                     <td>${shop.shopid}</td>
-                    <td>${shop.shopname}</td>
+                    <td>c</td>
                     <td>
-                        <select name="status">
+                        
                     <c:set var = "status" scope = "session" value = "${shop.shop_status}"/>
                     <c:choose> 
                     <c:when test = "${shop.shop_status == true}">
-                                    <option> active</option>
-                                    <option>inactive</option>
+                                     active
+                   
                                 </c:when>
                     <c:when test = "${shop.shop_status == false}">
-                                     <option>inactive</option>
-                                     <option> active</option>
+                                    inactive
+                  
                                 </c:when>
                     <c:otherwise>
                                     No comment sir...
                     </c:otherwise>
                      </c:choose>     
-                                    </select>  
+                                  
                                     </td>
                     <td>${shop.shoplogo}</td>
-                    <td><a href="viewShopDetailServlet?id=${shop.shopid}">View</a></td>
+                    <td><a href="viewDetailShopServlet?shopid=${shop.shopid}">View</a></td>
                 </tr>
                 
             </tbody>
