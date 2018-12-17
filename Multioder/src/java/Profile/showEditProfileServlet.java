@@ -83,7 +83,7 @@ public class showEditProfileServlet extends HttpServlet {
 
             
             Profile pro = new Profile();
-            while (rs_p.next()) {
+            if (rs_p.next()) {
                 pro.setUid(rs_p.getInt("uid"));
                 pro.setUsername(rs_p.getString("username")); 
                 pro.setPassword(rs_p.getString("password")); 
