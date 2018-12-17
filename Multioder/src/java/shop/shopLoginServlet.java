@@ -75,7 +75,7 @@ public class shopLoginServlet extends HttpServlet {
                 session.setAttribute("shopname", shopname);
                 response.sendRedirect("showOrderServlet");
             } else {
-                response.sendRedirect("shop_login.jsp");
+                response.sendRedirect("shop/shop_login.jsp");
             }
 
         } catch (SQLException ex) {
