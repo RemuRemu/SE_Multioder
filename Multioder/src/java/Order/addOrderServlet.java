@@ -9,6 +9,7 @@ import co.omise.Client;
 import co.omise.ClientException;
 import co.omise.models.Charge;
 import co.omise.models.OmiseException;
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -75,6 +76,7 @@ public class addOrderServlet extends HttpServlet {
             }
             //get uid for user and insert in order
             String username = (String) session.getAttribute("username");
+            ArrayList<Integer> status = new ArrayList<Integer>();
             if (username != null) {
 
                 //get add_id
@@ -98,7 +100,6 @@ public class addOrderServlet extends HttpServlet {
                 String address = rs_a.getString("address_des");
 
                 //insert order
-                ArrayList<Order> order_list = new ArrayList<Order>();
                 String insert_order = "INSERT INTO `order`"
                         + "(buy_date, status,address, total, userprofile_uid) VALUES"
                         + "(?, ?, ?, ?, ?)";
@@ -129,7 +130,7 @@ public class addOrderServlet extends HttpServlet {
                 double sprice = total * 100;
                 int total_price = (int) sprice;
 
-                //insert order_item
+                //insert order_item and plus recommend
                 List<OrderItem> menus = cart.getMenus();
                 int item_num = 1;
                 for (int i = 0; i < menus.size(); i++) {
@@ -138,10 +139,22 @@ public class addOrderServlet extends HttpServlet {
                     double price = item.getPrice();
                     int quentity = item.getQuentity();
                     int shop_id = item.getShop_id();
+
+                    //select rec
+                    String find_rec = "SELECT recommend FROM menu WHERE menuid = ?";
+                    PreparedStatement fr = conn.prepareStatement(find_rec);
+                    fr.setInt(1, menuid);
+                    ResultSet rs_fr = fr.executeQuery();
+                    rs_fr.next();
+                    int rec = rs_fr.getInt("recommend");
+
                     String insert_item = "INSERT INTO order_item"
                             + "(itemnumber, menu_id,order_id, price, amount,shop_id) VALUES"
                             + "(?, ?, ?, ?, ?,?)";
+                    String inc_rec = "UPDATE menu"
+                            + " SET recommend = ? WHERE menuid = ?";
                     PreparedStatement i_item = conn.prepareStatement(insert_item);
+                    PreparedStatement i_rec = conn.prepareStatement(inc_rec);
                     i_item.setInt(1, item_num);
                     i_item.setInt(2, menuid);
                     i_item.setInt(3, order_id);
@@ -149,8 +162,24 @@ public class addOrderServlet extends HttpServlet {
                     i_item.setInt(5, quentity);
                     i_item.setInt(6, shop_id);
                     i_item.executeUpdate();
+                    i_rec.setInt(1, rec + 1);
+                    i_rec.setInt(2, menuid);
+                    i_rec.executeUpdate();
+
                     item_num += 1;
+
+                    if (status.contains(shop_id) == false) {
+                        String order = "INSERT INTO orderist(orderid, status, shopid) VALUES(?, ?, ?);";
+                        PreparedStatement o = conn.prepareStatement(order);
+                        o.setInt(1, order_id);
+                        o.setString(2, "prepare");
+                        o.setInt(3, shop_id);
+                        o.executeUpdate();
+                        status.add(shop_id);
+                    }
+
                 }
+
                 Client client = new Client("pkey_test_5br77ofbj0xi13v5xqz", "skey_test_5br77ofc1db6vlm3fxc");
                 String omiseToken = request.getParameter("omiseToken");
 

@@ -47,12 +47,12 @@ public class viewDetailShopServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
+                Connection conn = null;
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             int shopid = parseInt(request.getParameter("shopid"));
                     response.setContentType("text/html;charset=UTF-8");
-        Connection conn = null;
         try {
             conn = seproject.getConnection();
         } catch (SQLException ex) {
@@ -75,6 +75,13 @@ public class viewDetailShopServlet extends HttpServlet {
         request.setAttribute("shopdetail", shop);
                     RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin_shopdetail.jsp");
             rd.forward(request, response);
+        }
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger("connection-close").log(Level.SEVERE, null, ex);
+            }
         }
     }
 

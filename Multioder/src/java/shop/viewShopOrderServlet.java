@@ -22,9 +22,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import model.Order;
 import model.OrderItem;
+import model.Status;
 
 /**
  *
@@ -55,13 +57,24 @@ public class viewShopOrderServlet extends HttpServlet {
         }
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String order = request.getParameter("ord_id");
+            HttpSession session = request.getSession();
+            int shop_id = (int) session.getAttribute("shopid");
+            String order = request.getParameter("ord_id");   
             int order_id = Integer.parseInt(order);
             ArrayList<OrderItem> s_itemlist = new ArrayList<OrderItem>();
-            String sql = "select * from order_item where order_id = ?";
+            String sql = "select * from order_item where order_id = ? AND shop_id = ?";
+            String sta = "select * from orderist where orderid = ? AND shopid = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, order_id);
+            stmt.setInt(2, shop_id);
             ResultSet rs = stmt.executeQuery();
+            
+            PreparedStatement sta_s = conn.prepareStatement(sta);
+            sta_s.setInt(1, order_id);
+            sta_s.setInt(2, shop_id);
+            ResultSet sta_rs = sta_s.executeQuery();
+            sta_rs.next();
+            String status = sta_rs.getString("status");
 
             while (rs.next()) {
 
@@ -75,6 +88,8 @@ public class viewShopOrderServlet extends HttpServlet {
             }
 
             request.setAttribute("s_itemlist", s_itemlist);
+            request.setAttribute("status", status);
+            request.setAttribute("order_id", order_id);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop/view_order.jsp");
             rd.forward(request, response);
         } catch (SQLException ex) {

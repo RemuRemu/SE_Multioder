@@ -43,8 +43,8 @@ public class editInfoShopServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
         Connection conn = null;
+        response.setContentType("text/html;charset=UTF-8");
         try {
             conn = seproject.getConnection();
         } catch (SQLException ex) {
@@ -57,25 +57,22 @@ public class editInfoShopServlet extends HttpServlet {
             int shop_status = parseInt(request.getParameter("status"));
             String shopusername = request.getParameter("shopusername");
             String shoppassword = request.getParameter("shoppassword");
-           
 
-            if(shoppassword.equals("")){
-                            String edit_shopInfo = "UPDATE seproject.shop"
+            if (shoppassword.equals("")) {
+                String edit_shopInfo = "UPDATE seproject.shop"
                         + " SET shopname = ?,shop_status = ?,shopusername = ?"
                         + " WHERE shopid = ?";
                 PreparedStatement pro = conn.prepareStatement(edit_shopInfo);
                 pro.setString(1, shopname);
                 pro.setInt(2, shop_status);
                 pro.setString(3, shopusername);
-       
+
                 pro.setInt(4, shopid);
                 pro.executeUpdate();
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShop_test");
                 rd.forward(request, response);
-                return;}
-            
-            else{
-              String edit_shopInfo = "UPDATE seproject.shop"
+            } else {
+                String edit_shopInfo = "UPDATE seproject.shop"
                         + " SET shopname = ?,shop_status = ?,shopusername = ?,shoppassword = ?"
                         + " WHERE shopid = ?";
                 PreparedStatement pro = conn.prepareStatement(edit_shopInfo);
@@ -87,8 +84,15 @@ public class editInfoShopServlet extends HttpServlet {
                 pro.executeUpdate();
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShop_test");
                 rd.forward(request, response);
-                return;}
-            
+            }
+
+        }
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger("connection-close").log(Level.SEVERE, null, ex);
+            }
         }
     }
 

@@ -69,6 +69,13 @@ public class removeShopServlet extends HttpServlet {
                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShop_test");
             rd.forward(request, response);
         }
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger("connection-close").log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

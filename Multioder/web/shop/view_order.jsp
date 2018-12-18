@@ -26,13 +26,47 @@
             <a href="showOrderServlet"><button>ย้อนกลับ</button></a>
         </div>
         <br>
+
+        <form action="updateOrderServlet">
+            <input type="hidden" name="orderid" value="${order_id}" /><br>
+            Order status :<c:set var = "status" scope = "session" value = "${status}"/>
+
+            <c:choose> 
+                <c:when test = "${status == 'prepare'}">
+                    <select name="status">
+                        <option value="1" selected>กำลังเตรียม</option>
+                        <option value="2">เสร็จสิ้น</option>
+                        <option value="3">ยกเลิก</option>
+                    </select>
+                </c:when>
+                <c:when test = "${status == 'sending'}">
+                    <select name="status">
+                        <option value="1">กำลังเตรียม</option>
+                        <option value="2" selected>เสร็จสิ้น</option>
+                        <option value="3">ยกเลิก</option>
+                    </select>
+                </c:when>
+                <c:when test = "${status == 'cancle'}">
+                    <select name="status">
+                        <option value="1">กำลังเตรียม</option>
+                        <option value="2">เสร็จสิ้น</option>
+                        <option value="3" selected>ยกเลิก</option>
+                    </select>
+                </c:when>
+                <c:otherwise>
+                    No comment sir...
+                </c:otherwise>
+            </c:choose> 
+            <input type="submit" value="Submit" />
+
+        </form>
         <table id="s_item" border="1" class="table table-striped table-border checkout-table">
             <thead>
                 <tr>
                     <th>ลำดับ</th>
                     <th>รายการ</th>
                     <th>จำนวน</th>
-                    <th>ราคา</th>
+                    <th>ราคา</th>   
                 </tr>
             </thead>
             <tbody>

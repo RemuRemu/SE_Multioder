@@ -84,9 +84,7 @@ public class editProfileServlet extends HttpServlet {
                 p.setString(1, new_pass);
                 p.setInt(2, uid);
                 p.executeUpdate();
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/edit_comp.jsp");
-                rd.forward(request, response);
-                return;
+                response.sendRedirect("showProfileServlet");
             } //change information only not change pass
             else if (old_pass.isEmpty() || new_pass.isEmpty()) {
                 String edit_profile = "UPDATE userprofile"
@@ -99,9 +97,7 @@ public class editProfileServlet extends HttpServlet {
                 pro.setString(4, phone);
                 pro.setInt(5, uid);
                 pro.executeUpdate();
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/edit_comp.jsp");
-                rd.forward(request, response);
-                return;
+                response.sendRedirect("showProfileServlet");
 
             } else {
                 int fail = 1;

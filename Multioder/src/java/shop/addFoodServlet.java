@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Admin;
+package shop;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -21,15 +20,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
-import model.Shop;
 
 /**
  *
- * @author USER
+ * @author Chronical
  */
-@WebServlet(name = "showShop_test", urlPatterns = {"/showShop_test"})
-public class showShop_test extends HttpServlet {
+@WebServlet(name = "addFoodServlet", urlPatterns = {"/addFoodServlet"})
+public class addFoodServlet extends HttpServlet {
 
     @Resource(name = "seproject")
     private DataSource seproject;
@@ -44,42 +43,57 @@ public class showShop_test extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
-                Connection conn = null;
-
-        response.setContentType("text/html;charset=UTF-8");
+            throws ServletException, IOException {
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            Connection conn = null;
         try {
             conn = seproject.getConnection();
         } catch (SQLException ex) {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
-
-        String shoplist = "SELECT * FROM seproject.shop";
-        PreparedStatement shop_db = conn.prepareStatement(shoplist);
         
-        ResultSet rs = shop_db.executeQuery();
-        ArrayList<Shop> shop_list = new ArrayList<Shop>();
         
-        while (rs.next()) {
-            Shop shop = new Shop();
-            shop.setShopid(rs.getInt("shopid"));
-            shop.setShopname(rs.getString("shopname"));
-            shop.setShop_status(rs.getBoolean("shop_status"));
-            shop.setShoplogo(rs.getString("shoplogo"));
-            shop_list.add(shop);
+        String foodname = request.getParameter("foodname");
+        String description = request.getParameter("description");
+        String price_str = request.getParameter("price");
+        Double price = Double.parseDouble("price_str");
+        String image = request.getParameter("image");
+        if (foodname.isEmpty() || description.isEmpty() || price_str.isEmpty() || image.isEmpty()){
+                int fail = 1;
+                request.setAttribute("add_menu", fail);
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/add_menu.jsp");
+                rd.forward(request, response);
+                return;
         }
-         request.setAttribute("shop_list", shop_list);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin_showshop.jsp");
-            rd.forward(request, response);
+        else{
+            
+        HttpSession session = request.getSession();
+ 
+        int shopid = (int) session.getAttribute("shopid");
+         String insert_menu = "INSERT INTO menu"+
+                     "(name, shop_id, description, price, image) VALUES"
+                     + "(?,?,?,?,?)";
+             PreparedStatement m = conn.prepareStatement(insert_menu);
+             m.setString(1, foodname);
+             m.setInt(2, shopid);
+             m.setString(3, description);
+             m.setDouble(4, price);
+             m.setString(5, image);
+             m.executeUpdate();
             if (conn != null) {
             try {
                 conn.close();
             } catch (SQLException ex) {
                 Logger.getLogger("connection-close").log(Level.SEVERE, null, ex);
             }
+
+        }
+        }
+    }   catch (SQLException ex) {
+            Logger.getLogger(addFoodServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-            
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -93,11 +107,7 @@ public class showShop_test extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(showShop_test.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -111,11 +121,7 @@ public class showShop_test extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(showShop_test.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
