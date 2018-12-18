@@ -9,14 +9,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Multioder - Add New Shop</title>
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="admin_css.css">
     </head>
     <body>
-        <form action="addShopServlet">
-            Shop name<input type="text" name="shop_name" value="" />
-            Shop username<input type="text" name="shop_username" value="" />
-            Password<input type="password" name="shop_password" value="" />
-            <input type="submit" value="Submit" />
-        </form>
+        <div class="content">
+            <div class="title" style="display: flex; justify-content: space-between;">
+                <font size="7" style="text-shadow: 1px 1px 2px gray;">รายการร้านค้า</font><br>
+                <a href="showShop_test"><button>ย้อนกลับ</button></a>
+            </div>
+            <form action="addShopServlet">
+                Shop name<input type="text" name="shop_name" value="" /> <br>
+                Shop username<input type="text" name="shop_username" value="" /> <br>
+                Password<input type="password" name="shop_password" value="" /> <br>
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
     </body>
 </html>

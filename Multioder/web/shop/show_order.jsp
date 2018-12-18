@@ -21,9 +21,11 @@
 </head>
 <body style="background: #FDF2E9">
     <div class="content">
-        <div class="title" style="text-align: center;">
-            <font size="6" style="text-shadow: 1px 1px 2px gray;">รายการสั่งซื้อ</font><br>
+        <div class="title" style="display: flex; justify-content: space-between;">
+            <font size="7" style="text-shadow: 1px 1px 2px gray;">รายการสั่งซื้อ</font><br>
+            <a href="shop/shop_login.jsp"><button>ออกจากระบบ</button></a>
         </div>
+        <br>
         <table  id="s_order" border="1" class="table table-striped table-border checkout-table">
             <thead>
                 <tr>
@@ -47,7 +49,6 @@
                 </c:forEach>
             </tbody>
         </table>
-        <a href="shop/shop_login.jsp"><button>ออกจากระบบ</button></a>
     </div>
 </body>
 <script>

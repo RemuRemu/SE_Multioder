@@ -33,7 +33,7 @@ form {
     position: relative;
 }
 
-input, button {
+input, button, select {
     font-family: 'Kanit', sans-serif;
     font-size: 1em;
     border-radius: 1em;
@@ -76,7 +76,7 @@ h1 {
     padding: 2em;
     border-radius: 2em;
     box-shadow: 2px 2px 5px grey;
-    font-size: 1.35em;
+    font-size: 1.25em;
 }
 
 tr {

@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    font-family: 'Kanit', sans-serif;
+    background: #F5EEF8;
+}
+
+.content {
+    width: 90%;
+    margin: auto;
+    margin-top: 4em;
+    margin-bottom: 4em;
+    background: #D7BDE2;
+    padding: 2em;
+    border-radius: 2em;
+    box-shadow: 2px 2px 5px grey;
+    font-size: 1.25em;
+}
+
+tr {
+    background: lavender;
+}
+
+input, button, select {
+    font-family: 'Kanit', sans-serif;
+    font-size: 1em;
+    border-radius: 1em;
+    padding: 0.35em;
+    color: black;
+}
+
+input[type=text], input[type=password] {
+    background: #FFEFE0;
+}
