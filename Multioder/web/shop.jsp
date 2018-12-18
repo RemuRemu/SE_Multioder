@@ -62,7 +62,8 @@
     </head>
     <body style="background-image: url('pic/food_menu.jpg'); background-size: auto; background-attachment: fixed;">
         <div id="mySidenav" class="sidenav">
-            <a href="logoutServlet">Logout</a>
+            <a href="showProfileServlet">ข้อมูลส่วนตัว</a>
+            <a href="logoutServlet">ออกจากระบบ</a>
         </div>
         <div class="back"></div>
         <div class="menu_area">

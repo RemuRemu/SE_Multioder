@@ -27,7 +27,3 @@ input, button, select {
     padding: 0.35em;
     color: black;
 }
-
-input[type=text], input[type=password] {
-    background: #FFEFE0;
-}
