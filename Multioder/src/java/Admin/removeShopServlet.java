@@ -55,10 +55,17 @@ public class removeShopServlet extends HttpServlet {
            
             int shopid = parseInt(request.getParameter("shopid"));
             
-            String delete_shop = "DELETE FROM seproject.shop WHERE shopid = ?;";
-            PreparedStatement m = conn.prepareStatement(delete_shop);
-            m.setInt(1,shopid);
-            m.executeUpdate();
+            String delete_shop = "SET FOREIGN_KEY_CHECKS = 0;"
+                    + "DELETE FROM seproject.menu WHERE shop_id = ?;" +
+                        "DELETE FROM seproject.shop WHERE shopid = ?;" +
+                        "SET FOREIGN_KEY_CHECKS = 1;";
+            PreparedStatement shop = conn.prepareStatement(delete_shop);
+            shop.setInt(1,shopid);
+            shop.setInt(2,shopid);
+            shop.executeUpdate();
+            
+
+            
                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShop_test");
             rd.forward(request, response);
         }

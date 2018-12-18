@@ -58,7 +58,6 @@ public class viewDetailShopServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
-        HttpSession session = request.getSession();
         String find_shop = "SELECT * FROM seproject.shop WHERE shopid = ?";
         PreparedStatement m = conn.prepareStatement(find_shop);
         m.setInt(1,shopid);

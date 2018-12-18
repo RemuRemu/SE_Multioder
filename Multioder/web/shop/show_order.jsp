@@ -23,6 +23,7 @@
     <div class="content">
         <div class="title" style="display: flex; justify-content: space-between;">
             <font size="7" style="text-shadow: 1px 1px 2px gray;">รายการสั่งซื้อ</font><br>
+            <a href="manageMenuServlet?shopid=${shopid}"><button>จัดการเมนู</button></a>
             <a href="shop/shop_login.jsp"><button>ออกจากระบบ</button></a>
         </div>
         <br>
@@ -43,6 +44,7 @@
                         <td>${ord.buy_date} </td>
                         <td>${ord.total}</td>
                         <td>${ord.address}</td>
+                        
                         <td><a href="viewShopOrderServlet?ord_id=${ord.order_id}" > View </a></td>
                     </tr>
 

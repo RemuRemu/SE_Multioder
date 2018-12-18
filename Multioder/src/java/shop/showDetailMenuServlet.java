@@ -5,9 +5,9 @@
  */
 package shop;
 
-import Login.loginServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,20 +15,21 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import model.Menu;
 
 /**
  *
- * @author Chronical
+ * @author USER
  */
-@WebServlet(name = "shopLoginServlet", urlPatterns = {"/shopLoginServlet"})
-public class shopLoginServlet extends HttpServlet {
+@WebServlet(name = "showDetailMenuServlet", urlPatterns = {"/showDetailMenuServlet"})
+public class showDetailMenuServlet extends HttpServlet {
 
     @Resource(name = "seproject")
     private DataSource seproject;
@@ -43,55 +44,37 @@ public class shopLoginServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
+        response.setContentType("text/html;charset=UTF-8");
         Connection conn = null;
-        
         try {
             conn = seproject.getConnection();
         } catch (SQLException ex) {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
-        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            boolean loginflag = false;
-            String username = request.getParameter("user");
-            String password = request.getParameter("pass");
-            //find user and pass
-            String find_user = "SELECT shopid,shopname,shopusername,shoppassword FROM shop WHERE  shopusername = ? and shoppassword = ?";
-            PreparedStatement user_db = conn.prepareStatement(find_user);
-            user_db.setString(1, username);
-            user_db.setString(2, password);
-            ResultSet user_rs = user_db.executeQuery();
-            String shopname= null;
-            int shopid = -1;
-            if (user_rs.next() == true) {
-                loginflag = true;
-             shopname = user_rs.getString("shopname");
-             shopid = user_rs.getInt("shopid");
-
-            }
-            HttpSession session = request.getSession();
-            session.setAttribute("loginflag", loginflag);
+            /* TODO output your page here. You may use following sample code. */
+            int food_id = parseInt(request.getParameter("food_id"));
             
-            if (loginflag == true) {
-                session.setAttribute("shopname", shopname);
-                session.setAttribute("shopid", shopid);
-                response.sendRedirect("showOrderServlet");
-            } else {
-                response.sendRedirect("shop/shop_login.jsp");
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
+            String find_menu_id = "Select * From seproject.menu WHERE menuid = ?";
+             PreparedStatement m = conn.prepareStatement(find_menu_id);
+        m.setInt(1,food_id);
+        ResultSet rs = m.executeQuery();
+        Menu menu = new Menu();
+        if (rs.next()){
+            
+            menu.setMenu_id(food_id);
+            menu.setName(rs.getString("name"));
+            menu.setDescription(rs.getString("description"));
+            menu.setPrice(rs.getFloat("price"));
+            menu.setImage(rs.getString("image"));
         }
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger("connection-close").log(Level.SEVERE, null, ex);
-            }
+        request.setAttribute("detail_menu",menu);
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop/show_detail_menu.jsp");
+            rd.forward(request, response);
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -104,7 +87,11 @@ public class shopLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(showDetailMenuServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -118,7 +105,11 @@ public class shopLoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(showDetailMenuServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
