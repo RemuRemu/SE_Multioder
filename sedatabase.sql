@@ -239,7 +239,7 @@ CREATE TABLE `shop` (
 
 LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-INSERT INTO `shop` VALUES (1,'KFfree',1,NULL,'kfc','kfc'),(2,'McRonald',1,NULL,'mc','mc'),(3,'Pixxarhut',1,NULL,'pizza','pizza'),(4,'ดักกินโดนัท',1,NULL,'donut','donut'),(5,'HestiaFamilia',1,NULL,NULL,NULL),(6,'LokiFamilia',1,NULL,NULL,NULL),(7,'Wu',1,NULL,NULL,NULL),(8,'Shu',1,NULL,NULL,NULL),(9,'Wei',1,NULL,NULL,NULL),(10,'Orochi',1,NULL,NULL,NULL),(11,'Nuwa',0,NULL,NULL,NULL),(12,'Fuxi',0,NULL,NULL,NULL);
+INSERT INTO `shop` VALUES (1,'KFfree',1,'KFfree','kfc','kfc'),(2,'McRonald',1,'Mcronald','mc','mc'),(3,'Pixxarhut',1,'Pizzahut','pizza','pizza'),(4,'ดักกินโดนัท',1,'ดักกิน','donut','donut'),(5,'HestiaFamilia',1,'hestia',NULL,NULL),(6,'LokiFamilia',1,'loki',NULL,NULL),(7,'Wu',1,'wu',NULL,NULL),(8,'Shu',1,'shu',NULL,NULL),(9,'Wei',1,'wei',NULL,NULL),(10,'Orochi',1,'orochi',NULL,NULL),(11,'Nuwa',0,'nuwa',NULL,NULL),(12,'Fuxi',0,'fuxi',NULL,NULL);
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-16 14:01:30
+-- Dump completed on 2018-12-18 12:37:59
