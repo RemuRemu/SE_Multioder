@@ -50,13 +50,13 @@ DROP TABLE IF EXISTS `employees`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `employees` (
-  `emid` int(11) NOT NULL,
+  `emid` int(11) NOT NULL AUTO_INCREMENT,
   `emuser` varchar(45) DEFAULT NULL,
   `empass` varchar(45) DEFAULT NULL,
   `emfirstname` varchar(45) DEFAULT NULL,
   `emlastname` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`emid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,6 +65,7 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
+INSERT INTO `employees` VALUES (1,'1234','1234','กรี่','ก็อต');
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,4 +283,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-18 12:37:59
+-- Dump completed on 2018-12-18 12:45:36
