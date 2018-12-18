@@ -55,7 +55,9 @@
                                   
                                     </td>
                     <td>${shop.shoplogo}</td>
-                    <td><a href="viewDetailShopServlet?shopid=${shop.shopid}">View</a></td>
+                    <td><a href="viewDetailShopServlet?shopid=${shop.shopid}">View</a> &nbsp
+                    <a href="removeShopServlet?shopid=${shop.shopid}">Remove</a>
+                    </td>
                 </tr>
                 
             </tbody>

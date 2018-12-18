@@ -5,12 +5,11 @@
  */
 package Admin;
 
-import Register.registerServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,8 +26,8 @@ import javax.sql.DataSource;
  *
  * @author USER
  */
-@WebServlet(name = "addShopServlet", urlPatterns = {"/addShopServlet"})
-public class addShopServlet extends HttpServlet {
+@WebServlet(name = "removeShopServlet", urlPatterns = {"/removeShopServlet"})
+public class removeShopServlet extends HttpServlet {
 
     @Resource(name = "seproject")
     private DataSource seproject;
@@ -45,7 +44,7 @@ public class addShopServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        Connection conn = null;
+         Connection conn = null;
         try {
             conn = seproject.getConnection();
         } catch (SQLException ex) {
@@ -53,67 +52,17 @@ public class addShopServlet extends HttpServlet {
         }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String shopname = request.getParameter("shop_name");
-            String shop_username = request.getParameter("shop_username");
-            String shop_password = request.getParameter("shop_password");
+           
+            int shopid = parseInt(request.getParameter("shopid"));
             
-           // if (shopname.isEmpty() || shop_username.isEmpty() || shop_password.isEmpty()) {
-             //   int fail = 2;
-               // request.setAttribute("a_addshop_flag", fail);
-               // RequestDispatcher rd = getServletConztext().getRequestDispatcher("/addnewshop.jsp");
-               // rd.forward(request, response);
-                //return;
-       // }
-            String find_sameuser = "SELECT shopusername FROM shop WHERE  shopusername = ?";
-            String find_samename = "SELECT shopname FROM shop WHERE  shopname = ?";
-            
-            PreparedStatement sameuser = conn.prepareStatement(find_sameuser);
-            sameuser.setString(1, shop_username);
-            
-            PreparedStatement samename = conn.prepareStatement(find_samename);
-            samename.setString(1, find_samename);
-            
-            ResultSet user_rs = sameuser.executeQuery();
-            ResultSet name_rs = samename.executeQuery();
-            
-            if (user_rs.next() == true) {
-                int fail = 1;
-                request.setAttribute("flag", fail);
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/addnewshop.jsp");
-                rd.forward(request, response);
-                return;
-            } else if (name_rs.next()) {
-                int fail = 1;
-                request.setAttribute("flag", fail);
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/addnewshop.jsp");
-                rd.forward(request, response);
-                return;
-            }
-            
-             String insert_shop = "INSERT INTO shop"+
-                     "(shopname, shop_status, shoplogo, shopusername, shoppassword) VALUES"
-                     + "(?,0,null,?,?)";
-             PreparedStatement m = conn.prepareStatement(insert_shop);
-             m.setString(1, shopname);
-             m.setString(2, shop_username);
-             m.setString(3, shop_password);
-             m.executeUpdate();
-             
-             int pass = 3;
-            request.setAttribute("flag", pass);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShop_test");
+            String delete_shop = "DELETE FROM seproject.shop WHERE shopid = ?;";
+            PreparedStatement m = conn.prepareStatement(delete_shop);
+            m.setInt(1,shopid);
+            m.executeUpdate();
+                   RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShop_test");
             rd.forward(request, response);
-    }catch (SQLException ex) {
-            Logger.getLogger(registerServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger("connection-close").log(Level.SEVERE, null, ex);
-            }
-
-        }}
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -130,7 +79,7 @@ public class addShopServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(addShopServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(removeShopServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -148,7 +97,7 @@ public class addShopServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(addShopServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(removeShopServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
