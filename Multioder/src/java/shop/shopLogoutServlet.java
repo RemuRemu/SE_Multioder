@@ -5,33 +5,21 @@
  */
 package shop;
 
-import Login.loginServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sql.DataSource;
 
 /**
  *
  * @author Chronical
  */
-@WebServlet(name = "shopLoginServlet", urlPatterns = {"/shopLoginServlet"})
-public class shopLoginServlet extends HttpServlet {
-
-    @Resource(name = "seproject")
-    private DataSource seproject;
+@WebServlet(name = "shopLogoutServlet", urlPatterns = {"/shopLogoutServlet"})
+public class shopLogoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,54 +32,14 @@ public class shopLoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Connection conn = null;
-        
-        try {
-            conn = seproject.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
-        }
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            boolean loginflag = false;
-            String username = request.getParameter("user");
-            String password = request.getParameter("pass");
-            //find user and pass
-            String find_user = "SELECT shopid,shopname,shopusername,shoppassword FROM shop WHERE  shopusername = ? and shoppassword = ?";
-            PreparedStatement user_db = conn.prepareStatement(find_user);
-            user_db.setString(1, username);
-            user_db.setString(2, password);
-            ResultSet user_rs = user_db.executeQuery();
-            String shopname= null;
-            int shopid = -1;
-            if (user_rs.next() == true) {
-                loginflag = true;
-             shopname = user_rs.getString("shopname");
-             shopid = user_rs.getInt("shopid");
-
-            }
             HttpSession session = request.getSession();
-            session.setAttribute("loginflag", loginflag);
-            
-            if (loginflag == true) {
-                session.setAttribute("shopname", shopname);
-                session.setAttribute("shopid", shopid);
-                response.sendRedirect("shop/menu.jsp");
-            } else {
-                response.sendRedirect("shop/shop_login.jsp");
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger("connection-close").log(Level.SEVERE, null, ex);
-            }
+            session.invalidate();
+            response.sendRedirect("shop/shop_login.jsp");
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

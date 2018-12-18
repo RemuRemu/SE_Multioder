@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     </head>
     <body>
+         <a href="add_menu.jsp"><button>เพิ่มเมนู</button></a>
         <h1>จัดการเมนู</h1>
         <table id="mml_table" border="1">
             <thead>

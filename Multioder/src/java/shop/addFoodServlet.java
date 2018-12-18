@@ -46,51 +46,58 @@ public class addFoodServlet extends HttpServlet {
             throws ServletException, IOException {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            response.setContentType("text/html;charset=UTF-8");
+            response.setCharacterEncoding("UTF-8");
             Connection conn = null;
-        try {
-            conn = seproject.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
-        }
-        
-        
-        String foodname = request.getParameter("foodname");
-        String description = request.getParameter("description");
-        String price_str = request.getParameter("price");
-        Double price = Double.parseDouble("price_str");
-        String image = request.getParameter("image");
-        if (foodname.isEmpty() || description.isEmpty() || price_str.isEmpty() || image.isEmpty()){
+            double price = 0;
+            try {
+                conn = seproject.getConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
+            }
+
+            String foodname = request.getParameter("foodname");
+            String description = request.getParameter("description");
+            String price_str = request.getParameter("price");
+            try {
+                  price = Double.parseDouble(price_str);
+            } catch (NumberFormatException e) {
+                
+            }
+
+            String image = request.getParameter("image");
+            if (foodname.isEmpty() || description.isEmpty() || price_str.isEmpty() || image.isEmpty()) {
                 int fail = 1;
                 request.setAttribute("add_menu", fail);
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/add_menu.jsp");
                 rd.forward(request, response);
                 return;
-        }
-        else{
-            
-        HttpSession session = request.getSession();
- 
-        int shopid = (int) session.getAttribute("shopid");
-         String insert_menu = "INSERT INTO menu"+
-                     "(name, shop_id, description, price, image) VALUES"
-                     + "(?,?,?,?,?)";
-             PreparedStatement m = conn.prepareStatement(insert_menu);
-             m.setString(1, foodname);
-             m.setInt(2, shopid);
-             m.setString(3, description);
-             m.setDouble(4, price);
-             m.setString(5, image);
-             m.executeUpdate();
-            if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger("connection-close").log(Level.SEVERE, null, ex);
-            }
+            } else {
 
-        }
-        }
-    }   catch (SQLException ex) {
+                HttpSession session = request.getSession();
+
+                int shopid = (int) session.getAttribute("shopid");
+                String insert_menu = "INSERT INTO menu"
+                        + "(name, shop_id, description, price, image) VALUES"
+                        + "(?,?,?,?,?)";
+                PreparedStatement m = conn.prepareStatement(insert_menu);
+                m.setString(1, foodname);
+                m.setInt(2, shopid);
+                m.setString(3, description);
+                m.setDouble(4, price);
+                m.setString(5, image);
+                m.executeUpdate();
+                response.sendRedirect("manageMenuServlet?shopid=" + shopid);
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger("connection-close").log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        } catch (SQLException ex) {
             Logger.getLogger(addFoodServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

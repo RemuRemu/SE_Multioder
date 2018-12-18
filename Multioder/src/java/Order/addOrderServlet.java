@@ -9,7 +9,6 @@ import co.omise.Client;
 import co.omise.ClientException;
 import co.omise.models.Charge;
 import co.omise.models.OmiseException;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
