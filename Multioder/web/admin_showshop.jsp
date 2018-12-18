@@ -35,7 +35,7 @@
             <tbody>
                 <tr>
                     <td>${shop.shopid}</td>
-                    <td>c</td>
+                    <td>${shop.shopname}</td>
                     <td>
                         
                     <c:set var = "status" scope = "session" value = "${shop.shop_status}"/>
