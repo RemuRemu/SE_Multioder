@@ -9,13 +9,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Multioder - Admin</title>
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="admin_css.css">
     </head>
-    <body>
-        <form action="adminLoginServlet" method="POST">
-            Username<input type="text" name="username" value="" />
-            Password<input type="text" name="password" value="" />
-            <input type="submit" value="Login" />
-        </form>
+    <body style="background-image: url('pic/food.jpg'); background-size: cover; background-attachment: fixed;">
+        <div class="back"></div>
+        <div class="login">
+            <img id="logo" src="pic/logo.png" align="middle">
+            <h1>เข้าสู่ระบบสำหรับ Admin</h1><br>
+            <form action="adminLoginServlet" method="POST" class="down">
+                <input type="text" name="username" value="" placeholder="Username" size="25px" /> <br><br>
+                <input type="password" name="password" value="" placeholder="Password" size="25px" /> <br><br>
+                <input type="submit" value="Login" />
+            </form>
+        </div>
+            
     </body>
 </html>

@@ -60,7 +60,7 @@
 
                         </td>
                         <td>
-                            <img src="${shop.shoplogo}"/>
+                            <img src="${shop.shoplogo}" style="width: 5em; height: 5em;"/>
 
                         </td>
                         <td><a href="viewDetailShopServlet?shopid=${shop.shopid}">View</a> &nbsp

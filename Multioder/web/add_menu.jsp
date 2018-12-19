@@ -18,9 +18,9 @@
                 ชื่อเมนู : <input type="text" name="foodname" value="" /> <br>
                 รายละเอียด : <input type="text" name="description" value="" /> <br>
                 ราคา : <input type="text" name="price" value="" /> <br>
-                รูปภาพ : <input accept="image/*" type="file" id="pic" name="pic">
+                รูปภาพ : <input accept="image/*" type="file" id="pic" name="pic" style="background: none;">
 
-                <input type="hidden" name="image" id="image" style="background: none;">
+                <input type="hidden" name="image" id="image" >
                 <input type="submit" value="Submit" />
             </form>
         </div>

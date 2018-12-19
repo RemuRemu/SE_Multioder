@@ -4,6 +4,57 @@ body {
     background: #F5EEF8;
 }
 
+.back {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background: black;
+    opacity: 0.5;
+}
+
+.login {
+    margin: auto;
+    margin-top: 3em;
+    padding: 2em;
+    width: 40%;
+    background-image: url('pic/back.png');
+    box-shadow: 2px 2px 5px gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.down {
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.35em;
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    text-shadow: 1px 1px 2px gray;
+    animation: down 1s;
+    position: relative;
+    color: white;
+}
+
+@keyframes down {
+    from {opacity: 0; top: -20px;}
+    to {opacity: 1; top: 0px;}
+}
+
+#logo {
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 25em;
+    animation: down 1s;
+    position: relative;
+}
+
 .content {
     width: 90%;
     margin: auto;
