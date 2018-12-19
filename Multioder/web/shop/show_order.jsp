@@ -44,7 +44,7 @@
                         <td>${ord.total}</td>
                         <td>${ord.address}</td>
                         
-                        <td><a href="viewShopOrderServlet?ord_id=${ord.order_id}" > View </a></td>
+                        <td><a href="viewShopOrderServlet?ord_id=${ord.order_id}" > แสดงรายละเอียด </a></td>
                     </tr>
 
                 </c:forEach>

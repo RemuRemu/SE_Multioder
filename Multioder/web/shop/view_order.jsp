@@ -72,7 +72,6 @@
             <tbody>
                 <c:forEach var="ord" items="${s_itemlist}">
                     <tr> 
-
                         <td>${ord.item_num} </td>
                         <td>${ord.menu.name} </td>
                         <td>${ord.quentity}</td>

@@ -20,7 +20,7 @@
                 <a href="showShop_test"><button>ย้อนกลับ</button></a>
             </div>
             <form action="addShopServlet">
-                Shop name : <input type="text" name="shop_name" value="" /> <br>
+                ชื่อร้านค้า : <input type="text" name="shop_name" value="" /> <br>
                 Shop username : <input type="text" name="shop_username" value="" /> <br>
                 Password : <input type="password" name="shop_password" value="" /> <br>
                 <input type="submit" value="Submit" />

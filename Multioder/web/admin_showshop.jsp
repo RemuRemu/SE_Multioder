@@ -29,10 +29,10 @@
         <table id="shop_admin" border="1">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Shop status</th>
-                    <th>Logo</th>
+                    <th>เลขที่</th>
+                    <th>รายการร้านค้า</th>
+                    <th>สถานะร้านค้า</th>
+                    <th>โลโก้</th>
                     <th></th>
                 </tr>
             </thead>

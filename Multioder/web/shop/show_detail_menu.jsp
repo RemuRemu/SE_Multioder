@@ -13,17 +13,16 @@
     </head>
     <body>
         <h1>Food NO. ${detail_menu.menu_id}</h1>
-        
+
         <form action="editInfoMenuServlet">
             Food name :<input type="text" name="foodname" value="${detail_menu.name}" /><br>
             Food description :<input type="text" name="fooddesc" value="${detail_menu.description}" /><br>
-            
-                        Food price :<input type="text" name="foodprice" value="${detail_menu.price}" /><br>
-                        Food Image :<input type="file" name="foodimg" value="" />
-                        <input type="submit" value="Submit" />
-                        <input type="hidden" value="${detail_menu.menu_id}" name="foodid" />
-                        <input type="hidden" name="shopid" value="${shopid}" />
-                        
+            Food price :<input type="text" name="foodprice" value="${detail_menu.price}" /><br>
+            Food Image :<input type="file" name="foodimg" value="" />
+            <input type="submit" value="Submit" />
+            <input type="hidden" value="${detail_menu.menu_id}" name="foodid" />
+            <input type="hidden" name="shopid" value="${shopid}" />
+
         </form>
     </body>
 </html>
