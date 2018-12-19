@@ -43,7 +43,6 @@
                         <td>${ord.buy_date} </td>
                         <td>${ord.total}</td>
                         <td>${ord.address}</td>
-                        
                         <td><a href="viewShopOrderServlet?ord_id=${ord.order_id}" > แสดงรายละเอียด </a></td>
                     </tr>
 

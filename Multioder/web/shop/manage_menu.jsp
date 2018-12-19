@@ -47,7 +47,7 @@
                         <td>${mml.name}</td>
                         <td>${mml.description}</td>
                         <td>${mml.price}</td>
-                        <td><img src="${mml.image}"></td>
+                        <td><img src="${mml.image}" style="width: 10em; height: 7em;"></td>
                         <td>${mml.recommend}</td>
                         <td>
                             <a href="showDetailMenuServlet?food_id=${mml.menu_id}&shopid=${shopid}">แก้ไข</a>

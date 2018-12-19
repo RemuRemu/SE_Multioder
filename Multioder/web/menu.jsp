@@ -95,7 +95,7 @@
                         <c:forEach var="menu"  items="${menu_list}">  
                             <div class="food">
                                 <form action="/Multioder/shopServlet">
-                                    <img src="pic/menu_dish/${menu.image}.jpg" align="middle" style="max-width: 300px; max-height: 125px;">
+                                    <img src="${menu.image}" align="middle" style="max-width: 300px; max-height: 125px;">
                                     <li class="food_name"><a>${menu.name}<br>
                                             <input type="submit" value="เลือกอาหาร" /></a></li>
                                     <input type="hidden" name="name" value="${menu.name}" />

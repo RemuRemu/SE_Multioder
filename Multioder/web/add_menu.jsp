@@ -10,21 +10,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <title>Multioder - Add Menu</title>
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="shop/shop_css.css">
     </head>
-    <body>
-        <form action="addFoodServlet" method="POST">
-            ชื่อเมนู : <input type="text" name="foodname" value="" /> <br>
-            รายละเอียด : <input type="text" name="description" value="" /> <br>
-            ราคา : <input type="text" name="price" value="" /> <br>
-            รูปภาพ : <input accept="image/*" type="file" id="pic" name="pic">
-            
-            <input type="hidden" name="image" id="image">
+    <body style="background: #FDF2E9">
+        <div class="content">
+            <div class="title" style="display: flex; justify-content: space-between;">
+                <font size="7" style="text-shadow: 1px 1px 2px gray;">เพิ่มรายการอาหาร</font>
+            </div>
+            <form action="addFoodServlet" method="POST">
+                ชื่อเมนู : <input type="text" name="foodname" value="" /> <br>
+                รายละเอียด : <input type="text" name="description" value="" /> <br>
+                ราคา : <input type="text" name="price" value="" /> <br>
+                รูปภาพ : <input accept="image/*" type="file" id="pic" name="pic">
 
-
-            <input type="submit" value="Submit" />
-        </form>
+                <input type="hidden" name="image" id="image">
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
 
         <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
         <script>
@@ -49,20 +53,20 @@
                 var $ = jQuery;
                 var file_data = $('#pic').prop('files')[0];
 
-                storageRef.put(file_data).then(function(snapshot){
-                    snapshot.ref.getDownloadURL().then(function(url){
-                        document.getElementById('image').value=url;
+                storageRef.put(file_data).then(function (snapshot) {
+                    snapshot.ref.getDownloadURL().then(function (url) {
+                        document.getElementById('image').value = url;
                         document.getElementById('pic').remove();
-                        
+
                         form.submit();
                     })
                 });
             })
         </script>
-         <c:if test="${add_menu == 1}">
+        <c:if test="${add_menu == 1}">
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script>swal("กรุณากรอกข้อมูลให้ครบทุกช่อง");</script> 
-           
+
         </c:if>
     </body>
 

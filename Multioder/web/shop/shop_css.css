@@ -25,11 +25,10 @@ body {
     position: relative;
 }
 
-form {
+.down {
     font-family: 'Kanit', sans-serif;
     font-size: 1.35em;
     text-align: center;
-    animation: down 1s;
     position: relative;
 }
 
