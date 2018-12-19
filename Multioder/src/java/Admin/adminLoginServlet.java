@@ -11,25 +11,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
-import model.Shop;
 
 /**
  *
  * @author USER
  */
-@WebServlet(name = "showShop_test", urlPatterns = {"/showShop_test"})
-public class showShop_test extends HttpServlet {
+@WebServlet(name = "adminLoginServlet", urlPatterns = {"/adminLoginServlet"})
+public class adminLoginServlet extends HttpServlet {
 
     @Resource(name = "seproject")
     private DataSource seproject;
@@ -45,33 +43,39 @@ public class showShop_test extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-                Connection conn = null;
-
         response.setContentType("text/html;charset=UTF-8");
+        Connection conn = null;
         try {
             conn = seproject.getConnection();
         } catch (SQLException ex) {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            boolean loginflag = false;
+            String find_admin = "SELECT emuser,empass FROM  seproject.employees WHERE  emuser = ? and empass = ?";
+            PreparedStatement user_db = conn.prepareStatement(find_admin);
+            user_db.setString(1, username);
+            user_db.setString(2, password);
+            ResultSet user_rs = user_db.executeQuery();
 
-        String shoplist = "SELECT * FROM seproject.shop";
-        PreparedStatement shop_db = conn.prepareStatement(shoplist);
-        
-        ResultSet rs = shop_db.executeQuery();
-        ArrayList<Shop> shop_list = new ArrayList<Shop>();
-        
-        while (rs.next()) {
-            Shop shop = new Shop();
-            shop.setShopid(rs.getInt("shopid"));
-            shop.setShopname(rs.getString("shopname"));
-            shop.setShop_status(rs.getBoolean("shop_status"));
-            shop.setShoplogo(rs.getString("shoplogo"));
-            shop_list.add(shop);
+            if (user_rs.next() == true) {
+                loginflag = true;
+
+            }
+            HttpSession session = request.getSession();
+            session.setAttribute("loginflag", loginflag);
+            
+            if (loginflag == true) {
+                session.setAttribute("username", username);
+                response.sendRedirect("showShopServlet");
+            } else {
+                response.sendRedirect("shop/admin_login.jsp");
+            }
         }
-         request.setAttribute("shop_list", shop_list);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin_showshop.jsp");
-            rd.forward(request, response);
-            if (conn != null) {
+                if (conn != null) {
             try {
                 conn.close();
             } catch (SQLException ex) {
@@ -79,7 +83,6 @@ public class showShop_test extends HttpServlet {
             }
         }
     }
-            
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -96,7 +99,7 @@ public class showShop_test extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(showShop_test.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(adminLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -114,7 +117,7 @@ public class showShop_test extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(showShop_test.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(adminLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
