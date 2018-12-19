@@ -56,8 +56,10 @@ public class manageMenuServlet extends HttpServlet {
         }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           int shopid = parseInt(request.getParameter("shopid"));
-           //int shopid = parseInt((String) request.getAttribute("shopid"));
+           String str_shopid = request.getParameter("shopid");
+           int shopid = parseInt(str_shopid);
+           
+          // int shopid = parseInt((String) request.getAttribute("shopid"));
            String find_shop = "SELECT * FROM seproject.menu WHERE shop_id = ?";
         PreparedStatement m = conn.prepareStatement(find_shop);
         m.setInt(1,shopid);
@@ -75,7 +77,9 @@ public class manageMenuServlet extends HttpServlet {
             menu.setImage(rs.getString("image"));
             menu_list.add(menu);
         }
+        request.setAttribute("shopid", str_shopid);
         request.setAttribute("manage_menu_list", menu_list);
+        
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop/manage_menu.jsp");
             rd.forward(request, response);
         

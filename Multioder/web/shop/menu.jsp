@@ -14,7 +14,6 @@
     <body>
         <a href="../manageMenuServlet?shopid=${shopid}"><button>จัดการเมนู</button></a>
         <a href="../showOrderServlet?shopid=${shopid}"><button>จัดการใบสั่งซื้อ</button></a>
-        <a href="../editInfoMenuServlet?shopid=${shopid}"><button>จัดการข้อมูล</button></a>
         <a href="../shopLogoutServlet"><button>ออกจากระบบ</button></a>
     </body>
 </html>

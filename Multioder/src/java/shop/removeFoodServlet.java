@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Admin;
+package shop;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,8 +26,8 @@ import javax.sql.DataSource;
  *
  * @author USER
  */
-@WebServlet(name = "removeShopServlet", urlPatterns = {"/removeShopServlet"})
-public class removeShopServlet extends HttpServlet {
+@WebServlet(name = "removeFoodServlet", urlPatterns = {"/removeFoodServlet"})
+public class removeFoodServlet extends HttpServlet {
 
     @Resource(name = "seproject")
     private DataSource seproject;
@@ -44,7 +44,7 @@ public class removeShopServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        Connection conn = null;
+         Connection conn = null;
         try {
             conn = seproject.getConnection();
         } catch (SQLException ex) {
@@ -52,35 +52,29 @@ public class removeShopServlet extends HttpServlet {
         }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
-            int shopid = parseInt(request.getParameter("shopid"));
-
-            String delete_shop1 = "SET FOREIGN_KEY_CHECKS = 0;";
-            String delete_shop2 = "DELETE FROM seproject.menu WHERE shop_id = ?;";
-            String delete_shop3 = "DELETE FROM seproject.order_item WHERE shop_id = ?;";
-            String delete_shop4 = "DELETE FROM seproject.orderist WHERE shopid = ?;";
-            String delete_shop5 = "DELETE FROM seproject.shop WHERE shopid = ?;";
-            String delete_shop6 = "SET FOREIGN_KEY_CHECKS = 1;";
-            PreparedStatement shop1 = conn.prepareStatement(delete_shop1);
+            int food_id = parseInt(request.getParameter("food_id"));
+            String shopid = (String) request.getAttribute("shopid");
+            //String shopid = request.getParameter("food_id");
+            String delete_food1 = "SET FOREIGN_KEY_CHECKS = 0;";
+            String delete_food2 = "DELETE FROM seproject.order_item WHERE menu_id = ?;";
+            String delete_food3 = "DELETE FROM seproject.menu WHERE menuid = ?;";
+            String delete_food4 = "SET FOREIGN_KEY_CHECKS = 1;";
+            PreparedStatement shop1 = conn.prepareStatement(delete_food1);
             shop1.executeUpdate();
-            PreparedStatement shop2 = conn.prepareStatement(delete_shop2);
-            shop2.setInt(1, shopid);
+            PreparedStatement shop2 = conn.prepareStatement(delete_food2);
+            shop2.setInt(1, food_id);
             shop2.executeUpdate();
-            PreparedStatement shop3 = conn.prepareStatement(delete_shop3);
-            shop3.setInt(1, shopid);
+            PreparedStatement shop3 = conn.prepareStatement(delete_food3);
+            shop3.setInt(1, food_id);
             shop3.executeUpdate();
-            PreparedStatement shop4 = conn.prepareStatement(delete_shop4);
-            shop4.setInt(1, shopid);
+            PreparedStatement shop4 = conn.prepareStatement(delete_food4);
             shop4.executeUpdate();
-            PreparedStatement shop5 = conn.prepareStatement(delete_shop5);
-            shop5.setInt(1, shopid);
-            shop5.executeUpdate();
-            PreparedStatement shop6 = conn.prepareStatement(delete_shop6);
-            shop6.executeUpdate();
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShop_test");
+            
+            
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/showOrderServlet");
             rd.forward(request, response);
         }
-        if (conn != null) {
+             if (conn != null) {
             try {
                 conn.close();
             } catch (SQLException ex) {
@@ -88,6 +82,7 @@ public class removeShopServlet extends HttpServlet {
             }
         }
     }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -104,7 +99,7 @@ public class removeShopServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(removeShopServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(removeFoodServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -122,7 +117,7 @@ public class removeShopServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(removeShopServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(removeFoodServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
