@@ -35,24 +35,25 @@
                 <c:when test = "${status == 'prepare'}">
                     <select name="status">
                         <option value="1" selected>กำลังเตรียม</option>
-                        <option value="2">เสร็จสิ้น</option>
-                        <option value="3">ยกเลิก</option>
+                        <option value="2">จัดส่ง</option>
+                        <option value="3">เสร็จสิ้น</option>
+                    </select>
+                </c:when>
+                <c:when test = "${status == 'done'}">
+                    <select name="status">
+                        <option value="1">กำลังเตรียม</option>
+                        <option value="2">จัดส่ง</option>
+                        <option value="3" selected>เสร็จสิ้น</option>
                     </select>
                 </c:when>
                 <c:when test = "${status == 'sending'}">
                     <select name="status">
                         <option value="1">กำลังเตรียม</option>
-                        <option value="2" selected>เสร็จสิ้น</option>
-                        <option value="3">ยกเลิก</option>
+                        <option value="2" selected>จัดส่ง</option>
+                        <option value="3">เสร็จสิ้น</option>
                     </select>
                 </c:when>
-                <c:when test = "${status == 'cancle'}">
-                    <select name="status">
-                        <option value="1">กำลังเตรียม</option>
-                        <option value="2">เสร็จสิ้น</option>
-                        <option value="3" selected>ยกเลิก</option>
-                    </select>
-                </c:when>
+
                 <c:otherwise>
                     No comment sir...
                 </c:otherwise>

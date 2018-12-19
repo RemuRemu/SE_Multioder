@@ -3,40 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/model/Menu.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/Admin/editInfoShopServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/menustyle.css</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/Register/registerServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/shop.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/shop/show_detail_menu.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/admin_showshop.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/controller/ProcessSelection.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/shop/manage_menu.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/shop/admin_login.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/model/Shop.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/cart.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/admin_shopdetail.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/shop/editInfoMenuServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/Address/addaddressServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/Admin/viewDetailShopServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/shop/showDetailMenuServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/Profile/editProfileServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/shop/shop_login.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/ViewMenu/shopServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/shop/view_order.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/Admin/addShopServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/Login/loginServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/shop/show_order.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/shop/addFoodServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/addnewshop.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/ViewMenu/menuServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/shop/shopLoginServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/shop/manageMenuServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/Admin/showShopServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/web/menu.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/controller/amountControl.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/SE_Multioder/Multioder/src/java/Admin/adminLoginServlet.java</file>
+            <file>file:/D:/SE_Multioder/Multioder/src/java/shop/addFoodServlet.java</file>
+            <file>file:/D:/SE_Multioder/Multioder/src/java/Profile/showEditProfileServlet.java</file>
+            <file>file:/D:/SE_Multioder/Multioder/src/java/Address/addressServlet.java</file>
+            <file>file:/D:/SE_Multioder/Multioder/src/java/shop/editShopServlet.java</file>
+            <file>file:/D:/SE_Multioder/Multioder/web/shop/manage_menu.jsp</file>
+            <file>file:/D:/SE_Multioder/Multioder/web/shop/view_order.jsp</file>
+            <file>file:/D:/SE_Multioder/Multioder/web/shop.jsp</file>
+            <file>file:/D:/SE_Multioder/Multioder/src/java/shop/editInfoMenuServlet.java</file>
+            <file>file:/D:/SE_Multioder/Multioder/web/edit_profile.jsp</file>
+            <file>file:/D:/SE_Multioder/Multioder/web/shop/menu.jsp</file>
+            <file>file:/D:/SE_Multioder/Multioder/web/login.jsp</file>
+            <file>file:/D:/SE_Multioder/Multioder/src/java/shop/showDetailMenuServlet.java</file>
+            <file>file:/D:/SE_Multioder/Multioder/src/java/shop/shopLoginServlet.java</file>
+            <file>file:/D:/SE_Multioder/Multioder/src/java/shop/showShopProfileServlet.java</file>
+            <file>file:/D:/SE_Multioder/Multioder/src/java/shop/setShoplogoServlet.java</file>
+            <file>file:/D:/SE_Multioder/Multioder/web/shop/show_detail_shop.jsp</file>
+            <file>file:/D:/SE_Multioder/Multioder/web/add_menu.jsp</file>
+            <file>file:/D:/SE_Multioder/Multioder/web/shop/show_detail_menu.jsp</file>
+            <file>file:/D:/SE_Multioder/Multioder/src/java/Profile/editProfileServlet.java</file>
+            <file>file:/D:/SE_Multioder/Multioder/src/java/ViewMenu/shopServlet.java</file>
         </group>
     </open-files>
 </project-private>

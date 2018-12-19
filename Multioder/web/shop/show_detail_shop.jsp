@@ -60,7 +60,7 @@
             form.addEventListener("submit", function (event) {
                 event.preventDefault();
                 var timestamp = Number(new Date());
-                var storageRef = firebase.storage().ref(timestamp.toString());
+                var storageRef = firebase.storage().ref("logo/"+timestamp.toString());
                 var $ = jQuery;
                 var file_data = $('#pic').prop('files')[0];
 

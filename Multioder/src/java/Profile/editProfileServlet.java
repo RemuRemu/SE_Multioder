@@ -85,7 +85,7 @@ public class editProfileServlet extends HttpServlet {
                 p.executeUpdate();
                 response.sendRedirect("showProfileServlet");
             } //change information only not change pass
-            else if (old_pass.isEmpty() || new_pass.isEmpty()) {
+            else if (old_pass.isEmpty() && new_pass.isEmpty()) {
                 String edit_profile = "UPDATE userprofile"
                         + " SET firstname = ?,lastname = ?,email = ?,phone = ?"
                         + " WHERE uid = ?";
@@ -101,7 +101,7 @@ public class editProfileServlet extends HttpServlet {
             } else {
                 int fail = 1;
                 request.setAttribute("password", fail);
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/edit_profile.jsp");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/showEditProfileServlet");
                 rd.forward(request, response);
                 return;
             }
