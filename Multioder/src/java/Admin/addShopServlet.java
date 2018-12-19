@@ -55,54 +55,59 @@ public class addShopServlet extends HttpServlet {
             String shopname = request.getParameter("shop_name");
             String shop_username = request.getParameter("shop_username");
             String shop_password = request.getParameter("shop_password");
-            
-           // if (shopname.isEmpty() || shop_username.isEmpty() || shop_password.isEmpty()) {
-             //   int fail = 2;
-               // request.setAttribute("a_addshop_flag", fail);
-               // RequestDispatcher rd = getServletConztext().getRequestDispatcher("/addnewshop.jsp");
-               // rd.forward(request, response);
-                //return;
-       // }
-            String find_sameuser = "SELECT shopusername FROM shop WHERE  shopusername = ?";
-            String find_samename = "SELECT shopname FROM shop WHERE  shopname = ?";
-            
-            PreparedStatement sameuser = conn.prepareStatement(find_sameuser);
-            sameuser.setString(1, shop_username);
-            
-            PreparedStatement samename = conn.prepareStatement(find_samename);
-            samename.setString(1, find_samename);
-            
-            ResultSet user_rs = sameuser.executeQuery();
-            ResultSet name_rs = samename.executeQuery();
-            
-            if (user_rs.next() == true) {
-                int fail = 1;
-                request.setAttribute("flag", fail);
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/addnewshop.jsp");
+
+            // if (shopname.isEmpty() || shop_username.isEmpty() || shop_password.isEmpty()) {
+            //   int fail = 2;
+            // request.setAttribute("a_addshop_flag", fail);
+            // RequestDispatcher rd = getServletConztext().getRequestDispatcher("/addnewshop.jsp");
+            // rd.forward(request, response);
+            //return;
+            // }
+            if (shop_username == null || shop_password == null) {
+                response.sendRedirect("/addnewshop.jsp");
+            } else {
+                String find_sameuser = "SELECT shopusername FROM shop WHERE  shopusername = ?";
+                String find_samename = "SELECT shopname FROM shop WHERE  shopname = ?";
+
+                PreparedStatement sameuser = conn.prepareStatement(find_sameuser);
+                sameuser.setString(1, shop_username);
+
+                PreparedStatement samename = conn.prepareStatement(find_samename);
+                samename.setString(1, find_samename);
+
+                ResultSet user_rs = sameuser.executeQuery();
+                ResultSet name_rs = samename.executeQuery();
+
+                if (user_rs.next() == true) {
+                    int fail = 1;
+                    request.setAttribute("flag", fail);
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/addnewshop.jsp");
+                    rd.forward(request, response);
+                    return;
+                } else if (name_rs.next()) {
+                    int fail = 1;
+                    request.setAttribute("flag", fail);
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/addnewshop.jsp");
+                    rd.forward(request, response);
+                    return;
+                }
+
+                String insert_shop = "INSERT INTO shop"
+                        + "(shopname, shop_status, shoplogo, shopusername, shoppassword) VALUES"
+                        + "(?,0,null,?,?)";
+                PreparedStatement m = conn.prepareStatement(insert_shop);
+                m.setString(1, shopname);
+                m.setString(2, shop_username);
+                m.setString(3, shop_password);
+                m.executeUpdate();
+
+                int pass = 3;
+                request.setAttribute("flag", pass);
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShopServlet");
                 rd.forward(request, response);
-                return;
-            } else if (name_rs.next()) {
-                int fail = 1;
-                request.setAttribute("flag", fail);
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/addnewshop.jsp");
-                rd.forward(request, response);
-                return;
             }
-            
-             String insert_shop = "INSERT INTO shop"+
-                     "(shopname, shop_status, shoplogo, shopusername, shoppassword) VALUES"
-                     + "(?,0,null,?,?)";
-             PreparedStatement m = conn.prepareStatement(insert_shop);
-             m.setString(1, shopname);
-             m.setString(2, shop_username);
-             m.setString(3, shop_password);
-             m.executeUpdate();
-             
-             int pass = 3;
-            request.setAttribute("flag", pass);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShopServlet");
-            rd.forward(request, response);
-    }catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             Logger.getLogger(registerServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (conn != null) {
@@ -112,7 +117,8 @@ public class addShopServlet extends HttpServlet {
                 Logger.getLogger("connection-close").log(Level.SEVERE, null, ex);
             }
 
-        }}
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

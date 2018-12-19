@@ -59,23 +59,28 @@ public class editInfoMenuServlet extends HttpServlet {
             String fooddesc = request.getParameter("description");
             float foodprice = parseFloat(request.getParameter("price"));
             String foodimg = request.getParameter("image");
-            HttpSession session = request.getSession();               
-            model.Shop shop = (model.Shop)session.getAttribute("shop");
+            HttpSession session = request.getSession();
+            model.Shop shop = (model.Shop) session.getAttribute("shop");
+            if (request.getParameter("price") == null || foodname==null) {
+                response.sendRedirect("showDetailMenuServlet?food_id=" + foodid);
+            } else {
                 int shopid = shop.getShopid();
-                 String edit_food ="UPDATE seproject.menu"
-                                + " SET name = ?,description = ?,price = ?,image = ?"
-                              + " WHERE menuid = ?";
-            //String edit_food = "UPDATE seproject.menu"
-            //      + " SET name = ?,description = ?,price = ?"
-            //        + " WHERE menuid = ?";
-            PreparedStatement pro = conn.prepareStatement(edit_food);
-            pro.setString(1, foodname);
-            pro.setString(2, fooddesc);
-            pro.setFloat(3, foodprice);
-            pro.setString(4, foodimg);
-            pro.setInt(5, foodid);
-            pro.executeUpdate();
-            response.sendRedirect("manageMenuServlet?shopid=" + shopid);
+                String edit_food = "UPDATE seproject.menu"
+                        + " SET name = ?,description = ?,price = ?,image = ?"
+                        + " WHERE menuid = ?";
+                //String edit_food = "UPDATE seproject.menu"
+                //      + " SET name = ?,description = ?,price = ?"
+                //        + " WHERE menuid = ?";
+                PreparedStatement pro = conn.prepareStatement(edit_food);
+                pro.setString(1, foodname);
+                pro.setString(2, fooddesc);
+                pro.setFloat(3, foodprice);
+                pro.setString(4, foodimg);
+                pro.setInt(5, foodid);
+                pro.executeUpdate();
+                response.sendRedirect("manageMenuServlet?shopid=" + shopid);
+            }
+
         }
         if (conn != null) {
             try {
