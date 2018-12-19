@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import model.Shop;
 
 /**
  *
@@ -57,25 +58,26 @@ public class shopLoginServlet extends HttpServlet {
             String username = request.getParameter("user");
             String password = request.getParameter("pass");
             //find user and pass
-            String find_user = "SELECT shopid,shopname,shopusername,shoppassword FROM shop WHERE  shopusername = ? and shoppassword = ?";
+            String find_user = "SELECT shopid,shopname,shopusername,shoppassword,shoplogo FROM shop WHERE  shopusername = ? and shoppassword = ?";
             PreparedStatement user_db = conn.prepareStatement(find_user);
             user_db.setString(1, username);
             user_db.setString(2, password);
             ResultSet user_rs = user_db.executeQuery();
             String shopname= null;
             int shopid = -1;
+            Shop shop = new Shop();
             if (user_rs.next() == true) {
                 loginflag = true;
-             shopname = user_rs.getString("shopname");
-             shopid = user_rs.getInt("shopid");
-
+             
+             shop.setShopid(user_rs.getInt("shopid"));
+             shop.setShopname(user_rs.getString("shopname"));
+             shop.setShoplogo(user_rs.getString("shoplogo"));
             }
             HttpSession session = request.getSession();
             session.setAttribute("loginflag", loginflag);
             
             if (loginflag == true) {
-                session.setAttribute("shopname", shopname);
-                session.setAttribute("shopid", shopid);
+                session.setAttribute("shop", shop);
                 response.sendRedirect("shop/menu.jsp");
             } else {
                 response.sendRedirect("shop/shop_login.jsp");

@@ -53,7 +53,7 @@ public class removeFoodServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             int food_id = parseInt(request.getParameter("food_id"));
-            String shopid = (String) request.getAttribute("shopid");
+            String shopid = request.getParameter("shopid");
             //String shopid = request.getParameter("food_id");
             String delete_food1 = "SET FOREIGN_KEY_CHECKS = 0;";
             String delete_food2 = "DELETE FROM seproject.order_item WHERE menu_id = ?;";
@@ -71,8 +71,7 @@ public class removeFoodServlet extends HttpServlet {
             shop4.executeUpdate();
             
             
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/showOrderServlet");
-            rd.forward(request, response);
+            response.sendRedirect("manageMenuServlet?shopid=" + shopid);
         }
              if (conn != null) {
             try {

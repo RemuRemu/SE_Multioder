@@ -55,7 +55,7 @@ public class showDetailMenuServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             int food_id = parseInt(request.getParameter("food_id"));
-            
+            int shop_id = parseInt(request.getParameter("shopid"));
             String find_menu_id = "Select * From seproject.menu WHERE menuid = ?";
              PreparedStatement m = conn.prepareStatement(find_menu_id);
         m.setInt(1,food_id);
@@ -70,6 +70,7 @@ public class showDetailMenuServlet extends HttpServlet {
             menu.setImage(rs.getString("image"));
         }
         request.setAttribute("detail_menu",menu);
+        request.setAttribute("shopid",shop_id);
                     RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop/show_detail_menu.jsp");
             rd.forward(request, response);
         }

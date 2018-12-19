@@ -77,7 +77,7 @@ public class addFoodServlet extends HttpServlet {
                 HttpSession session = request.getSession();
 
                 int shopid = (int) session.getAttribute("shopid");
-                String insert_menu = "INSERT INTO menu"
+                String insert_menu = "INSERT INTO seproject.menu"
                         + "(name, shop_id, description, price, image) VALUES"
                         + "(?,?,?,?,?)";
                 PreparedStatement m = conn.prepareStatement(insert_menu);

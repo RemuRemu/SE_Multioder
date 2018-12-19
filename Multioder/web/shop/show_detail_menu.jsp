@@ -22,6 +22,7 @@
                         Food Image :<input type="file" name="foodimg" value="" />
                         <input type="submit" value="Submit" />
                         <input type="hidden" value="${detail_menu.menu_id}" name="foodid" />
+                        <input type="hidden" name="shopid" value="${shopid}" />
                         
         </form>
     </body>

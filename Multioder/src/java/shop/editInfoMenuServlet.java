@@ -57,24 +57,22 @@ public class editInfoMenuServlet extends HttpServlet {
             String foodname = request.getParameter("foodname");
             String fooddesc = request.getParameter("fooddesc");
             float foodprice = parseFloat(request.getParameter("foodprice"));
-            // String foodimg = request.getParameter("foodimg");
-
-            //      String edit_food ="UPDATE seproject.menu"
-            //                    + " SET name = ?,description = ?,price,image = ?"
-            //                   + " WHERE shopid = ?";
-            String edit_food = "UPDATE seproject.menu"
-                    + " SET name = ?,description = ?,price = ?"
-                    + " WHERE menuid = ?";
+            String foodimg = request.getParameter("foodimg");
+            int shopid = parseInt(request.getParameter("shopid"));
+                 String edit_food ="UPDATE seproject.menu"
+                                + " SET name = ?,description = ?,price = ?,image = ?"
+                              + " WHERE menuid = ?";
+            //String edit_food = "UPDATE seproject.menu"
+            //      + " SET name = ?,description = ?,price = ?"
+            //        + " WHERE menuid = ?";
             PreparedStatement pro = conn.prepareStatement(edit_food);
             pro.setString(1, foodname);
             pro.setString(2, fooddesc);
             pro.setFloat(3, foodprice);
-            //  pro.setImg(4, foodimg);
-            pro.setInt(4, foodid);
+            pro.setString(4, foodimg);
+            pro.setInt(5, foodid);
             pro.executeUpdate();
-            String shopid = (String) request.getAttribute("shopid");
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/showOrderServlet");
-            rd.forward(request, response);
+            response.sendRedirect("manageMenuServlet?shopid=" + shopid);
         }
         if (conn != null) {
             try {
