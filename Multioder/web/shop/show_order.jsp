@@ -23,8 +23,7 @@
     <div class="content">
         <div class="title" style="display: flex; justify-content: space-between;">
             <font size="7" style="text-shadow: 1px 1px 2px gray;">รายการสั่งซื้อ</font><br>
-            <a href="manageMenuServlet?shopid=${shopid}"><button>จัดการเมนู</button></a>
-            <a href="shop/shop_login.jsp"><button>ออกจากระบบ</button></a>
+            <a href="shop/menu.jsp"><button>ย้อนกลับ</button></a>
         </div>
         <br>
         <table  id="s_order" border="1" class="table table-striped table-border checkout-table">

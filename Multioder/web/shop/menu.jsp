@@ -9,11 +9,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Multioder - Shop Home</title>
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="shop_css.css">
     </head>
-    <body>
-        <a href="../manageMenuServlet?shopid=${shopid}"><button>จัดการเมนู</button></a>
-        <a href="../showOrderServlet?shopid=${shopid}"><button>จัดการใบสั่งซื้อ</button></a>
-        <a href="../shopLogoutServlet"><button>ออกจากระบบ</button></a>
+    <body style="background: #FDF2E9">
+        <div class="navbar">
+            <font size="7" style="text-shadow: 1px 1px 2px gray; text-align: center;">ยินดีต้อนรับ</font><br>
+            <a href="../manageMenuServlet?shopid=${shopid}"> <button style="width: 100%; margin: auto;">จัดการเมนู</button> </a> <br>
+            <a href="../showOrderServlet?shopid=${shopid}"> <button style="width: 100%; margin: auto;">จัดการใบสั่งซื้อ</button> </a> <br>
+            <a href="../shopLogoutServlet"><button style="width: 100%; margin: auto;">ออกจากระบบ</button></a>
+        </div>
     </body>
 </html>
