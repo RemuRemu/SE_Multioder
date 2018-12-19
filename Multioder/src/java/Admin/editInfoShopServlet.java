@@ -70,7 +70,7 @@ public class editInfoShopServlet extends HttpServlet {
 
                 pro.setInt(4, shopid);
                 pro.executeUpdate();
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShop_test");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShopServlet");
                 rd.forward(request, response);
             } else {
                 String edit_shopInfo = "UPDATE seproject.shop"

@@ -100,7 +100,7 @@ public class addShopServlet extends HttpServlet {
              
              int pass = 3;
             request.setAttribute("flag", pass);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShop_test");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShopServlet");
             rd.forward(request, response);
     }catch (SQLException ex) {
             Logger.getLogger(registerServlet.class.getName()).log(Level.SEVERE, null, ex);

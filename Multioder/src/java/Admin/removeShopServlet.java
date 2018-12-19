@@ -77,7 +77,7 @@ public class removeShopServlet extends HttpServlet {
             shop5.executeUpdate();
             PreparedStatement shop6 = conn.prepareStatement(delete_shop6);
             shop6.executeUpdate();
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShop_test");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShopServlet");
             rd.forward(request, response);
         }
         if (conn != null) {
