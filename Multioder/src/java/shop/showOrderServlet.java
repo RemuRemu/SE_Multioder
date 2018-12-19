@@ -8,6 +8,7 @@ package shop;
 import Profile.showProfileServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -57,13 +58,16 @@ public class showOrderServlet extends HttpServlet {
         }
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+
+            //int s_id = (int) session.getAttribute("shopid");
             HttpSession session = request.getSession();
-            int s_id = (int) session.getAttribute("shopid");
+            model.Shop shop = (model.Shop) session.getAttribute("shop");
+            int shopid = shop.getShopid();
             ArrayList<Order> s_ordlist = new ArrayList<Order>();
             ArrayList<Double> total = new ArrayList<Double>();
             String order = "SELECT * FROM `order` WHERE order_id IN (SELECT order_id FROM order_item WHERE shop_id = ? ORDER BY order_id ASC);";
             PreparedStatement o = conn.prepareStatement(order);
-            o.setInt(1, s_id);
+            o.setInt(1, shopid);
             ResultSet rs_o = o.executeQuery();
             while (rs_o.next()) {
                 Order ord = new Order();
@@ -74,13 +78,13 @@ public class showOrderServlet extends HttpServlet {
                 ord.setAddress(rs_o.getString("address"));
                 String find_total = "Select * From order_item WHERE shop_id = ? AND order_id = ?";
                 PreparedStatement m = conn.prepareStatement(find_total);
-                m.setInt(1, s_id);
+                m.setInt(1, shopid);
                 m.setInt(2, order_id);
                 ResultSet rs = m.executeQuery();
                 double price = 0;
                 while (rs.next()) {
                     total.add(rs.getDouble("price"));
-                    price+=rs.getDouble("price");
+                    price += rs.getDouble("price");
                 }
                 ord.setTotal(price);
                 s_ordlist.add(ord);

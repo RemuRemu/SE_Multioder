@@ -18,6 +18,7 @@ public class Menu {
     private float price;
     private String image;
     private int recommend;
+    private String logo;
 
     public String getShopname() {
         return shopname;
@@ -122,6 +123,20 @@ public class Menu {
      */
     public void setRecommend(int recommend) {
         this.recommend = recommend;
+    }
+
+    /**
+     * @return the logo
+     */
+    public String getLogo() {
+        return logo;
+    }
+
+    /**
+     * @param logo the logo to set
+     */
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
     
 }

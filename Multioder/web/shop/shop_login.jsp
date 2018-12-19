@@ -18,7 +18,7 @@
         <div class="login">
             <img id="logo" src="../pic/logo.png" align="middle">
             <h1>เข้าสู่ระบบสำหรับผู้ประกอบการ</h1><br>
-            <form action="../shopLoginServlet">
+            <form action="../shopLoginServlet" class="down">
                 <input type="text" name="user" value="" placeholder="Username" size="25px" /> <br><br>
                 <input type="password" name="pass" value="" placeholder="Password" size="25px" /><br><br>
             <input type="submit" value="Login" />

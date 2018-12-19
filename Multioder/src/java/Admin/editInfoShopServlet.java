@@ -45,6 +45,7 @@ public class editInfoShopServlet extends HttpServlet {
             throws ServletException, IOException, SQLException {
         Connection conn = null;
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try {
             conn = seproject.getConnection();
         } catch (SQLException ex) {
@@ -69,7 +70,7 @@ public class editInfoShopServlet extends HttpServlet {
 
                 pro.setInt(4, shopid);
                 pro.executeUpdate();
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShop_test");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShopServlet");
                 rd.forward(request, response);
             } else {
                 String edit_shopInfo = "UPDATE seproject.shop"

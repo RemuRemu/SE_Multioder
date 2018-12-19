@@ -21,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 /**
@@ -44,7 +45,6 @@ public class editInfoMenuServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
         Connection conn = null;
         try {
             conn = seproject.getConnection();
@@ -52,13 +52,16 @@ public class editInfoMenuServlet extends HttpServlet {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
         try (PrintWriter out = response.getWriter()) {
+            response.setCharacterEncoding("UTF-8");
             /* TODO output your page here. You may use following sample code. */
             int foodid = parseInt(request.getParameter("foodid"));
             String foodname = request.getParameter("foodname");
-            String fooddesc = request.getParameter("fooddesc");
-            float foodprice = parseFloat(request.getParameter("foodprice"));
-            String foodimg = request.getParameter("foodimg");
-            int shopid = parseInt(request.getParameter("shopid"));
+            String fooddesc = request.getParameter("description");
+            float foodprice = parseFloat(request.getParameter("price"));
+            String foodimg = request.getParameter("image");
+            HttpSession session = request.getSession();               
+            model.Shop shop = (model.Shop)session.getAttribute("shop");
+                int shopid = shop.getShopid();
                  String edit_food ="UPDATE seproject.menu"
                                 + " SET name = ?,description = ?,price = ?,image = ?"
                               + " WHERE menuid = ?";

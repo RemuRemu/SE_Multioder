@@ -45,7 +45,6 @@ public class addaddressServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
            
             throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             Connection conn = null;
@@ -54,7 +53,6 @@ public class addaddressServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
-        response.setContentType("text/html;charset=UTF-8");
         String _addAddress = request.getParameter("newAddress");
         
         if (_addAddress.isEmpty()){

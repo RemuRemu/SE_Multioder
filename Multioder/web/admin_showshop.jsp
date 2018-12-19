@@ -29,10 +29,10 @@
         <table id="shop_admin" border="1">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Shop status</th>
-                    <th>Logo</th>
+                    <th>เลขที่</th>
+                    <th>รายการร้านค้า</th>
+                    <th>สถานะร้านค้า</th>
+                    <th>โลโก้</th>
                     <th></th>
                 </tr>
             </thead>
@@ -59,7 +59,10 @@
                             </c:choose>     
 
                         </td>
-                        <td>${shop.shoplogo}</td>
+                        <td>
+                            <img src="${shop.shoplogo}" style="width: 5em; height: 5em;"/>
+
+                        </td>
                         <td><a href="viewDetailShopServlet?shopid=${shop.shopid}">View</a> &nbsp
                             <a href="removeShopServlet?shopid=${shop.shopid}">Remove</a>
                         </td>

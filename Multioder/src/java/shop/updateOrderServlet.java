@@ -50,13 +50,14 @@ public class updateOrderServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
-        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+
             HttpSession session = request.getSession();
-            int shopid = (int) session.getAttribute("shopid");
+            model.Shop shop = (model.Shop) session.getAttribute("shop");
+            int shopid = shop.getShopid();
             String status = request.getParameter("status");
             int orderid = parseInt(request.getParameter("orderid"));
-            
+
             String edit_status = "UPDATE orderist"
                     + " SET status = ?"
                     + " WHERE orderid = ? AND shopid = ?";
@@ -66,7 +67,7 @@ public class updateOrderServlet extends HttpServlet {
             sta.setInt(3, shopid);
             sta.executeUpdate();
             request.setAttribute("status", status);
-            response.sendRedirect("viewShopOrderServlet?ord_id="+orderid);
+            response.sendRedirect("viewShopOrderServlet?ord_id=" + orderid);
         } catch (SQLException ex) {
             Logger.getLogger(updateOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -79,18 +80,17 @@ public class updateOrderServlet extends HttpServlet {
         }
     }
 
-
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -104,7 +104,7 @@ public class updateOrderServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -115,7 +115,7 @@ public class updateOrderServlet extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-        public String getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

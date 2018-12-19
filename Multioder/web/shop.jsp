@@ -89,10 +89,13 @@
                              background-color: #F5CA99; border-radius: 10px; padding: 10px; box-shadow: 2px 2px 5px grey;">
                             <form action="/Multioder/ProcessSelection">
                                 <button type="submit" name="add" value="${rec.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
+                                <img src="${rec.logo}" style="width: 5em; float: right; clear: right; margin-top: 2em;"/>
                                 <font size="5"><b>${rec.shopname}</b></font> <br>
-                                <img src="pic/menu_dish/${rec.image}.jpg" style="max-width: 300px; max-height: 125px;"> <br>
+                                <img src="${rec.image}" style="max-width: 300px; max-height: 125px;"> <br>
                                 รายละเอียด : ${rec.description} <br>
                                 ราคาต่อจาน : ${rec.price} บาท
+                                
+
                             </form>
                         </div>
                     </c:forEach>
@@ -107,10 +110,12 @@
                              background-color: #F5CA99; border-radius: 10px;padding: 10px; font-size: 17px; box-shadow: 2px 2px 5px gray;">
                             <form action="/Multioder/ProcessSelection">
                                 <button type="submit" name="add" value="${menu.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
+                                <img src="${menu.logo}" style="width: 5em; float: right; clear: right; margin-top: 2em;"/>
                                 <font size="5"><b>${menu.shopname} </b></font> <br>
-                                <img src="pic/menu_dish/${menu.image}.jpg" style="max-width: 300px; max-height: 125px;"> <br>
+                                <img src="${menu.image}" style="max-width: 300px; max-height: 125px;"> <br>
                                 รายละเอียด : ${menu.description} <br>
                                 ราคาจานล่ะ : ${menu.price} บาท <br>
+                                
                             </form>
                         </div>
                     </c:forEach>

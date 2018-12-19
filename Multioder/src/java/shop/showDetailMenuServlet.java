@@ -21,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import model.Menu;
 
@@ -55,23 +56,25 @@ public class showDetailMenuServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             int food_id = parseInt(request.getParameter("food_id"));
-            int shop_id = parseInt(request.getParameter("shopid"));
+            HttpSession session = request.getSession();
+            model.Shop shop = (model.Shop) session.getAttribute("shop");
+            int shopid = shop.getShopid();
             String find_menu_id = "Select * From seproject.menu WHERE menuid = ?";
-             PreparedStatement m = conn.prepareStatement(find_menu_id);
-        m.setInt(1,food_id);
-        ResultSet rs = m.executeQuery();
-        Menu menu = new Menu();
-        if (rs.next()){
-            
-            menu.setMenu_id(food_id);
-            menu.setName(rs.getString("name"));
-            menu.setDescription(rs.getString("description"));
-            menu.setPrice(rs.getFloat("price"));
-            menu.setImage(rs.getString("image"));
-        }
-        request.setAttribute("detail_menu",menu);
-        request.setAttribute("shopid",shop_id);
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop/show_detail_menu.jsp");
+            PreparedStatement m = conn.prepareStatement(find_menu_id);
+            m.setInt(1, food_id);
+            ResultSet rs = m.executeQuery();
+            Menu menu = new Menu();
+            if (rs.next()) {
+
+                menu.setMenu_id(food_id);
+                menu.setName(rs.getString("name"));
+                menu.setDescription(rs.getString("description"));
+                menu.setPrice(rs.getFloat("price"));
+                menu.setImage(rs.getString("image"));
+            }
+            request.setAttribute("detail_menu", menu);
+
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop/show_detail_menu.jsp");
             rd.forward(request, response);
         }
         if (conn != null) {
