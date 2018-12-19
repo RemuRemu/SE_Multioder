@@ -56,7 +56,7 @@ CREATE TABLE `employees` (
   `emfirstname` varchar(45) DEFAULT NULL,
   `emlastname` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`emid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (1,'1234','1234','กรี่','ก็อต');
+INSERT INTO `employees` VALUES (1,'1234','1234','กรี่','ก็อต'),(2,'7079','7079','ตาอิงค์','เอง');
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +96,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'ไก่ทอด',1,'พี่ให้4ชิ้น',50,'1','0'),(2,'ไก่ทอด',2,'พี่ให้5ชิ้ยเลย',60,'2','0'),(3,'ไก่ทอด',3,'เอาไปเลย6ชิ้น',70,'3','0'),(4,'ไก่ทอด',4,'7พอป่าว',70,'4','0'),(5,'ไก่ทอด',5,'7ก็พอแหละ',50,'5','0'),(6,'ไก่ทอด',6,'จะลองซัก8ไหม',80,'6','0'),(7,'ไก่ทอด',7,'1ชิ้นก็พอ',12,'7','0'),(8,'ไก่ทอด',8,'3มะ',35,'8','0'),(9,'ไก่ทอด',9,'5ชิ้นละ',48,'9','0'),(10,'ไก่ทอด',10,'10 ชิ้น',100,'10','0'),(11,'ไก่ทอด',11,'Don\'t be sell',0,'11','10'),(12,'ข้าวราดผัดกระเพราหมูกรอบ ไข่ดาว',1,'หมูนุ่มละมุนลิ้น',40,'12','0'),(13,'ข้าวราดผัดกระเพราหมูกรอบ ไข่ดาว',2,'หมูกรอบมาก',40,'13','0'),(14,'ข้าวราดผัดกระเพราหมูกรอบ ไข่ดาว',3,'ไข่นุ่มมาก',40,'14','0'),(15,'ข้าวราดผัดกระเพราหมูกรอบ ไข่ดาว',4,'ไข่สองฟองไปเลย',45,'15','0'),(16,'ข้าวราดผัดกระเพราหมูกรอบ ไข่ดาว',5,'ไม่ใส่ใบกระเพา',35,'16','1'),(17,'ข้าวไข่เจียว',6,'ใส่ไข่2ฟอง มีน้ำพริกกะปิ',35,'17','0'),(18,'ข้าวไข่เจียว',7,'ไข่1ฟอง มีน้ำปลาพริก',30,'18','0'),(19,'ข้าวไข่เจียว',8,'ไข่3ฟอง ไม่มีอะไรเพิ่มเติม',38,'19','0'),(20,'ข้าวไข่เจียว',9,'มีแต่น้ำพริก ไข่หมด',5,'20','0'),(21,'ข้าวไข่เจียว',10,'ไข่5 มีน้ำพริกกะปิ ใส่หมูด้วย',100,'21','0'),(22,'ข้าวไข่เจียว',11,'ไข่นกกระจอกเทศ',125,'22','0'),(23,'ข้าวราดหมูกระเทียม',1,'หมูนุ่ม',40,'23','0'),(24,'ข้าวราดหมูกระเทียม',2,'หมูนิ่ม',40,'24','0'),(25,'ข้าวราดหมูกระเทียม',3,'หมูอร่อย',40,'25','0'),(26,'ข้าวราดหมูกระเทียม',4,'หมูไม่เหนียว',40,'26','0'),(27,'ข้าวราดหมูกระเทียม',5,'ให้ข้าวเยอะ',40,'27','0'),(28,'ข้าวราดไก่ทอดกระเทียม',6,'ไม่ใส่หมู',40,'28','0'),(29,'ข้าวราดไก่ทอดกระเทียม',7,'อิสลามกินได้',40,'29','0'),(30,'ข้าวราดไก่ทอดกระเทียม',8,'อิศลามห้ามกิน',35,'30','0'),(31,'ข้าวราดไก่ทอดกระเทียม',9,'ใช้อกไก่',45,'31','0'),(32,'ข้าวราดไก่ทอดกระเทียม',10,'อร่อยมาก',50,'32','0'),(33,'ข้าวราดไก่ทอดกระเทียม',11,'ยังไม่ขาย',0,'33','0'),(34,'ข้าวราดปลาหมึกผัดผงกะหรี่',1,'หมึกตัวใหญ่',45,'34','0'),(35,'ข้าวราดปลาหมึกผัดผงกะหรี่',2,'ใส่เยอะ',45,'35','0'),(36,'ข้าวราดปลาหมึกผัดผงกะหรี่',3,'อร่อย',45,'36','0'),(37,'ข้าวราดปลาหมึกผัดผงกะหรี่',4,'ที่สุดของปลากหมึก',50,'37','0'),(38,'ต้มยำกุ้ง',5,'กุ้งแม่น้ำ',320,'38','0'),(39,'ต้มยำกุ้ง',6,'กุ้งเลี้ยง',300,'39','0'),(40,'ต้มยำกุ้ง',7,'กุ้งกุลาดำ',310,'40','0'),(41,'เฟรนช์ฟรายส์',8,'กรอบมาก',40,'41','0'),(42,'เฟรนช์ฟรายส์',9,'แบบหนา',45,'42','0'),(43,'เฟรนช์ฟรายส์',10,'อร่อยโคตร',45,'43','0'),(44,'เฟรนช์ฟรายส์',11,'อันนี้ขาย',40,'44','0'),(45,'ข้าวเปล่า',1,'หอมมะลิ',10,'45','0'),(46,'ข้าวเปล่า',2,'หอมมะลิ 100%',10,'46','0'),(47,'ส้มตำไทย',3,'ตำไทย ใส่ถั่ว',40,'47','0'),(48,'ส้มตำปู',3,'ใส่ปูนะ',40,'48','0'),(49,'ตำไทยใส่ปู',3,'ใส่ทั้งถั่วและปู',50,'49','0'),(50,'ข้าวเหนียว',3,'ขนาด1คนกิน',10,'50','0');
+INSERT INTO `menu` VALUES (1,'ไก่ทอด',1,'พี่ให้4ชิ้น',50,'gs://multioder-24b7f.appspot.com/menu_dish/1.jpg','0'),(2,'ไก่ทอด',2,'พี่ให้5ชิ้ยเลย',60,'gs://multioder-24b7f.appspot.com/menu_dish/2.jpg','0'),(3,'ไก่ทอด',3,'เอาไปเลย6ชิ้น',70,'gs://multioder-24b7f.appspot.com/menu_dish/3.jpg','0'),(4,'ไก่ทอด',4,'7พอป่าว',70,'gs://multioder-24b7f.appspot.com/menu_dish/4.jpg','0'),(5,'ไก่ทอด',5,'7ก็พอแหละ',50,'gs://multioder-24b7f.appspot.com/menu_dish/5.jpg','0'),(6,'ไก่ทอด',6,'จะลองซัก8ไหม',80,'gs://multioder-24b7f.appspot.com/menu_dish/6.jpg','0'),(7,'ไก่ทอด',7,'1ชิ้นก็พอ',12,'gs://multioder-24b7f.appspot.com/menu_dish/7.jpg','0'),(8,'ไก่ทอด',8,'3มะ',35,'gs://multioder-24b7f.appspot.com/menu_dish/8.jpg','0'),(9,'ไก่ทอด',9,'5ชิ้นละ',48,'gs://multioder-24b7f.appspot.com/menu_dish/9.jpg','0'),(10,'ไก่ทอด',10,'10 ชิ้น',100,'gs://multioder-24b7f.appspot.com/menu_dish/10.jpg','0'),(11,'ไก่ทอด',11,'Don\'t be sell',0,'gs://multioder-24b7f.appspot.com/menu_dish/11.jpg','10'),(12,'ข้าวราดผัดกระเพราหมูกรอบ ไข่ดาว',1,'หมูนุ่มละมุนลิ้น',40,'gs://multioder-24b7f.appspot.com/menu_dish/12.jpg','0'),(13,'ข้าวราดผัดกระเพราหมูกรอบ ไข่ดาว',2,'หมูกรอบมาก',40,'gs://multioder-24b7f.appspot.com/menu_dish/13.jpg','0'),(14,'ข้าวราดผัดกระเพราหมูกรอบ ไข่ดาว',3,'ไข่นุ่มมาก',40,'gs://multioder-24b7f.appspot.com/menu_dish/14.jpg','0'),(15,'ข้าวราดผัดกระเพราหมูกรอบ ไข่ดาว',4,'ไข่สองฟองไปเลย',45,'gs://multioder-24b7f.appspot.com/menu_dish/15.jpg','0'),(16,'ข้าวราดผัดกระเพราหมูกรอบ ไข่ดาว',5,'ไม่ใส่ใบกระเพา',35,'gs://multioder-24b7f.appspot.com/menu_dish/16.jpg','1'),(17,'ข้าวไข่เจียว',6,'ใส่ไข่2ฟอง มีน้ำพริกกะปิ',35,'gs://multioder-24b7f.appspot.com/menu_dish/17.jpg','0'),(18,'ข้าวไข่เจียว',7,'ไข่1ฟอง มีน้ำปลาพริก',30,'gs://multioder-24b7f.appspot.com/menu_dish/18.jpg','0'),(19,'ข้าวไข่เจียว',8,'ไข่3ฟอง ไม่มีอะไรเพิ่มเติม',38,'gs://multioder-24b7f.appspot.com/menu_dish/19.jpg','0'),(20,'ข้าวไข่เจียว',9,'มีแต่น้ำพริก ไข่หมด',5,'gs://multioder-24b7f.appspot.com/menu_dish/20.jpg','0'),(21,'ข้าวไข่เจียว',10,'ไข่5 มีน้ำพริกกะปิ ใส่หมูด้วย',100,'gs://multioder-24b7f.appspot.com/menu_dish/21.jpg','0'),(22,'ข้าวไข่เจียว',11,'ไข่นกกระจอกเทศ',125,'gs://multioder-24b7f.appspot.com/menu_dish/22.jpg','0'),(23,'ข้าวราดหมูกระเทียม',1,'หมูนุ่ม',40,'gs://multioder-24b7f.appspot.com/menu_dish/23.jpg','0'),(24,'ข้าวราดหมูกระเทียม',2,'หมูนิ่ม',40,'gs://multioder-24b7f.appspot.com/menu_dish/24.jpg','0'),(25,'ข้าวราดหมูกระเทียม',3,'หมูอร่อย',40,'gs://multioder-24b7f.appspot.com/menu_dish/25.jpg','0'),(26,'ข้าวราดหมูกระเทียม',4,'หมูไม่เหนียว',40,'gs://multioder-24b7f.appspot.com/menu_dish/26.jpg','0'),(27,'ข้าวราดหมูกระเทียม',5,'ให้ข้าวเยอะ',40,'gs://multioder-24b7f.appspot.com/menu_dish/27.jpg','0'),(28,'ข้าวราดไก่ทอดกระเทียม',6,'ไม่ใส่หมู',40,'gs://multioder-24b7f.appspot.com/menu_dish/28.jpg','0'),(29,'ข้าวราดไก่ทอดกระเทียม',7,'อิสลามกินได้',40,'gs://multioder-24b7f.appspot.com/menu_dish/29.jpg','0'),(30,'ข้าวราดไก่ทอดกระเทียม',8,'อิศลามห้ามกิน',35,'gs://multioder-24b7f.appspot.com/menu_dish/30.jpg','0'),(31,'ข้าวราดไก่ทอดกระเทียม',9,'ใช้อกไก่',45,'gs://multioder-24b7f.appspot.com/menu_dish/31.jpg','0'),(32,'ข้าวราดไก่ทอดกระเทียม',10,'อร่อยมาก',50,'gs://multioder-24b7f.appspot.com/menu_dish/32.jpg','0'),(33,'ข้าวราดไก่ทอดกระเทียม',11,'ยังไม่ขาย',0,'gs://multioder-24b7f.appspot.com/menu_dish/33.jpg','0'),(34,'ข้าวราดปลาหมึกผัดผงกะหรี่',1,'หมึกตัวใหญ่',45,'gs://multioder-24b7f.appspot.com/menu_dish/34.jpg','0'),(35,'ข้าวราดปลาหมึกผัดผงกะหรี่',2,'ใส่เยอะ',45,'gs://multioder-24b7f.appspot.com/menu_dish/35.jpg','0'),(36,'ข้าวราดปลาหมึกผัดผงกะหรี่',3,'อร่อย',45,'gs://multioder-24b7f.appspot.com/menu_dish/36.jpg','0'),(37,'ข้าวราดปลาหมึกผัดผงกะหรี่',4,'ที่สุดของปลากหมึก',50,'gs://multioder-24b7f.appspot.com/menu_dish/37.jpg','0'),(38,'ต้มยำกุ้ง',5,'กุ้งแม่น้ำ',320,'gs://multioder-24b7f.appspot.com/menu_dish/38.jpg','0'),(39,'ต้มยำกุ้ง',6,'กุ้งเลี้ยง',300,'gs://multioder-24b7f.appspot.com/menu_dish/39.jpg','0'),(40,'ต้มยำกุ้ง',7,'กุ้งกุลาดำ',310,'gs://multioder-24b7f.appspot.com/menu_dish/40.jpg','0'),(41,'เฟรนช์ฟรายส์',8,'กรอบมาก',40,'gs://multioder-24b7f.appspot.com/menu_dish/41.jpg','0'),(42,'เฟรนช์ฟรายส์',9,'แบบหนา',45,'gs://multioder-24b7f.appspot.com/menu_dish/42.jpg','0'),(43,'เฟรนช์ฟรายส์',10,'อร่อยโคตร',45,'gs://multioder-24b7f.appspot.com/menu_dish/43.jpg','0'),(44,'เฟรนช์ฟรายส์',11,'อันนี้ขาย',40,'gs://multioder-24b7f.appspot.com/menu_dish/44.jpg','0'),(45,'ข้าวเปล่า',1,'หอมมะลิ',10,'gs://multioder-24b7f.appspot.com/menu_dish/45.jpg','0'),(46,'ข้าวเปล่า',2,'หอมมะลิ 100%',10,'gs://multioder-24b7f.appspot.com/menu_dish/46.jpg','0'),(47,'ส้มตำไทย',3,'ตำไทย ใส่ถั่ว',40,'gs://multioder-24b7f.appspot.com/menu_dish/47.jpg','0'),(48,'ส้มตำปู',3,'ใส่ปูนะ',40,'gs://multioder-24b7f.appspot.com/menu_dish/48.jpg','0'),(49,'ตำไทยใส่ปู',3,'ใส่ทั้งถั่วและปู',50,'gs://multioder-24b7f.appspot.com/menu_dish/49.jpg','0'),(50,'ข้าวเหนียว',3,'ขนาด1คนกิน',10,'gs://multioder-24b7f.appspot.com/menu_dish/50.jpg','0');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,11 +226,12 @@ CREATE TABLE `shop` (
   `shopid` int(11) NOT NULL AUTO_INCREMENT,
   `shopname` varchar(45) NOT NULL,
   `shop_status` tinyint(4) NOT NULL,
-  `shoplogo` varchar(45) DEFAULT NULL,
-  `shopusername` varchar(45) DEFAULT NULL,
-  `shoppassword` varchar(45) DEFAULT NULL,
+  `shoplogo` varchar(100) DEFAULT NULL,
+  `shopusername` varchar(45) NOT NULL,
+  `shoppassword` varchar(45) NOT NULL,
   PRIMARY KEY (`shopid`),
-  UNIQUE KEY `shopusername_UNIQUE` (`shopusername`)
+  UNIQUE KEY `shopusername_UNIQUE` (`shopusername`),
+  UNIQUE KEY `shoppassword_UNIQUE` (`shoppassword`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -240,7 +241,7 @@ CREATE TABLE `shop` (
 
 LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-INSERT INTO `shop` VALUES (1,'KFfree',1,'KFfree','kfc','kfc'),(2,'McRonald',1,'Mcronald','mc','mc'),(3,'Pixxarhut',1,'Pizzahut','pizza','pizza'),(4,'ดักกินโดนัท',1,'ดักกิน','donut','donut'),(5,'HestiaFamilia',1,'hestia',NULL,NULL),(6,'LokiFamilia',1,'loki',NULL,NULL),(7,'Wu',1,'wu',NULL,NULL),(8,'Shu',1,'shu',NULL,NULL),(9,'Wei',1,'wei',NULL,NULL),(10,'Orochi',1,'orochi',NULL,NULL),(11,'Nuwa',0,'nuwa',NULL,NULL),(12,'Fuxi',0,'fuxi',NULL,NULL);
+INSERT INTO `shop` VALUES (1,'KFfree',1,'gs://multioder-24b7f.appspot.com/logo/KFfree.JPG','kfc','kfc'),(2,'McRonald',1,'gs://multioder-24b7f.appspot.com/logo/Mcronald.JPG','mc','mc'),(3,'Pixxarhut',1,'gs://multioder-24b7f.appspot.com/logo/Pizzahut.JPG','pizza','pizza'),(4,'ดักกินโดนัท',1,'gs://multioder-24b7f.appspot.com/logo/ดักกิน.JPG','donut','donut'),(5,'HestiaFamilia',1,'gs://multioder-24b7f.appspot.com/logo/hestia.JPG','hestia','hestia'),(6,'LokiFamilia',1,'gs://multioder-24b7f.appspot.com/logo/loki.JPG','loki','loki'),(7,'Wu',1,'gs://multioder-24b7f.appspot.com/logo/wu.JPG','wu','wu'),(8,'Shu',1,'gs://multioder-24b7f.appspot.com/logo/shu.JPG','shu','shu'),(9,'Wei',1,'gs://multioder-24b7f.appspot.com/logo/wei.JPG','wei','wei'),(10,'Orochi',1,'gs://multioder-24b7f.appspot.com/logo/orochi.JPG','orochi','orochi'),(11,'Nuwa',0,'gs://multioder-24b7f.appspot.com/logo/nuwa.JPG','nuwa','nuwa'),(12,'Fuxi',0,'gs://multioder-24b7f.appspot.com/logo/fuxi.JPG','fuxi','fuxi');
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -283,4 +284,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-18 12:45:36
+-- Dump completed on 2018-12-19 10:49:07
