@@ -144,7 +144,6 @@ CREATE TABLE `order_item` (
   `amount` int(11) NOT NULL,
   `shop_id` int(11) NOT NULL,
   PRIMARY KEY (`itemnumber`,`menu_id`,`order_id`,`shop_id`),
-  UNIQUE KEY `shop_id_UNIQUE` (`shop_id`),
   KEY `menu_order_item_idx` (`menu_id`),
   KEY `order_order_item_idx` (`order_id`),
   KEY `shop_id_idx` (`shop_id`),
@@ -173,8 +172,8 @@ DROP TABLE IF EXISTS `orderist`;
 CREATE TABLE `orderist` (
   `orderid` int(11) NOT NULL,
   `status` enum('prepare','sending','done') DEFAULT 'prepare',
-  `shopid` int(11) DEFAULT NULL,
-  PRIMARY KEY (`orderid`),
+  `shopid` int(11) NOT NULL,
+  PRIMARY KEY (`orderid`,`shopid`),
   CONSTRAINT `orderid` FOREIGN KEY (`orderid`) REFERENCES `order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -284,4 +283,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-19 11:20:03
+-- Dump completed on 2018-12-19 15:32:13
