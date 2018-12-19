@@ -88,7 +88,7 @@
                 <div class="food_cart">
                     <form action="amountControl" method="POST">
                         <div>
-                            <img src="pic/menu_dish/<%= ord.getMenus().get(i).getImage()%>.jpg" align="left" style="max-width: 300px; max-height: 125px;">
+                            <img src="<%= ord.getMenus().get(i).getImage()%>" align="left" style="max-width: 300px; max-height: 125px;">
                         </div>
                         <div>
                             <font size="4"><b>

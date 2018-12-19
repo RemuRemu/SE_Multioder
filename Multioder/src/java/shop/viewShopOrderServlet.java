@@ -57,21 +57,23 @@ public class viewShopOrderServlet extends HttpServlet {
         }
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+
             HttpSession session = request.getSession();
-            int shop_id = (int) session.getAttribute("shopid");
-            String order = request.getParameter("ord_id");   
+            model.Shop shop = (model.Shop) session.getAttribute("shop");
+            int shopid = shop.getShopid();
+            String order = request.getParameter("ord_id");
             int order_id = Integer.parseInt(order);
             ArrayList<OrderItem> s_itemlist = new ArrayList<OrderItem>();
             String sql = "select * from order_item where order_id = ? AND shop_id = ?";
             String sta = "select * from orderist where orderid = ? AND shopid = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, order_id);
-            stmt.setInt(2, shop_id);
+            stmt.setInt(2, shopid);
             ResultSet rs = stmt.executeQuery();
-            
+
             PreparedStatement sta_s = conn.prepareStatement(sta);
             sta_s.setInt(1, order_id);
-            sta_s.setInt(2, shop_id);
+            sta_s.setInt(2, shopid);
             ResultSet sta_rs = sta_s.executeQuery();
             sta_rs.next();
             String status = sta_rs.getString("status");

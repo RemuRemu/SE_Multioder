@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import model.Menu;
 import model.Shop;
@@ -56,8 +57,9 @@ public class manageMenuServlet extends HttpServlet {
         }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           String str_shopid = request.getParameter("shopid");
-           int shopid = parseInt(str_shopid);
+              HttpSession session = request.getSession();               
+            model.Shop shop = (model.Shop)session.getAttribute("shop");
+                int shopid = shop.getShopid();
            
           // int shopid = parseInt((String) request.getAttribute("shopid"));
            String find_shop = "SELECT * FROM seproject.menu WHERE shop_id = ?";
@@ -77,7 +79,7 @@ public class manageMenuServlet extends HttpServlet {
             menu.setImage(rs.getString("image"));
             menu_list.add(menu);
         }
-        request.setAttribute("shopid", str_shopid);
+        request.setAttribute("shopid", shopid);
         request.setAttribute("manage_menu_list", menu_list);
         
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop/manage_menu.jsp");

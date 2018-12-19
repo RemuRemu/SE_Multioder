@@ -76,18 +76,19 @@ public class addFoodServlet extends HttpServlet {
 
                 HttpSession session = request.getSession();
 
-                int shopid = (int) session.getAttribute("shopid");
+                model.Shop shopid = (model.Shop)session.getAttribute("shop");
+                int shopid_num = shopid.getShopid();
                 String insert_menu = "INSERT INTO seproject.menu"
                         + "(name, shop_id, description, price, image) VALUES"
                         + "(?,?,?,?,?)";
                 PreparedStatement m = conn.prepareStatement(insert_menu);
                 m.setString(1, foodname);
-                m.setInt(2, shopid);
+                m.setInt(2, shopid_num);
                 m.setString(3, description);
                 m.setDouble(4, price);
                 m.setString(5, image);
                 m.executeUpdate();
-                response.sendRedirect("manageMenuServlet?shopid=" + shopid);
+                response.sendRedirect("manageMenuServlet?shopid=" + shopid_num);
                 if (conn != null) {
                     try {
                         conn.close();
@@ -140,5 +141,9 @@ public class addFoodServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private int parseInt(int shopid) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

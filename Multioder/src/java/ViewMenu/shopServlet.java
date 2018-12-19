@@ -84,7 +84,7 @@ public class shopServlet extends HttpServlet {
                 rec_menu.setPrice(rs.getFloat("price"));
                 rec_menu.setImage(rs.getString("image"));
                 rec_menu.setRecommend(rs.getInt("recommend"));
-                rec_menu.setLogo("shoplogo");
+                rec_menu.setLogo(rs.getString("shoplogo"));
                 menu_rec.add(rec_menu);
                 }
                 
@@ -96,7 +96,7 @@ public class shopServlet extends HttpServlet {
                 menu.setPrice(rs.getFloat("price"));
                 menu.setImage(rs.getString("image"));
                 menu.setRecommend(rs.getInt("recommend"));
-                menu.setLogo("shoplogo");
+                menu.setLogo(rs.getString("shoplogo"));
                 menu_list.add(menu);
                 
             }

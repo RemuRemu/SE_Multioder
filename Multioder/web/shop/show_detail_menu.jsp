@@ -5,12 +5,14 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Multioder - Edit Menu</title>
         <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="shop/shop_css.css">
 </head>
 <body style="background: #FDF2E9">
@@ -18,17 +20,49 @@
         <div class="title" style="display: flex; justify-content: space-between;">
             <font size="7" style="text-shadow: 1px 1px 2px gray;">แก้ไขข้อมูลอาหาร</font>
         </div>
-
+${detail_menu.name}${detail_menu.description}${detail_menu.price}
         <form action="editInfoMenuServlet">
-            ชื่ออาหาร : <input type="text" name="foodname" value="${detail_menu.name}" /><br>
-            รายละเอียดของอาหาร : <input type="text" name="fooddesc" value="${detail_menu.description}" /><br>
-            ราคา : <input type="text" name="foodprice" value="${detail_menu.price}" /><br>
-            รูปภาพประกอบ : <input type="file" name="foodimg" value="" style="background: none;"/>
-            <input type="submit" value="Submit" />
+  ชื่อเมนู : <input type="text" name="foodname" value="" /> <br>
+            รายละเอียด : <input type="text" name="description" value="" /> <br>
+            ราคา : <input type="text" name="price" value="" /> <br>
+            รูปภาพ : <input accept="image/*" type="file" id="pic" name="pic">
+            <input  type="submit" value="Submit" />
+           
             <input type="hidden" value="${detail_menu.menu_id}" name="foodid" />
-            <input type="hidden" name="shopid" value="${shopid}" />
-
         </form>
     </div>
+             <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyCvrRQyr77X1i-ANfnXTu0-8fPqO1fSf6k",
+                authDomain: "multioder-24b7f.firebaseapp.com",
+                databaseURL: "https://multioder-24b7f.firebaseio.com",
+                projectId: "multioder-24b7f",
+                storageBucket: "multioder-24b7f.appspot.com",
+                messagingSenderId: "367445321698"
+            };
+
+            firebase.initializeApp(config);
+        </script>
+        <script>
+            var form = document.querySelector("form");
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+                var timestamp = Number(new Date());
+                var storageRef = firebase.storage().ref(timestamp.toString());
+                var $ = jQuery;
+                var file_data = $('#pic').prop('files')[0];
+
+                storageRef.put(file_data).then(function (snapshot) {
+                    snapshot.ref.getDownloadURL().then(function (url) {
+                        document.getElementById('image').value = url;
+                        document.getElementById('picky').remove();
+
+                        form.submit();
+                    })
+                });
+            })
+        </script>
     </body>
 </html>
