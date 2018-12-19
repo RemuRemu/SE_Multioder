@@ -54,6 +54,7 @@ public class editInfoMenuServlet extends HttpServlet {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
         try (PrintWriter out = response.getWriter()) {
+            response.setCharacterEncoding("UTF-8");
             /* TODO output your page here. You may use following sample code. */
             int foodid = parseInt(request.getParameter("foodid"));
             String foodname = request.getParameter("foodname");
