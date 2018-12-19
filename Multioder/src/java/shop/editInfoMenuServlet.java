@@ -59,7 +59,7 @@ public class editInfoMenuServlet extends HttpServlet {
             String foodname = request.getParameter("foodname");
             String fooddesc = request.getParameter("description");
             float foodprice = parseFloat(request.getParameter("price"));
-            String foodimg = request.getParameter("pic");
+            String foodimg = request.getParameter("image");
             HttpSession session = request.getSession();               
             model.Shop shop = (model.Shop)session.getAttribute("shop");
                 int shopid = shop.getShopid();

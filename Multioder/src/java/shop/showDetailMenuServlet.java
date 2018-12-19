@@ -73,7 +73,7 @@ public class showDetailMenuServlet extends HttpServlet {
                 menu.setImage(rs.getString("image"));
             }
             request.setAttribute("detail_menu", menu);
-            request.setAttribute("shopid", shopid);
+
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop/show_detail_menu.jsp");
             rd.forward(request, response);
         }

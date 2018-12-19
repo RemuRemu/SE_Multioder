@@ -18,7 +18,6 @@
             
             <input type="hidden" name="image" id="image">
             <input type="submit" value="Submit" />
-            <input type="hidden" value="${shopid}" />
         </form>
 
         <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>

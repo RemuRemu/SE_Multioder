@@ -79,7 +79,6 @@ public class manageMenuServlet extends HttpServlet {
             menu.setImage(rs.getString("image"));
             menu_list.add(menu);
         }
-        request.setAttribute("shopid", shopid);
         request.setAttribute("manage_menu_list", menu_list);
         
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop/manage_menu.jsp");
