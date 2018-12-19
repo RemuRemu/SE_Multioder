@@ -123,7 +123,6 @@
                     <!--</font>-->
                 </table>
 
-                <a href="newAddress.jsp"><font size='4'><button>Add new address</button></font></a>
                 <c:if test="${password == 1}">
                     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                     <script>swal("Password incorrect");</script>  
