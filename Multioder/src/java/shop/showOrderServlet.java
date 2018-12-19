@@ -8,6 +8,7 @@ package shop;
 import Profile.showProfileServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,7 +59,8 @@ public class showOrderServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            int s_id = (int) session.getAttribute("shopid");
+            //int s_id = (int) session.getAttribute("shopid");
+            int s_id = parseInt(request.getParameter("shopid"));
             ArrayList<Order> s_ordlist = new ArrayList<Order>();
             ArrayList<Double> total = new ArrayList<Double>();
             String order = "SELECT * FROM `order` WHERE order_id IN (SELECT order_id FROM order_item WHERE shop_id = ? ORDER BY order_id ASC);";
