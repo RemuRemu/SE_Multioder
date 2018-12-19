@@ -62,7 +62,6 @@ public class setShoplogoServlet extends HttpServlet {
             ResultSet rs = user_db.executeQuery();
             rs.next();
             shop.setShoplogo(rs.getString("shoplogo"));
-            request.setAttribute("edit_shop", 2);
             response.sendRedirect("shop/menu.jsp");
 
         } catch (SQLException ex) {
