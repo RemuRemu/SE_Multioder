@@ -50,7 +50,6 @@ public class updateOrderServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
-        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
             HttpSession session = request.getSession();

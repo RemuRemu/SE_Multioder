@@ -46,7 +46,6 @@ public class addFoodServlet extends HttpServlet {
             throws ServletException, IOException {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            response.setContentType("text/html;charset=UTF-8");
             
             Connection conn = null;
             double price = 0;
@@ -55,7 +54,6 @@ public class addFoodServlet extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
             }
-response.setCharacterEncoding("UTF-8");
             String foodname = request.getParameter("foodname");
             String description = request.getParameter("description");
             String price_str = request.getParameter("price");

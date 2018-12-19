@@ -44,7 +44,6 @@ public class addShopServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
         Connection conn = null;
         try {
             conn = seproject.getConnection();

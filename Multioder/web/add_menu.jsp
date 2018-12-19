@@ -54,9 +54,9 @@
                         document.getElementById('pic').remove();
 
                         form.submit();
-                    })
+                    });
                 });
-            })
+            });
         </script>
         <c:if test="${add_menu == 1}">
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
