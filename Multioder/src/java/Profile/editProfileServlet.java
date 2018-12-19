@@ -51,6 +51,7 @@ public class editProfileServlet extends HttpServlet {
             Logger.getLogger("connection-error").log(Level.SEVERE, null, ex);
         }
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String new_pass = request.getParameter("new_pass");
             String old_pass = request.getParameter("old_pass");

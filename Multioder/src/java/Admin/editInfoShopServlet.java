@@ -45,6 +45,7 @@ public class editInfoShopServlet extends HttpServlet {
             throws ServletException, IOException, SQLException {
         Connection conn = null;
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try {
             conn = seproject.getConnection();
         } catch (SQLException ex) {

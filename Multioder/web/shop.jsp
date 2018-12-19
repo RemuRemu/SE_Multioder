@@ -90,9 +90,11 @@
                             <form action="/Multioder/ProcessSelection">
                                 <button type="submit" name="add" value="${rec.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
                                 <font size="5"><b>${rec.shopname}</b></font> <br>
-                                <img src="pic/menu_dish/${rec.image}.jpg" style="max-width: 300px; max-height: 125px;"> <br>
+                                <img src="${rec.image}" style="max-width: 300px; max-height: 125px;"> <br>
                                 รายละเอียด : ${rec.description} <br>
                                 ราคาต่อจาน : ${rec.price} บาท
+                                <img src="${rec.logo}"/>
+
                             </form>
                         </div>
                     </c:forEach>
@@ -108,9 +110,10 @@
                             <form action="/Multioder/ProcessSelection">
                                 <button type="submit" name="add" value="${menu.menu_id}" style="float: right;">เพิ่มลงตะกร้า</button>
                                 <font size="5"><b>${menu.shopname} </b></font> <br>
-                                <img src="pic/menu_dish/${menu.image}.jpg" style="max-width: 300px; max-height: 125px;"> <br>
+                                <img src="${menu.image}" style="max-width: 300px; max-height: 125px;"> <br>
                                 รายละเอียด : ${menu.description} <br>
                                 ราคาจานล่ะ : ${menu.price} บาท <br>
+                                <img src="${menu.logo}"/>
                             </form>
                         </div>
                     </c:forEach>

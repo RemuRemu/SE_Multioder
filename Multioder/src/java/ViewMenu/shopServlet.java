@@ -57,9 +57,11 @@ public class shopServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             out.print(foodName);
             ArrayList<Menu> menu_list = new ArrayList<Menu>();
+            ArrayList<Shop> shop_logo = new ArrayList<Shop>();
+            ArrayList<Shop> rec_shop_logo = new ArrayList<Shop>();
             ArrayList<Menu> menu_rec = new ArrayList<Menu>();
             String name = request.getParameter("name");
-            String find_menu = "SELECT M.menuid, M.name ,M.shop_id , M.description , M.price ,M.image, M.recommend, S.shopname , S.shopid , S.shop_status\n" +
+            String find_menu = "SELECT M.menuid, M.name ,M.shop_id , M.description , M.price ,M.image, M.recommend, S.shopname , S.shopid , S.shop_status , S.shoplogo\n" +
                                 "FROM seproject.menu M\n" +
                                 "JOIN seproject.shop S\n" +
                                 "ON (M.shop_id = S.shopid)\n" +
@@ -82,6 +84,7 @@ public class shopServlet extends HttpServlet {
                 rec_menu.setPrice(rs.getFloat("price"));
                 rec_menu.setImage(rs.getString("image"));
                 rec_menu.setRecommend(rs.getInt("recommend"));
+                rec_menu.setLogo("shoplogo");
                 menu_rec.add(rec_menu);
                 }
                 
@@ -93,6 +96,7 @@ public class shopServlet extends HttpServlet {
                 menu.setPrice(rs.getFloat("price"));
                 menu.setImage(rs.getString("image"));
                 menu.setRecommend(rs.getInt("recommend"));
+                menu.setLogo("shoplogo");
                 menu_list.add(menu);
                 
             }
@@ -100,8 +104,8 @@ public class shopServlet extends HttpServlet {
             
  
 
-
-
+            request.setAttribute("rec_shop_logo", menu_list);
+            request.setAttribute("shop_logo", menu_list);
             request.setAttribute("menu_list", menu_list);
             request.setAttribute("rec_menu_list", menu_rec);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/shop.jsp");
