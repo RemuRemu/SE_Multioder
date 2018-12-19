@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="../adminLoginServlet" method="POST">
+        <form action="adminLoginServlet" method="POST">
             Username<input type="text" name="username" value="" />
             Password<input type="text" name="password" value="" />
             <input type="submit" value="Login" />

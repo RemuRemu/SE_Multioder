@@ -72,7 +72,7 @@ public class adminLoginServlet extends HttpServlet {
                 session.setAttribute("username", username);
                 response.sendRedirect("showShopServlet");
             } else {
-                response.sendRedirect("shop/admin_login.jsp");
+                response.sendRedirect("admin_login.jsp");
             }
         }
                 if (conn != null) {
