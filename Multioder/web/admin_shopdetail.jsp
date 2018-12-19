@@ -20,7 +20,6 @@
                 <a href="showShop_test"><button>ย้อนกลับ</button></a>
             </div>
             <br>
-            ${shopdetail.shopid}${shopdetail.shopname}
             <form action="editInfoShopServlet">
                 ชื่อร้านค้า : <input type="text" name="shopname" value="${shopdetail.shopname}" /><br>
                 สถานะของร้านค้า : <c:set var = "status" scope = "session" value = "${shopdetail.shop_status}"/>
