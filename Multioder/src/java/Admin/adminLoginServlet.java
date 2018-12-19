@@ -67,7 +67,7 @@ public class adminLoginServlet extends HttpServlet {
             }
             HttpSession session = request.getSession();
             session.setAttribute("loginflag", loginflag);
-            
+
             if (loginflag == true) {
                 session.setAttribute("username", username);
                 response.sendRedirect("showShopServlet");
@@ -75,7 +75,7 @@ public class adminLoginServlet extends HttpServlet {
                 response.sendRedirect("admin_login.jsp");
             }
         }
-                if (conn != null) {
+        if (conn != null) {
             try {
                 conn.close();
             } catch (SQLException ex) {

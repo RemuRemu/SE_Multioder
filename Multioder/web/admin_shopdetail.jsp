@@ -17,7 +17,7 @@
         <div class="content">
             <div class="title" style="display: flex; justify-content: space-between;">
                 <font size="7" style="text-shadow: 1px 1px 2px gray;">Shop NO. ${shopdetail.shopid}</font><br>
-                <a href="showShop_test"><button>ย้อนกลับ</button></a>
+                <a href="showShopServlet"><button>ย้อนกลับ</button></a>
             </div>
             <br>
             <form action="editInfoShopServlet">
