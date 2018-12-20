@@ -24,7 +24,7 @@
             <form action="editShopServlet" method="POST">
                 ชื่อร้าน : <input type="text" name="shopname" value="${detail_shop.shopname}"/> <br>
                 Username : <input type="text" name="username" value="${detail_shop.shopusername}" /> <br>
-                Password : <input type="text" name="password" value="${detail_shop.shoppassword}" /> <br>
+                Password : <input type="password" name="password" value="${detail_shop.shoppassword}" /> <br>
                 สถานะ : <c:set var = "status" scope = "session" value = "${detail_shop.shop_status}"/>
                 <c:choose> 
                     <c:when test = "${detail_shop.shop_status == true}">
