@@ -82,24 +82,24 @@
 
             <div class="con_area">
                 <div class="profile" style="width: 90%; margin: auto; padding-top: 1.5em; padding-bottom: 1.5em;">
-                    <font class="head_name" size='6' color='black'>Profile</font><br>
+                    <font class="head_name" size='6' color='black'>ข้อมูลส่วนตัว</font><br><br>
                     <font size='4'>
-                    Email: ${pro.email}<br>
-                    First name: ${pro.firstname}<br>
-                    Last name: ${pro.lastname}<br>
-                    Phone: ${pro.phone}<br><br>
+                    อีเมล : ${pro.email}<br>
+                    ชื่อ : ${pro.firstname}<br>
+                    นามสกุล : ${pro.lastname}<br>
+                    เบอร์โทรศัพท์ : ${pro.phone}<br><br>
                     <a href="showEditProfileServlet"><button>แก้ไขข้อมูลส่วนตัว</button></a>
                     <a href="menuServlet"><button>กลับสู่หน้าหลัก</button></a>
                     </font>
                     <br><br><hr style="border-top: 2px solid #000;"><br>
-                    <font class="head_name" size='6' color='black'>Order</font>
+                    <font class="head_name" size='6' color='black'>ใบสั่งซื้อ</font><br><br>
                     <table id="profile" border="1" class="table table-striped table-border checkout-table" style="font-size: 1.15em;">
                         <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th>Buy Date</th>
-                                <th>Total price</th>
-                                <th>Address</th>
+                                <th>เลขออเดอร์</th>
+                                <th>วันที่สั่งซื้อ</th>
+                                <th>ราคาสุทธิ</th>
+                                <th>ที่อยู่จัดส่ง</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -110,7 +110,7 @@
                                     <td>${ord.buy_date} </td>
                                     <td>${ord.total}</td>
                                     <td>${ord.address}</td>
-                                    <td><a href="viewOrderServlet?ord_id=${ord.order_id}" ><button> View </button></a></td>
+                                    <td><a href="viewOrderServlet?ord_id=${ord.order_id}" >รายละเอียด</a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

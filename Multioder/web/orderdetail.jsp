@@ -87,11 +87,11 @@
                 <table id="item" border="1" class="table table-striped table-border checkout-table" style="font-size: 1.15em;">
                     <thead>
                         <tr>
-                            <th> Item number</th>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Shop</th>
+                            <th>เลขที่</th>
+                            <th>รายการ</th>
+                            <th>จำนวน</th>
+                            <th>ราคา</th>
+                            <th>ร้าน</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -113,11 +113,11 @@
                 <table class="table table-striped table-border checkout-table" style="font-size: 1.1em;">
                     <tbody>
                         <tr>
-                            <th>Cart Subtotal :</th>
+                            <th>ยอดสั่งซื้อสุทธิ :</th>
                             <td>${ord_s.total} Bath</td>
                         </tr>
                         <tr>
-                            <th>Date :</th>
+                            <th>วันที่สั่งซื้อ :</th>
                             <td>${ord_s.buy_date}</td>
                         </tr>
                     </tbody>

@@ -85,12 +85,12 @@
                 </div>
                 <form action="editProfileServlet" method="POST">
                     <font size='4'>
-                    Old Password: <input type="password" name="old_pass" value="" style="font-size: 1em;"/><br>
-                    New Password: <input type="password" name="new_pass" value="" style="font-size: 1em;"/><br>
-                    Email: <input type="text" name="email" value="${pro.email}" style="font-size: 1em;"/><br>
-                    First name: <input type="text" name="firstname" value="${pro.firstname}" style="font-size: 1em;"/><br>
-                    Last name: <input type="text" name="lastname" value="${pro.lastname}" style="font-size: 1em;"/><br>
-                    Phone: <input type="text" name="phone" value="${pro.phone}" style="font-size: 1em;"/><br>
+                    รหัสผ่านเดิม : <input type="password" name="old_pass" value="" style="font-size: 1em;"/><br>
+                    รัหสผ่านใหม่ : <input type="password" name="new_pass" value="" style="font-size: 1em;"/><br>
+                    อีเมล : <input type="text" name="email" value="${pro.email}" style="font-size: 1em;"/><br>
+                    ชื่อ : <input type="text" name="firstname" value="${pro.firstname}" style="font-size: 1em;"/><br>
+                    นามสกุล : <input type="text" name="lastname" value="${pro.lastname}" style="font-size: 1em;"/><br>
+                    เบอร์โทรศัพท์ : <input type="text" name="phone" value="${pro.phone}" style="font-size: 1em;"/><br>
 
                     <input type="submit" value="Save" />
                     </font>
@@ -103,7 +103,7 @@
                     <!--<font size='4'>-->
                     <thead>
                         <tr>
-                            <th>Address</th>
+                            <th>ที่อยู่</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -114,7 +114,7 @@
                                 <td>${add.address_des} </td>
                             <form action="deleteAddressServlet" method="POST">
                                 <input type="hidden" name="add_id" value="${add.address_id}" />
-                                <td><input type="submit" value="delete" /></td>
+                                <td><input type="submit" value="เอาออก" /></td>
                             </form>
                             </tr>
                         </c:forEach>

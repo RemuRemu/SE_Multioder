@@ -66,8 +66,11 @@ public class viewOrderServlet extends HttpServlet {
             while (rs.next()) {
 
                 OrderItem ord = new OrderItem(getServletContext());
-                ord.setPrice(rs.getDouble("price"));
                 ord.setQuentity(rs.getInt("amount"));
+                int amount = rs.getInt("amount");
+                double price = rs.getDouble("price") * amount;
+                ord.setPrice(price);
+                
                 ord.setMenu_id(rs.getInt("menu_id"));
                 ord.setItem_num(rs.getInt("itemnumber"));
                 ord.setOrder_id(rs.getInt("order_id"));
