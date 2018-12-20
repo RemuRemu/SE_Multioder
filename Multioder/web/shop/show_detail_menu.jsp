@@ -61,7 +61,7 @@
                 });
             })
         </script>
-        <c:if test="${add_menu == 1}">
+        <c:if test="${error == 1}">
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script>swal("กรุณากรอกข้อมูลให้ครบทุกช่อง");</script> 
 

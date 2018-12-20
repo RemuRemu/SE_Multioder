@@ -58,8 +58,10 @@ public class editInfoShopServlet extends HttpServlet {
             int shop_status = parseInt(request.getParameter("status"));
             String shopusername = request.getParameter("shopusername");
             String shoppassword = request.getParameter("shoppassword");
-
-            if (shoppassword.equals("")) {
+            if (shopusername.isEmpty()){
+                response.sendRedirect("viewDetailShopServlet?shopid="+shopid);
+            }
+            else if  (shoppassword.equals("")) {
                 String edit_shopInfo = "UPDATE seproject.shop"
                         + " SET shopname = ?,shop_status = ?,shopusername = ?"
                         + " WHERE shopid = ?";
@@ -83,7 +85,7 @@ public class editInfoShopServlet extends HttpServlet {
                 pro.setString(4, shoppassword);
                 pro.setInt(5, shopid);
                 pro.executeUpdate();
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShop_test");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/showShopServlet");
                 rd.forward(request, response);
             }
 

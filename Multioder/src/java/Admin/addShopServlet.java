@@ -63,7 +63,7 @@ public class addShopServlet extends HttpServlet {
             // rd.forward(request, response);
             //return;
             // }
-            if (shop_username == null || shop_password == null) {
+            if (shop_username.isEmpty() || shop_password.isEmpty()) {
                 response.sendRedirect("/addnewshop.jsp");
             } else {
                 String find_sameuser = "SELECT shopusername FROM shop WHERE  shopusername = ?";

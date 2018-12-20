@@ -57,13 +57,19 @@ public class editInfoMenuServlet extends HttpServlet {
             int foodid = parseInt(request.getParameter("foodid"));
             String foodname = request.getParameter("foodname");
             String fooddesc = request.getParameter("description");
-            float foodprice = parseFloat(request.getParameter("price"));
+            String foodprice = request.getParameter("price");
             String foodimg = request.getParameter("image");
             HttpSession session = request.getSession();
             model.Shop shop = (model.Shop) session.getAttribute("shop");
-            if (request.getParameter("price") == null || foodname==null) {
-                response.sendRedirect("showDetailMenuServlet?food_id=" + foodid);
+          //  int error=0;
+            if (request.getParameter("price").isEmpty() || foodname.isEmpty() || fooddesc.isEmpty()) {
+            //    error= 1;
+              //  request.setAttribute("error", error);
+               response.sendRedirect("showDetailMenuServlet?food_id=" + foodid);
+            // RequestDispatcher rd = getServletContext().getRequestDispatcher("/show_detail_menu.jsp");
+          //  rd.forward(request, response);
             } else {
+                float f_foodprice = parseFloat(foodprice);
                 int shopid = shop.getShopid();
                 String edit_food = "UPDATE seproject.menu"
                         + " SET name = ?,description = ?,price = ?,image = ?"
@@ -74,10 +80,12 @@ public class editInfoMenuServlet extends HttpServlet {
                 PreparedStatement pro = conn.prepareStatement(edit_food);
                 pro.setString(1, foodname);
                 pro.setString(2, fooddesc);
-                pro.setFloat(3, foodprice);
+                pro.setFloat(3, f_foodprice);
                 pro.setString(4, foodimg);
                 pro.setInt(5, foodid);
                 pro.executeUpdate();
+                
+                //session.setAttribute("error", error);
                 response.sendRedirect("manageMenuServlet?shopid=" + shopid);
             }
 
