@@ -221,8 +221,16 @@ input[type=submit]:hover, button:hover {
     height: 50px;
 }
 
-.next {
+.next, .del_all {
     float: right;
+}
+
+.del_all {
+    margin-right: 1em;
+}
+
+.next {
+    background: #FAAC58;
 }
 
 td, th {

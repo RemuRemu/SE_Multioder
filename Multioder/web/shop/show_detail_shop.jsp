@@ -11,32 +11,38 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="shop/shop_css.css">
     </head>
-    <body>
-
-        <form action="editShopServlet" method="POST">
+    <body style="background: #FDF2E9">
+        <div class="content">
+            <div class="title" style="display: flex; justify-content: space-between;">
+                <font size="7" style="text-shadow: 1px 1px 2px gray;">แก้ไขข้อมูลร้านค้า</font><br>
+                <a href="shop/menu.jsp"><button>ย้อนกลับ</button></a>
+            </div>
+            <form action="editShopServlet" method="POST">
                 ชื่อร้าน : <input type="text" name="shopname" value="${detail_shop.shopname}"/> <br>
-            สถานะ : <c:set var = "status" scope = "session" value = "${detail_shop.shop_status}"/>
-            <c:choose> 
-                <c:when test = "${detail_shop.shop_status == true}">
-                    active
+                Username : <input type="text" name="username" value="${detail_shop.shopusername}" /> <br>
+                Password : <input type="text" name="password" value="${detail_shop.shoppassword}" /> <br>
+                สถานะ : <c:set var = "status" scope = "session" value = "${detail_shop.shop_status}"/>
+                <c:choose> 
+                    <c:when test = "${detail_shop.shop_status == true}">
+                        active
 
-                </c:when>
-                <c:when test = "${detail_shop.shop_status == false}">
-                    inactive
+                    </c:when>
+                    <c:when test = "${detail_shop.shop_status == false}">
+                        inactive
 
-                </c:when>
-                <c:otherwise>
-                    No comment sir...
-                </c:otherwise>
-            </c:choose>       <br>
-            Username : <input type="text" name="username" value="${detail_shop.shopusername}" /> <br>
-            Password : <input type="text" name="password" value="${detail_shop.shoppassword}" /> <br>
-            รูปภาพ : <input accept="image/*" type="file" id="pic" name="pic" style="background: none;">
-            <input type="hidden" name="image" id="image">
-            <input type="submit" value="Submit" />
-            <input type="hidden" name="shopid" value="${detail_shop.shopid}"/>
+                    </c:when>
+                    <c:otherwise>
+                        No comment sir...
+                    </c:otherwise>
+                </c:choose>       <br>
+                รูปภาพ : <input accept="image/*" type="file" id="pic" name="pic" style="background: none;">
+                <input type="hidden" name="image" id="image">
+                <input type="submit" value="ยืนยัน" />
+                <input type="hidden" name="shopid" value="${detail_shop.shopid}"/>
             </form>
         </div>
 
@@ -60,7 +66,7 @@
             form.addEventListener("submit", function (event) {
                 event.preventDefault();
                 var timestamp = Number(new Date());
-                var storageRef = firebase.storage().ref("logo/"+timestamp.toString());
+                var storageRef = firebase.storage().ref("logo/" + timestamp.toString());
                 var $ = jQuery;
                 var file_data = $('#pic').prop('files')[0];
 

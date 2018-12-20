@@ -38,6 +38,7 @@
                     <th>รูปภาพประกอบ</th>
                     <th>แนะนำ</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +52,8 @@
                         <td>${mml.recommend}</td>
                         <td>
                             <a href="showDetailMenuServlet?food_id=${mml.menu_id}&shopid=${shopid}">แก้ไข</a>
+                        </td>
+                        <td>
                             <a href="removeFoodServlet?food_id=${mml.menu_id}&shopid=${shopid}">เอาออก</a>
                         </td>
                     </tr>

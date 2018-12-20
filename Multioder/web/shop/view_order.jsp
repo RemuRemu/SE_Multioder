@@ -25,12 +25,9 @@
             <font size="7" style="text-shadow: 1px 1px 2px gray;">รายละเอียดการสั่งซื้อ</font>
             <a href="showOrderServlet"><button>ย้อนกลับ</button></a>
         </div>
-        <br>
-
         <form action="updateOrderServlet">
             <input type="hidden" name="orderid" value="${order_id}" /><br>
             Order status :<c:set var = "status" scope = "session" value = "${status}"/>
-
             <c:choose> 
                 <c:when test = "${status == 'prepare'}">
                     <select name="status">
@@ -58,9 +55,10 @@
                     No comment sir...
                 </c:otherwise>
             </c:choose> 
-            <input type="submit" value="Submit" />
+            <input type="submit" value="ยืนยัน" />
 
         </form>
+            <br>
         <table id="s_item" border="1" class="table table-striped table-border checkout-table">
             <thead>
                 <tr>

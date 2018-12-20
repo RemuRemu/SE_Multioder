@@ -9,10 +9,11 @@
         <link rel="stylesheet" type="text/css" href="shop/shop_css.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     </head>
-    <body>
+    <body style="background: #FDF2E9">
         <div class="content">
             <div class="title" style="display: flex; justify-content: space-between;">
-                <font size="7" style="text-shadow: 1px 1px 2px gray;">แก้ไขรายการอาหาร</font><br>
+                <font size="7" style="text-shadow: 1px 1px 2px gray;">เพิ่มรายการอาหาร</font><br>
+                <a href="manageMenuServlet"><button>ย้อนกลับ</button></a>
             </div>
             <form action="addFoodServlet" method="POST">
                 ชื่อเมนู : <input type="text" name="foodname" value="" /> <br>
@@ -21,7 +22,7 @@
                 รูปภาพ : <input accept="image/*" type="file" id="pic" name="pic" style="background: none;">
 
                 <input type="hidden" name="image" id="image" >
-                <input type="submit" value="Submit" />
+                <input type="submit" value="ยืนยัน" />
             </form>
         </div>
 

@@ -23,7 +23,10 @@
     <div class="content">
         <div class="title" style="display: flex; justify-content: space-between;">
             <font size="7" style="text-shadow: 1px 1px 2px gray;">รายการร้านค้า</font><br>
-            <a href="addnewshop.jsp"><input type="submit" value="Add new Shop" /></a>
+            <div class="menu">
+                <a href="addnewshop.jsp"><input type="submit" value="เพิ่มร้านค้า" /></a>
+                <a href="logoutAdminServlet"><button>ออกจากระบบ</button></a>
+            </div>
         </div>
         <br>
         <table id="shop_admin" border="1">
@@ -33,6 +36,7 @@
                     <th>รายการร้านค้า</th>
                     <th>สถานะร้านค้า</th>
                     <th>โลโก้</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -63,9 +67,8 @@
                             <img src="${shop.shoplogo}" style="width: 5em; height: 5em;"/>
 
                         </td>
-                        <td><a href="viewDetailShopServlet?shopid=${shop.shopid}">View</a> &nbsp
-                            <a href="removeShopServlet?shopid=${shop.shopid}">Remove</a>
-                        </td>
+                        <td><a href="viewDetailShopServlet?shopid=${shop.shopid}">รายละเอียด</a></td>
+                        <td><a href="removeShopServlet?shopid=${shop.shopid}">เอาออก</a></td>
                     </tr>
 
                 </tbody>

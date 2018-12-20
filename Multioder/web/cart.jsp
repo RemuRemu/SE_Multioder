@@ -120,7 +120,7 @@
                         <input type="submit" value="ถัดไป" class="next"/>
                     </form>
                      <form action="cleareServlet">
-                        <input type="submit" value="ลบสินค้าทั้งหมด" class="next"/>
+                        <input type="submit" value="ลบสินค้าทั้งหมด" class="del_all"/>
                     </form>
                     
                 </div>
